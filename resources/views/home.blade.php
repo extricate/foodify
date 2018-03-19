@@ -2,20 +2,22 @@
 
 @section('content')
 <div class="container">
+    <h1 class="primary">What will you eat this week?</h1>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <img class="card-img-top" src="images/recipes/img_103735_1600x560_JPG.jpg" alt="Card image cap">
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    <div class="card-title">Monday</div>
+                    <p class="card-text"></p>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Tuesday</div>
+                <div class="card-body"></div>
             </div>
         </div>
     </div>

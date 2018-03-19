@@ -9,6 +9,25 @@
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  background: url('../images/theme/background-2.jpeg') !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+h1.primary {
+  font-size: 4em;
+  color: $white;
+}
+
+.card {
+  border: 0;
+}
+.card-img-top {
+  border: 0;
 }
