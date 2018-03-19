@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pantry::class, 'id');
     }
+
+    public function food_plan()
+    {
+        return $this->hasOne(foodPlan::class, 'id');
+    }
 }

@@ -13,6 +13,6 @@ class Ingredient extends Model
 
     public function storedIn()
     {
-        return $this->belongsTo(Pantry::class, 'id');
+        return $this->belongsToMany(Pantry::class, 'id');
     }
 }
