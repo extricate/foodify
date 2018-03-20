@@ -14,7 +14,17 @@
                 </div>
                 @if ($foodplan->monday() == !null)
                     @include('modules/foodplan/partials/plan-recipe', ['recipe' => $foodplan->monday()])
+                @else
+                    @include('modules/foodplan/partials/empty-day')
                 @endif
+                <div class="card-body">
+                    <form action="../plan" method="POST" class="form-inline">
+                        <a href="/recipes" class="btn btn-primary m-1">Something else?</a>
+                        <input name="_method" type="hidden" value="UPDATE">
+                        <input name="day" value="monday" type="hidden">
+                        <button type="submit" class="btn btn-warning">Clear day</button>
+                    </form>
+                </div>
             </div>
             <div class="card">
                 <div class="card-body">

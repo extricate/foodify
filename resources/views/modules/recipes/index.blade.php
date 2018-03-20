@@ -3,9 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-6">
-            <h1 class="primary">Foodify recipes
-                <a href="/recipes/create" class="btn btn-primary">Create new recipe</a>
-            </h1>
+            <h1 class="primary">Foodify recipes</h1>
 
             <form class="form-inline m-3">
                 <input class="form-control" type="search" id="search" placeholder="What are you craving for?" aria-label="Type here to search">

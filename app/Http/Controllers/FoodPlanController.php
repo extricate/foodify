@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\FoodPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +64,7 @@ class FoodPlanController extends Controller
      * @param  \App\foodPlan  $food_plan
      * @return \Illuminate\Http\Response
      */
-    public function show(foodPlan $food_plan)
+    public function show(FoodPlan $food_plan)
     {
         //
     }
@@ -74,7 +75,7 @@ class FoodPlanController extends Controller
      * @param  \App\foodPlan  $food_plan
      * @return \Illuminate\Http\Response
      */
-    public function edit(foodPlan $food_plan)
+    public function edit(FoodPlan $food_plan)
     {
         //
     }
@@ -86,9 +87,18 @@ class FoodPlanController extends Controller
      * @param  \App\foodPlan  $food_plan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, foodPlan $food_plan)
+    public function update(Request $request, FoodPlan $food_plan)
     {
-        //
+        Validator::make($request->all(), [
+            'day' => 'string|required'
+        ])->validate();
+
+        $user = Auth::user();
+
+        $day = $request->day;
+        $user->food_plan()->$day = 0;
+        return redirect('plan');
+
     }
 
     /**
@@ -97,7 +107,7 @@ class FoodPlanController extends Controller
      * @param  \App\foodPlan  $food_plan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(foodPlan $food_plan)
+    public function destroy(FoodPlan $food_plan)
     {
         //
     }

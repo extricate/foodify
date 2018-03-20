@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FoodPlan extends Model
 {
-    protected $fillable = [];
+    protected $guarded = [];
 
     public function plan()
     {

@@ -10,7 +10,5 @@
                 <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
             @endforeach
         </div>
-        <a href="/" class="btn btn-primary">Something else?</a>
-        <a href="/" class="btn btn-danger">Clear day</a>
     </div>
 </div>
