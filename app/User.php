@@ -27,18 +27,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function slug()
+    {
+        return '/users/' . $this->name . '-' . $this->id;
+    }
+
     public function created_recipes()
     {
-        return $this->hasMany(Recipe::class)->getResults();
+        return $this->hasMany(Recipe::class, 'id')->getResults();
     }
 
     public function pantry()
     {
-        return $this->hasOne(Pantry::class)->getResults();
+        return $this->hasOne(Pantry::class, 'id')->getResults();
     }
 
     public function food_plan()
     {
-        return $this->hasOne(FoodPlan::class)->getResults();
+        return $this->hasOne(FoodPlan::class, 'id')->getResults();
     }
 }

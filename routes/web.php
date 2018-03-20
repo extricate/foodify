@@ -19,6 +19,7 @@ use App\Events\UserRegistered;
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/recipes', 'RecipeController');
+Route::resource('/plan', 'FoodPlanController');
 Route::resource('/ingredients', 'IngredientController');
 Route::resource('/pantry', 'PantryController');
 

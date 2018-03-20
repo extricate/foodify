@@ -8,7 +8,7 @@ class Ingredient extends Model
 {
     public function usedIn()
     {
-        return $this->belongsToMany(Recipe::class)->getResults();
+        return $this->belongsToMany(Recipe::class, 'id')->getResults();
     }
 
     public function storedIn()

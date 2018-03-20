@@ -1,4 +1,4 @@
-<div class="card m-3">
+<div class="card">
     <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
     <div class="card-body">
         <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
@@ -10,10 +10,7 @@
                 <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
             @endforeach
         </div>
-        <a href="/" class="btn btn-primary">Plan meal</a>
-        <a href="/" class="btn btn-primary">Favorite <i class="fa fa-star"></i></a>
-        <div class="text-right">
-            <i>Submitted by <a href="{{ $recipe->author()->slug() }}">{{ $recipe->author()->name }}</a></i>
-        </div>
+        <a href="/" class="btn btn-primary">Something else?</a>
+        <a href="/" class="btn btn-danger">Clear day</a>
     </div>
 </div>

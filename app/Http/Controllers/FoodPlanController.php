@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\foodPlan;
+use App\FoodPlan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FoodPlanController extends Controller
 {
@@ -19,7 +20,12 @@ class FoodPlanController extends Controller
      */
     public function index()
     {
-        //
+        $foodplan = Auth::user()->food_plan();
+        if($foodplan == null) {
+            $this->create();
+        };
+
+        return view('modules/foodplan/index', compact('foodplan'));
     }
 
     /**
@@ -29,7 +35,12 @@ class FoodPlanController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $foodplan = FoodPlan::create([
+            'owner' => $user->id,
+        ]);
+
+        return $foodplan;
     }
 
     /**

@@ -14,9 +14,9 @@
 }
 
 body {
-  background: url('../images/theme/background-2.jpeg') !important;
+  background-image: url('../images/theme/background-2.jpeg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-attachment: fixed;
 }
 

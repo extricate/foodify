@@ -22,6 +22,7 @@ class CreateRecipesTable extends Migration
             $table->foreign('type')->references('id')->on('categories');
 
             $table->text('description')->nullable();
+            $table->integer('preparation_time')->nullable()->unsigned();
             $table->string('image_url')->nullable();
 
             $table->integer('author')->nullable()->unsigned();

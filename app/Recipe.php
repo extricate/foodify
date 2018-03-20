@@ -10,7 +10,7 @@ class Recipe extends Model
 
     public function path()
     {
-        return "/recipes/{$this->slug}";
+        return "/recipes/{$this->id}";
     }
 
     public function author()
@@ -21,5 +21,10 @@ class Recipe extends Model
     public function tags()
     {
         return $this->hasMany(Tag::class, 'id')->getResults();
+    }
+
+    public function ingredients()
+    {
+        return $this->hasMany(Ingredient::class, 'id')->getResults();
     }
 }

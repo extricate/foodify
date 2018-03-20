@@ -1,9 +1,23 @@
 @extends('layouts/app')
 
 @section('content')
-        <h1 class="primary m-3">Foodify recipes
-        <a href="/recipes/create" class="btn btn-primary">Create new recipe</a>
-        </h1>
+    <div class="row">
+        <div class="col-6">
+            <h1 class="primary">Foodify recipes
+                <a href="/recipes/create" class="btn btn-primary">Create new recipe</a>
+            </h1>
+
+            <form class="form-inline m-3">
+                <input class="form-control" type="search" id="search" placeholder="What are you craving for?" aria-label="Type here to search">
+                <button class="btn btn-primary m-1" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 justify-content-center">
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <div class="row">
