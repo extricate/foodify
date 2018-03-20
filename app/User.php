@@ -29,16 +29,16 @@ class User extends Authenticatable
 
     public function created_recipes()
     {
-        return $this->hasMany(Recipe::class, 'id');
+        return $this->hasMany(Recipe::class)->getResults();
     }
 
     public function pantry()
     {
-        return $this->hasOne(Pantry::class, 'id');
+        return $this->hasOne(Pantry::class)->getResults();
     }
 
     public function food_plan()
     {
-        return $this->hasOne(foodPlan::class, 'id');
+        return $this->hasOne(FoodPlan::class)->getResults();
     }
 }

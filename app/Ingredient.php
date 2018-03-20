@@ -8,11 +8,11 @@ class Ingredient extends Model
 {
     public function usedIn()
     {
-        return $this->belongsToMany(Recipe::class, 'id');
+        return $this->belongsToMany(Recipe::class)->getResults();
     }
 
     public function storedIn()
     {
-        return $this->belongsToMany(Pantry::class, 'id');
+        return $this->belongsToMany(Pantry::class)->getResults();
     }
 }

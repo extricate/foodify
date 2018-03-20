@@ -1,26 +1,18 @@
 @extends('layouts/app')
 
 @section('content')
+        <h1 class="primary m-3">Foodify recipes
+        <a href="/recipes/create" class="btn btn-primary">Create new recipe</a>
+        </h1>
     <div class="row">
-        <h1>Foodify recipes</h1>
-    </div>
-    <div class="row">
-        <div class="col-8">
-            @foreach($recipes as $recipe)
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ $recipe->name }}
-                        </h5>
-                        <p class="card-text">
-                            {{ $recipe->description }}
-                        </p>
+        <div class="col-12">
+            <div class="row">
+                @foreach($recipes as $recipe)
+                    <div class="col-6">
+                        @include('modules.recipes.partials.recipe-card-full')
                     </div>
-                </div>
-            @endforeach
-        </div>
-        <div class="col-4">
-            @include('modules/recipes/create')
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection

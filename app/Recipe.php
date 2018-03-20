@@ -12,8 +12,14 @@ class Recipe extends Model
     {
         return "/recipes/{$this->slug}";
     }
-    public function creator()
+
+    public function author()
     {
-        return $this->belongsToMany(User::class, 'id');
+        return $this->belongsTo(User::class, 'id')->first();
+    }
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class, 'id')->getResults();
     }
 }

@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\foodPlan;
 use Illuminate\Http\Request;
 
-class FoodPlanController extends Controller
+class TagController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +13,7 @@ class FoodPlanController extends Controller
      */
     public function index()
     {
-        //
+        return view('modules/pantry/index');
     }
 
     /**
@@ -40,19 +34,16 @@ class FoodPlanController extends Controller
      */
     public function store(Request $request)
     {
-        $plan = FoodPlan::create([
-            'owner' => auth()->user()->id,
-            'description' => $request->description,
-        ]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\foodPlan  $food_plan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(foodPlan $food_plan)
+    public function show($id)
     {
         //
     }
@@ -60,10 +51,10 @@ class FoodPlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\foodPlan  $food_plan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(foodPlan $food_plan)
+    public function edit($id)
     {
         //
     }
@@ -72,10 +63,10 @@ class FoodPlanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\foodPlan  $food_plan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, foodPlan $food_plan)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -83,10 +74,10 @@ class FoodPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\foodPlan  $food_plan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(foodPlan $food_plan)
+    public function destroy($id)
     {
         //
     }

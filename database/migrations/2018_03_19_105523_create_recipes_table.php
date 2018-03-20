@@ -18,13 +18,14 @@ class CreateRecipesTable extends Migration
 
             $table->string('name')->default('Recipe');
 
-            $table->integer('type')->unsigned();
+            $table->integer('type')->unsigned()->nullable();
             $table->foreign('type')->references('id')->on('categories');
 
             $table->text('description')->nullable();
+            $table->string('image_url')->nullable();
 
-            $table->integer('created_by')->nullable()->unsigned();
-            $table->foreign('created_by')->references('id')->on('users');
+            $table->integer('author')->nullable()->unsigned();
+            $table->foreign('author')->references('id')->on('users');
 
             $table->timestamps();
         });
