@@ -62,7 +62,7 @@ class RecipeController extends Controller
             return response($recipe, 201);
         }
 
-        return redirect('recipes.index')
+        return redirect(route('recipes.index'))
             ->with('flash', 'Your recipe has been published!');
     }
 

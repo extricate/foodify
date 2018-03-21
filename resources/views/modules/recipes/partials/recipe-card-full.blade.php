@@ -10,10 +10,16 @@
                 <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
             @endforeach
         </div>
-        <a href="/" class="btn btn-primary">Plan meal</a>
-        <a href="/" class="btn btn-primary">Favorite <i class="fa fa-star"></i></a>
-        <div class="text-right">
-            <i>Submitted by <a href="{{ $recipe->author()->slug() }}">{{ $recipe->author()->name }}</a></i>
+        <div class="container">
+            <div class="row justify-content-center">
+                @include('modules/foodplan/partials/plan-days', ['day' => 'monday', 'day_short' => 'Mo', 'recipe' => $recipe])
+                @include('modules/foodplan/partials/plan-days', ['day' => 'tuesday', 'day_short' => 'Tu', 'recipe' => $recipe])
+                @include('modules/foodplan/partials/plan-days', ['day' => 'wednesday', 'day_short' => 'We', 'recipe' => $recipe])
+                @include('modules/foodplan/partials/plan-days', ['day' => 'thursday', 'day_short' => 'Th', 'recipe' => $recipe])
+                @include('modules/foodplan/partials/plan-days', ['day' => 'friday', 'day_short' => 'Fr', 'recipe' => $recipe])
+                @include('modules/foodplan/partials/plan-days', ['day' => 'saturday', 'day_short' => 'Sa', 'recipe' => $recipe])
+                @include('modules/foodplan/partials/plan-days', ['day' => 'sunday', 'day_short' => 'Su', 'recipe' => $recipe])
+            </div>
         </div>
     </div>
 </div>
