@@ -12,8 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.autoload({
-    'jquery': ['$', 'window.jQuery', "jQuery", "window.$", "jquery", "window.jquery"],
-    'popper.js/dist/umd/popper.js': ['Popper', 'window.Popper']
+    jquery: ['$', 'window.jQuery', 'jQuery']
 });
 
 mix.js('resources/assets/js/app.js', 'public/js')
@@ -25,4 +24,4 @@ mix.options({
     }
 })
 
-mix.copy( 'resources/assets/images', 'public/images', false );
+mix.copy('resources/assets/images', 'public/images', false);

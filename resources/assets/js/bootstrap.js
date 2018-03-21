@@ -8,11 +8,10 @@ window.Popper = require('popper.js').default;
  */
 
 try {
-    require('jquery');
+    window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-} catch (e) {
-}
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
