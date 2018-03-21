@@ -15,8 +15,19 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('recipe-component', require('./components/AddRecipe.vue'));
+//Vue.component('recipe-component', require('./components/AddRecipe.vue'));
 
 const app = new Vue({
     el: '#app'
+});
+
+/**
+ * Tooltips
+ */
+
+$(document).ready(function() {
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        placement: 'auto left'
+    });
 });
