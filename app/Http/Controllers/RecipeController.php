@@ -62,7 +62,7 @@ class RecipeController extends Controller
             return response($recipe, 201);
         }
 
-        return redirect('recipes')
+        return redirect('recipes.index')
             ->with('flash', 'Your recipe has been published!');
     }
 
@@ -75,7 +75,7 @@ class RecipeController extends Controller
     public function show($id)
     {
         $recipe = Recipe::findOrFail($id);
-        return view('modules/recipes/show', compact('recipe'));
+        return view('recipes.show', compact('recipe'));
     }
 
     /**

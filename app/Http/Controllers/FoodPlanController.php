@@ -94,13 +94,15 @@ class FoodPlanController extends Controller
             'recipe' => 'int'
         ])->validate();
 
+        $foodplan = $food_plan;
         // find foodplan, select proper element and update according to request
 
         $recipe = $request->recipe;
         $day = $request->day;
 
-        $this->$day = $recipe;
-        return redirect('plan');
+        $foodplan->$day = $recipe;
+        $foodplan->save();
+        return redirect('foodplan.index');
 
     }
 
