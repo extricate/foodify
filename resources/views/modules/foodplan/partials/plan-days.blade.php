@@ -7,12 +7,14 @@
 <input name="day" value="{{ $day }}" type="hidden">
 <input name="recipe" value="{{ $recipe->id }}" type="hidden">
 @php $foodplan_day = $foodplan->$day() @endphp
-<button type="submit"
-        data-toggle="tooltip" data-placement="top" title="{{ $day }}: {{ $foodplan_day->name }}"
-        @if( $foodplan_day != null)
-        style="background-image: url('{{ $foodplan_day->image_url }}'); background-size: cover; background-repeat: no-repeat;"
-        @endif
-        class="btn btn-default text-light btn-lg font-weight-bold">
-    {{ substr($day, 0, 2) }}
-</button>
+<div
+     @if( $foodplan_day != null)
+     style="background-image: url('{{ $foodplan_day->image_url }}'); background-size: cover; background-repeat: no-repeat;"
+     data-toggle="tooltip" data-placement="top" title="{{ $day }}: {{ $foodplan_day->name }}"
+     @endif
+     class="img-recipe">
+    <button type="submit" class="btn btn-default img-overlay text-light text-capitalize font-weight-bold">
+        {{ substr($day, 0, 2) }}
+    </button>
+</div>
 {{ Form::close() }}

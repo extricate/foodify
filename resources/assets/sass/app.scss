@@ -30,3 +30,11 @@ h1.primary {
 .card-img-top {
   border: 0;
 }
+.img-recipe {
+  border-radius: $border-radius;
+}
+.img-overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.4);
+}

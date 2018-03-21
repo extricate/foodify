@@ -16,7 +16,6 @@
         <div class="col-12 justify-content-center">
         </div>
     </div>
-
     <div class="row">
         <div class="card-columns">
         @php $foodplan = Auth::user()->food_plan() @endphp
@@ -25,5 +24,4 @@
         @endforeach
         </div>
     </div>
-
 @endsection
