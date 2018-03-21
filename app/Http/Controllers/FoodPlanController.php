@@ -87,23 +87,29 @@ class FoodPlanController extends Controller
      * @param  \App\foodPlan  $food_plan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FoodPlan $food_plan)
+    public function update(Request $request)
     {
-        Validator::make($request->all(), [
-            'day' => 'string|required',
-            'recipe' => 'int'
+        $user = auth()->user();
+        $foodplan = $user->food_plan();
+
+        $validator = Validator::make($request->all(), [
+            'day' => 'string|required|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',
+            'recipe' => 'nullable|exists:recipes,id'
         ])->validate();
 
-        $foodplan = $food_plan;
-        // find foodplan, select proper element and update according to request
-
         $recipe = $request->recipe;
-        $day = $request->day;
 
+        // clearing a recipe from a plan?
+        if ($request->recipe == 0|null) {
+            $recipe = null;
+        }
+
+        // update recipe set for a day in a plan
+        $day = $request->day;
         $foodplan->$day = $recipe;
         $foodplan->save();
-        return redirect('foodplan.index');
 
+        return redirect()->back();
     }
 
     /**
