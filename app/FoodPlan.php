@@ -17,6 +17,20 @@ class FoodPlan extends Model
         return $this->belongsTo(User::class)->getResults();
     }
 
+    public function days()
+    {
+        $days = array(
+            'monday',
+            'tuesday',
+            'wednesday',
+            'thursday',
+            'friday',
+            'saturday',
+            'sunday'
+    );
+        return $days;
+    }
+
     public function monday()
     {
         return $this->hasOne(Recipe::class, 'id', 'monday')->getResults();

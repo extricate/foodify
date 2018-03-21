@@ -15,7 +15,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
         <div class="col-4">
             <div class="card">
@@ -32,5 +31,4 @@
             </div>
         </div>
     </div>
-
 @endsection

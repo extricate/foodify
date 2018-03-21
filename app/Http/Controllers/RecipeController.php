@@ -22,7 +22,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return view('modules.recipes.index');
+        $recipes = Recipe::all();
+
+        return view('modules.recipes.index', compact('recipes'));
     }
 
     /**

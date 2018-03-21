@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark navbar-laravel sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light navbar-laravel sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -13,16 +13,25 @@
             <ul class="navbar-nav mr-auto">
                 <li><a class="nav-link" href="/recipes">Recipes</a></li>
                 <li><a class="nav-link" href="/plan">Plan</a></li>
-
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+                @auth
+                    @php $foodplan = Auth::user()->food_plan() @endphp
+
+                    @foreach ($foodplan->days() as $day)
+                        <li class="mr-1">
+                            @include('modules/foodplan/partials/simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
+                        </li>
+                    @endforeach
+                @endauth
                 <li>
                     <a href="/recipes/create" class="btn btn-primary btn-inline pull-right">
                         Create new recipe
                     </a>
                 </li>
+
                 <!-- Authentication Links -->
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
