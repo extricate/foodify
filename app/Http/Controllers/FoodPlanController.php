@@ -90,13 +90,16 @@ class FoodPlanController extends Controller
     public function update(Request $request, FoodPlan $food_plan)
     {
         Validator::make($request->all(), [
-            'day' => 'string|required'
+            'day' => 'string|required',
+            'recipe' => 'int'
         ])->validate();
 
-        $user = Auth::user();
+        // find foodplan, select proper element and update according to request
 
+        $recipe = $request->recipe;
         $day = $request->day;
-        $user->food_plan()->$day = 0;
+
+        $this->$day = $recipe;
         return redirect('plan');
 
     }
