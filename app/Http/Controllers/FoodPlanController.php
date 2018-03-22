@@ -120,6 +120,21 @@ class FoodPlanController extends Controller
      */
     public function destroy(FoodPlan $food_plan)
     {
-        //
+        /**
+         * you cannot 'destroy' a foodplan (considering all users need to have one,
+         * thus we use this function to reset it instead.
+         */
+
+        $user = auth()->user();
+        $foodplan = $user->food_plan();
+
+        foreach($foodplan->days() as $day) {
+            $foodplan->$day = null;
+        }
+
+        $foodplan->save();
+
+        return redirect()->back()->with('message', 'Week reset!');
+
     }
 }

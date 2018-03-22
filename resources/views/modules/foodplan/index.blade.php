@@ -2,8 +2,17 @@
 
 @section('content')
     <div class="row">
-        <div class="col-12">
+        <div class="col-8">
             <h1 class="primary">Your foodplan this week</h1>
+        </div>
+        <div class="col-4">
+            {!! Form::model($foodplan, [
+'method' => 'DELETE',
+'route' => ['plan.destroy', $foodplan->id],
+'class' => 'form-inline m-3 pull-right'
+]) !!}
+            <button type="submit" class="btn btn-warning">Clear week</button>
+            {{ Form::close() }}
         </div>
     </div>
     <div class="row">
