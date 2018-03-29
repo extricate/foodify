@@ -11,6 +11,14 @@
 'route' => ['plan.destroy', $foodplan->id],
 'class' => 'form-inline m-3 pull-right'
 ]) !!}
+            <button type="submit" class="btn btn-primary">Suggest week</button>
+            {{ Form::close() }}
+
+            {!! Form::model($foodplan, [
+'method' => 'DELETE',
+'route' => ['plan.destroy', $foodplan->id],
+'class' => 'form-inline m-3 pull-right'
+]) !!}
             <button type="submit" class="btn btn-warning">Clear week</button>
             {{ Form::close() }}
         </div>
@@ -19,9 +27,7 @@
         <div class="card-columns">
             @foreach($foodplan->days() as $day)
                 <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-capitalize">{{ $day }}</h2>
-                    </div>
+                    <h3 class="m-3 text-capitalize">{{ $day }}</h3>
                     @if ($foodplan->$day() == !null)
                         @include('modules/foodplan/partials/plan-recipe', ['recipe' => $foodplan->$day()])
                         <div class="card-body">

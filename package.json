@@ -23,7 +23,8 @@
     "dependencies": {
         "font-awesome": "^4.7.0",
         "laravel-echo": "^1.3.5",
-        "pusher-js": "^4.2.2",
-        "mozjpeg": "^5.0.0"
+        "mozjpeg": "^5.0.0",
+        "owl.carousel": "^2.3.3",
+        "pusher-js": "^4.2.2"
     }
 }

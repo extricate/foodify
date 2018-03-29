@@ -12,9 +12,9 @@
         </div>
         <div class="container">
             <div class="row justify-content-center">
-                @foreach ($foodplan->days() as $day)
-                    @include('modules/foodplan/partials/plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
-                @endforeach
+                    @foreach ($foodplan->days() as $day)
+                        @include('modules/foodplan/partials/plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
+                    @endforeach
             </div>
         </div>
     </div>

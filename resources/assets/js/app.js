@@ -27,3 +27,13 @@ const app = new Vue({
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+/**
+ * Owl carousel
+ */
+
+$('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+})
