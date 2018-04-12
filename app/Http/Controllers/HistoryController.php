@@ -25,9 +25,9 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        dd(auth()->user()->history());
-
-        //return view('modules/history/index', compact('history'));
+        $user = auth()->user();
+        $history = $user->history();
+        return view('modules/history/index', compact('history'));
     }
 
     /**
@@ -62,7 +62,7 @@ class HistoryController extends Controller
             'sunday' => $foodplan->sunday,
         ]);
 
-        return redirect('plan.index');
+        return redirect('plan');
     }
 
     /**
@@ -103,6 +103,11 @@ class HistoryController extends Controller
      */
     public function destroy(History $history)
     {
-        //
+        // validate ownership
+        $history->owner() == auth()->user();
+
+        $history->delete();
+
+        return back()->with('message', 'History deleted!');
     }
 }
