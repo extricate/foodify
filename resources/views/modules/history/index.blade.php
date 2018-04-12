@@ -19,6 +19,7 @@
                             @include('modules/foodplan/partials/simple-plan-days', ['recipe' => $foodplan->$day()])
                         </div>
                     @endforeach
+                    @include('modules.history.partials.delete', ['history' => $foodplan])
                 </div>
             </div>
         @endforeach

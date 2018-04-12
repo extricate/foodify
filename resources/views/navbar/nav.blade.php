@@ -11,8 +11,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li><a class="nav-link" href="/recipes">Recipes</a></li>
-                <li><a class="nav-link" href="/plan">Plan</a></li>
+                <li><a class="nav-link" href="{{ route('recipes.index') }}">Recipes</a></li>
+                <li><a class="nav-link" href="{{ route('plan.index') }}">Plan</a></li>
+                <li><a class="nav-link" href="{{ route('history.index') }}">History</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

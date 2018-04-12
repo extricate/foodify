@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\History;
-use App\Foodplan;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class HistoryController
@@ -101,13 +101,21 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(History $history)
+    public function destroy($id)
     {
         // validate ownership
-        $history->owner() == auth()->user();
+        $history = History::findOrFail($id);
+        $owner = $history->owner();
+        $user = Auth::user();
 
-        $history->delete();
+        if ($owner->id == $user->id)
+        {
+            $history->delete();
+            return back()->with('message', 'History deleted!');
+        }
 
-        return back()->with('message', 'History deleted!');
+        return back()->with('message', 'Unauthorized');
+
+
     }
 }

@@ -11,7 +11,7 @@ class History extends Model
 
     public function owner()
     {
-        return $this->belongsTo(User::class)->getResults();
+        return $this->belongsTo(User::class, 'owner')->getResults();
     }
 
     public function days()
