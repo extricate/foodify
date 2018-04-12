@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(FoodPlan::class, 'id')->getResults();
     }
+
+    public function history()
+    {
+        return $this->hasOne(History::class, 'id')->getResults();
+    }
 }

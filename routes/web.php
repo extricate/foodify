@@ -22,6 +22,7 @@ Route::resource('/recipes', 'RecipeController');
 Route::resource('/plan', 'FoodPlanController');
 Route::resource('/ingredients', 'IngredientController');
 Route::resource('/pantry', 'PantryController');
+Route::resource('/history', 'HistoryController');
 
 /*Route::get('/recipes', function () {
     return Recipe::latest()->pluck('name');
