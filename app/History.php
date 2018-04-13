@@ -14,20 +14,6 @@ class History extends Model
         return $this->belongsTo(User::class, 'owner')->getResults();
     }
 
-    public function days()
-    {
-        $days = array(
-            'monday',
-            'tuesday',
-            'wednesday',
-            'thursday',
-            'friday',
-            'saturday',
-            'sunday'
-        );
-        return $days;
-    }
-
     public function monday()
     {
         return $this->hasOne(Recipe::class, 'id', 'monday')->getResults();
@@ -61,5 +47,19 @@ class History extends Model
     public function sunday()
     {
         return $this->hasOne(Recipe::class, 'id', 'sunday')->getResults();
+    }
+
+    static function days()
+    {
+        $days = array(
+            'monday',
+            'tuesday',
+            'wednesday',
+            'thursday',
+            'friday',
+            'saturday',
+            'sunday'
+        );
+        return $days;
     }
 }

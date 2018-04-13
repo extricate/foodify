@@ -12,6 +12,7 @@ try {
 
     require('bootstrap');
     require('owl.carousel');
+    require('bootstrap-notify');
 } catch (e) {}
 
 /**

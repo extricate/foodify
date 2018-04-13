@@ -17,7 +17,7 @@ class FoodPlan extends Model
         return $this->belongsTo(User::class)->getResults();
     }
 
-    public function days()
+    static function days()
     {
         $days = array(
             'monday',

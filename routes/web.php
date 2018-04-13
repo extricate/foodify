@@ -22,6 +22,7 @@ Route::resource('/recipes', 'RecipeController');
 Route::resource('/plan', 'FoodPlanController');
 Route::resource('/ingredients', 'IngredientController');
 Route::resource('/pantry', 'PantryController');
+Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFoodplan')->name('history.setAsFoodplan');
 Route::resource('/history', 'HistoryController');
 
 /*Route::get('/recipes', function () {

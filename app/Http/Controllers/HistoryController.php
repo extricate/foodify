@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\History;
+use App\FoodPlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\ConvertHistoryToFoodplan;
 
 /**
  * Class HistoryController
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class HistoryController extends Controller
 {
+    use ConvertHistoryToFoodplan;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -47,22 +51,22 @@ class HistoryController extends Controller
      */
     public function store()
     {
-        // we don't need to validate these requests because the function simply stored the current food plan.
-        // might be revisited in the future.
+        // we don't need to validate these requests because there is no user input to process.
         $user = auth()->user();
         $foodplan = $user->food_plan();
         $history = History::create([
             'owner' => $user->id,
             'week' => Carbon::now()->weekOfYear,
-            'monday' => $foodplan->monday,
-            'tuesday' => $foodplan->tuesday,
-            'wednesday' => $foodplan->wednesday,
-            'friday' => $foodplan->friday,
-            'saturday' => $foodplan->saturday,
-            'sunday' => $foodplan->sunday,
         ]);
 
-        return redirect('plan');
+        foreach (FoodPlan::days() as $day)
+        {
+            $history->$day = $foodplan->$day;
+        }
+
+        $history->save();
+
+        return redirect('history');
     }
 
     /**
@@ -88,7 +92,7 @@ class HistoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -108,14 +112,18 @@ class HistoryController extends Controller
         $owner = $history->owner();
         $user = Auth::user();
 
-        if ($owner->id == $user->id)
-        {
+        if ($owner->id == $user->id) {
             $history->delete();
             return back()->with('message', 'History deleted!');
         }
-
         return back()->with('message', 'Unauthorized');
+    }
 
+    public function setAsCurrentFoodplan($id)
+    {
+        $history = History::findOrFail($id);
+        $this->ConvertHistoryToFoodplan($history);
 
+        return back()->with('message', 'Foodplan set to plan from week ' . $history->week);
     }
 }

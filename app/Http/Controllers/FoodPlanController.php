@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits;
 use Validator;
 use App\FoodPlan;
 use Illuminate\Http\Request;

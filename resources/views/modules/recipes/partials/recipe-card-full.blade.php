@@ -10,7 +10,7 @@
                 <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
             @endforeach--}}
         </div>
-        <div class="container">
+        <div class="container pl-5 pr-5">
             <div class="row justify-content-center">
                     @foreach ($foodplan->days() as $day)
                         @include('modules/foodplan/partials/plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
