@@ -1,8 +1,10 @@
 <div class="card">
     <div class="card-img-container">
         <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
+
+
         <div class="card-favorite">
-            <button class="btn btn-primary"><i class="fal fa-heart fa-2x"></i></button>
+            @include('modules.recipes.partials.favorite')
         </div>
     </div>
 

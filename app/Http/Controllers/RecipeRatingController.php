@@ -43,7 +43,7 @@ class RecipeRatingController extends Controller
         $request->validate([
             'rating' => 'int|required|in:1,2,3,4,5',
             'recipe' => 'required|exists:recipes,id'
-        ])->validate();
+        ]);
 
         $recipeRating = RecipeRating::create([
             'issuer' => auth()->user()->id,
