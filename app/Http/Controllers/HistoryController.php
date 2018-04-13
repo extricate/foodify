@@ -114,9 +114,9 @@ class HistoryController extends Controller
 
         if ($owner->id == $user->id) {
             $history->delete();
-            return back()->with('message', 'History deleted!');
+            return back()->with(['message' => 'History deleted', 'alert_type' => 'success']);
         }
-        return back()->with('message', 'Unauthorized');
+        return back()->with(['message' => 'Unauthorized', 'alert_type' => 'error']);
     }
 
     public function setAsCurrentFoodplan($id)
