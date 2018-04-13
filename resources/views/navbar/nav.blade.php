@@ -15,7 +15,6 @@
                 <li><a class="nav-link" href="{{ route('plan.index') }}">Plan <i class="fal fa-calendar"></i></a></li>
                 <li><a class="nav-link" href="{{ route('history.index') }}">History <i class="fal fa-history"></i></a></li>
             </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 @auth

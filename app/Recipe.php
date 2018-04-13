@@ -27,4 +27,24 @@ class Recipe extends Model
     {
         return $this->hasMany(Ingredient::class, 'id')->getResults();
     }
+
+    /**
+     * Eloquent relationship for Recipe.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function recipeRating()
+    {
+        return $this->hasMany(RecipeRating::class);
+    }
+
+    /**
+     * Function that returns the average rating of a recipe.
+     *
+     * @return mixed
+     */
+    public function averageRating()
+    {
+        return $this->recipeRating()->avg('rating');
+    }
 }

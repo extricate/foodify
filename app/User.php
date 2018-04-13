@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->hasMany(Recipe::class, 'id')->getResults();
     }
 
+    public function recipeRatings()
+    {
+        return $this->hasMany(RecipeRating::class);
+    }
+
     public function pantry()
     {
         return $this->hasOne(Pantry::class, 'id')->getResults();
