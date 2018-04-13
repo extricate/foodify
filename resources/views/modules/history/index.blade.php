@@ -25,5 +25,6 @@
                 </div>
             </div>
         @endforeach
+            {{ $history->links() }}
     </div>
 @endsection

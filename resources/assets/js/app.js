@@ -39,6 +39,14 @@ $('.owl-carousel').owlCarousel({
 });
 
 /**
+ * Font Awesome
+ */
+
+import fontawesome from '@fortawesome/fontawesome';
+import light from '@fortawesome/fontawesome-pro-light';
+fontawesome.library.add(light);
+
+/**
  * Bootstrap notify
  */
 $(function () {
@@ -57,7 +65,7 @@ $(function () {
             mouse_over: 'pause',
             template:
             '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
-            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss"><i class="fa fa-times"></i></button>' +
+            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss"><i class="fal fa-times"></i></button>' +
             '<span data-notify="icon"></span> ' +
             '<span data-notify="title">{1}</span> ' +
             '<p data-notify="message">{2}</p>' +

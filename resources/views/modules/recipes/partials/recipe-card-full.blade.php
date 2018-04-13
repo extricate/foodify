@@ -3,7 +3,7 @@
     <div class="card-body">
         <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
         <p class="card-text">
-            {{ $recipe->description }}
+            {{ str_limit($recipe->description, 100) }}
         </p>
         <div class="card-text">
             {{--@foreach($recipe->tags() as $tag)

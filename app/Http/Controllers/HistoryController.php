@@ -30,7 +30,7 @@ class HistoryController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $history = $user->history();
+        $history = History::where('owner', '=', $user->id)->paginate(3);
         return view('modules/history/index', compact('history'));
     }
 

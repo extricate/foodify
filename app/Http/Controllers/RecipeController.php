@@ -22,7 +22,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
+        $recipes = Recipe::paginate(6);
 
         return view('modules.recipes.index', compact('recipes'));
     }
@@ -65,7 +65,7 @@ class RecipeController extends Controller
         }
 
         return redirect(route('recipes.index'))
-            ->with('flash', 'Your recipe has been published!');
+            ->with('message', 'Your recipe has been published!');
     }
 
     /**

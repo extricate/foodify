@@ -27,7 +27,7 @@ class FoodPlanController extends Controller
             $this->create();
         };
 
-        return view('modules/foodplan/index', compact('foodplan'));
+        return view('modules.foodplan.index', compact('foodplan'));
     }
 
     /**
@@ -110,7 +110,7 @@ class FoodPlanController extends Controller
         $foodplan->$day = $recipe;
         $foodplan->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Day recipe updated!');
     }
 
     /**

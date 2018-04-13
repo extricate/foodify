@@ -4,7 +4,7 @@
         <h1 class="card-title">{{ $recipe->name }}</h1>
         <div class="card-body">
             <p class="card-text">
-                {{ $recipe->description }}
+                {{ str_limit($recipe->description, 100) }}
             </p>
         </div>
         <a class="btn btn-primary" href="/recipes/">Select monday meals</a>
