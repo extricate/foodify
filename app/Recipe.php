@@ -43,8 +43,14 @@ class Recipe extends Model
      *
      * @return mixed
      */
-    public function averageRating()
+    public function averageRating(Recipe $recipe)
     {
-        return $this->recipeRating()->avg('rating');
+        $average = $recipe->recipeRating()->avg('rating');
+        $average = round($average, 0);
+
+        if ($average == 0|null) {
+            return $average = 'No rating';
+        }
+        return $average;
     }
 }

@@ -17,8 +17,8 @@ class CreateRecipeRatingsTable extends Migration
             $table->increments('id');
             $table->integer('rating');
 
-            $table->integer('recipe')->unsigned();
-            $table->foreign('recipe')->references('id')->on('recipes')->onDelete('cascade');
+            $table->integer('recipe_id')->unsigned();
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
 
             $table->integer('issuer')->unsigned();
             $table->foreign('issuer')->references('id')->on('users')->onDelete('cascade');
