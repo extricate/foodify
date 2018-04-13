@@ -11,6 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">
+                        <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
                         {{ $recipe->description }}
                     </p>
                 </div>

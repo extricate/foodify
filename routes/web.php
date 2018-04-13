@@ -24,6 +24,7 @@ Route::resource('/ingredients', 'IngredientController');
 Route::resource('/pantry', 'PantryController');
 Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFoodplan')->name('history.setAsFoodplan');
 Route::resource('/history', 'HistoryController');
+Route::resource('/favorites', 'FavoriteController');
 
 /*Route::get('/recipes', function () {
     return Recipe::latest()->pluck('name');

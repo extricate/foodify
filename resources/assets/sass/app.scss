@@ -1,11 +1,8 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 @import "~animate.css/animate";
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -28,22 +25,28 @@ h1.primary {
 .card {
   border: 0;
 }
+
 .card-img-top {
   border: 0;
 }
+
 .img-recipe {
   border-radius: $border-radius;
 }
+
 .img-overlay {
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.card-rating {
+.card-img-container {
+  position: relative;
+}
+
+.card-favorite {
   position: absolute;
   top: 0;
   right: 15px;
-  padding: 18px 12px;
-  background-color: $white;
+  padding: 15px;
 }

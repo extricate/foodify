@@ -1,8 +1,11 @@
 <div class="card">
-    <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
-    <div class="card-rating">
-        <i class="fal fa-star"></i> {{ $recipe->averageRating($recipe) }}
+    <div class="card-img-container">
+        <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
+        <div class="card-favorite">
+            <button class="btn btn-primary"><i class="fal fa-heart fa-2x"></i></button>
+        </div>
     </div>
+
     <div class="card-body">
         <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
         <p class="card-text">
@@ -15,9 +18,9 @@
         </div>
         <div class="container pl-5 pr-5">
             <div class="row justify-content-center">
-                    @foreach ($foodplan->days() as $day)
-                        @include('modules/foodplan/partials/plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
-                    @endforeach
+                @foreach ($foodplan->days() as $day)
+                    @include('modules/foodplan/partials/plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
+                @endforeach
             </div>
         </div>
     </div>
