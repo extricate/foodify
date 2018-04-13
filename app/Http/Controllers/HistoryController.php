@@ -54,7 +54,7 @@ class HistoryController extends Controller
         // we don't need to validate these requests because there is no user input to process.
         $user = auth()->user();
         $foodplan = $user->food_plan();
-        $history = History::create([
+        $history = new History([
             'owner' => $user->id,
             'week' => Carbon::now()->weekOfYear,
         ]);
@@ -66,7 +66,7 @@ class HistoryController extends Controller
 
         $history->save();
 
-        return redirect('history');
+        return redirect('history')->with(['message' => 'Plan saved to history!', 'alert_type' => 'success']);
     }
 
     /**
