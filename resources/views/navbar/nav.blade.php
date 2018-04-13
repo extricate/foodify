@@ -29,7 +29,7 @@
                 @endauth
                 <li>
                     <a href="/recipes/create" class="btn btn-primary btn-inline pull-right">
-                        Create new recipe
+                        Submit recipe <i class="fal fa-plus"></i>
                     </a>
                 </li>
 
