@@ -48,7 +48,7 @@ class Recipe extends Model
         $average = $recipe->recipeRating()->avg('rating');
         $average = round($average, 0);
 
-        if ($average == 0|null) {
+        if ($average == 0 | null) {
             return $average = 'No rating';
         }
         return $average;
@@ -61,13 +61,16 @@ class Recipe extends Model
 
     public function isFavorite()
     {
-        if ($this->favorites()->where('user_id', auth()->user()->id) == null)
-        {
-            // isn't favorite
-            return false;
-        }
+        $userFavorites = $this->favorites()->getResults();
 
-        // is favorite
-        return true;
+        // check whether there are favorites of this recipe at all
+        if ($userFavorites != null) {
+            // check whether the favorites that do exist belong to the current user
+            $filtered = $userFavorites->where('user_id', auth()->user()->id);
+            if ($filtered->isEmpty()) {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -1,4 +1,4 @@
-@if ($recipe->isFavorite($recipe->id) == false)
+@if (!$recipe->isFavorite($recipe->id))
     {!! Form::open([
         'method' => 'POST',
         'route' => ['favorites.store'],
@@ -10,7 +10,7 @@
 
     {{ Form::close() }}
 
-@elseif($recipe->isFavorite($recipe->id) == true)
+@elseif($recipe->isFavorite($recipe->id))
     {!! Form::open([
         'method' => 'DELETE',
         'route' => ['favorites.destroy', $recipe->id],
@@ -18,7 +18,7 @@
     ]) !!}
 
     <input name="recipe_id" value="{{ $recipe->id }}" type="hidden">
-    <button type="submit" class="btn btn-secondary"><i class="fal fa-heart fa-2x"></i></button>
+    <button type="submit" class="btn btn-primary btn-favorite"><i class="fal fa-heart fa-2x"></i></button>
 
     {{ Form::close() }}
 @endif

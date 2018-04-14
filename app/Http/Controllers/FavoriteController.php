@@ -26,8 +26,14 @@ class FavoriteController extends Controller
         return redirect()->back()->with('message', 'Added to favorites!');
     }
 
-    public function destroy(Favorite $favorite)
+    public function destroy($id)
     {
-        dd('hello');
+        $favorite = Favorite::where('user_id', auth()->user()->id)->where('recipe_id', $id);
+
+        if ($favorite) {
+            $favorite->delete();
+            return redirect()->back()->with(['message' => 'Removed from favorites', 'alert_type' => 'info']);
+        }
+        return redirect()->back()->with(['message' => 'Object does not exist', 'alert_type' => 'danger']);
     }
 }
