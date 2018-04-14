@@ -54,4 +54,15 @@ h1.primary {
 .btn-favorite {
   background-color: $yellow;
   border-color: $yellow;
+  &:hover, &:focus, &:active {
+    background-color: $blue;
+    border-color: $blue;
+  }
+}
+
+.btn-unfavorite {
+  &:hover, &:focus, &:active {
+    background-color: $yellow;
+    border-color: $yellow;
+  }
 }

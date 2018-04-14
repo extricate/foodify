@@ -6,7 +6,7 @@
     ]) !!}
 
     <input name="recipe_id" value="{{ $recipe->id }}" type="hidden">
-    <button type="submit" class="btn btn-primary"><i class="fal fa-heart fa-2x"></i></button>
+    <button type="submit" class="btn btn-primary btn-unfavorite"><i class="fal fa-heart fa-2x"></i></button>
 
     {{ Form::close() }}
 
