@@ -25,4 +25,9 @@ class FavoriteController extends Controller
 
         return redirect()->back()->with('message', 'Added to favorites!');
     }
+
+    public function destroy(Favorite $favorite)
+    {
+        dd('hello');
+    }
 }

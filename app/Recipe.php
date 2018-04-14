@@ -53,4 +53,21 @@ class Recipe extends Model
         }
         return $average;
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function isFavorite()
+    {
+        if ($this->favorites()->where('user_id', auth()->user()->id) == null)
+        {
+            // isn't favorite
+            return false;
+        }
+
+        // is favorite
+        return true;
+    }
 }
