@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Validator;
 use App\Recipe;
+use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,12 +54,10 @@ class RecipeController extends Controller
         $recipe = Recipe::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image_url' => $request->image_url,
             'author' => auth()->user()->id,
         ]);
 
-        $recipe->addMedia($request->file('image'))->toMediaCollection('recipes');
-        $recipe->save();
+        $recipe->addMediaFromRequest('image')->toMediaCollection();
 
         if (request()->wantsJson()) {
             return response($recipe, 201);

@@ -22,15 +22,17 @@ class Recipe extends Model implements HasMedia
         return $this->belongsTo(User::class, 'id')->first();
     }
 
+    /**
+     * Images and image handling
+     */
     public function registerMediaCollections()
     {
-        $this->addMediaCollection('recipes')->singleFile();
+        $this->addMediaCollection('recipes');
     }
 
-    public function image()
-    {
-        return $this->image();
-    }
+    /**
+     * Handling of additional relations
+     */
 
     public function tags()
     {
