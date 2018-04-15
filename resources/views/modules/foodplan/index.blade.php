@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="row">
-        <div class="col-8">
-            <h1 class="primary">Your foodplan this week</h1>
+        <div class="col-6">
+            <h1 class="primary">Your foodplan</h1>
         </div>
-        <div class="col-4">
+        <div class="col-6">
             @include('modules.foodplan.partials.save-to-history')
             @include('modules.foodplan.partials.suggest')
             @include('modules.foodplan.partials.delete')

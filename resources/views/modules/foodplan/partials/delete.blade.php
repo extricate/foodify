@@ -3,5 +3,5 @@
 'route' => ['plan.destroy', $foodplan->id],
 'class' => 'form-inline m-3 pull-right'
 ]) !!}
-<button type="submit" class="btn btn-warning">Clear week<i class="fal fa-trash-alt"></i></button>
+<button type="submit" class="btn btn-warning">Clear week <i class="fal fa-trash-alt"></i></button>
 {{ Form::close() }}
