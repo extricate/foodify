@@ -13,7 +13,7 @@
             @endforeach
         </div>
         <div class="m-3">
-            {{ $recipes->links() }}
+            {{ $favorites->links() }}
         </div>
     </div>
 @endsection
