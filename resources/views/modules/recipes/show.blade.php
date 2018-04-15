@@ -9,7 +9,9 @@
     <div class="row">
         <div class="col-8">
             <div class="card">
+                <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}" alt="{{ $recipe->name }}">
                 <div class="card-body">
+                    @php dd($recipe->getMedia()) @endphp
                     <p class="card-text">
                         <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
                         {{ $recipe->description }}

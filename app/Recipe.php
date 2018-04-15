@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
 class Recipe extends Model implements HasMedia
 {
@@ -25,6 +26,7 @@ class Recipe extends Model implements HasMedia
     /**
      * Images and image handling
      */
+
     public function registerMediaCollections()
     {
         $this->addMediaCollection('recipes');
