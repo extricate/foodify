@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
-
-    protected $file;
-
     public function __construct(Recipe $recipe)
     {
-        $this->recipe = $recipe;
         $this->middleware('auth');
     }
 
@@ -51,17 +47,18 @@ class RecipeController extends Controller
         Validator::make($request->all(), [
             'name' => 'required|unique:recipes|max:255',
             'description' => 'required',
-            'image_url' => 'url|required',
+            'image' => 'required|image|max:2048'
         ])->validate();
-
-        $user = Auth::user();
 
         $recipe = Recipe::create([
             'name' => $request->name,
             'description' => $request->description,
             'image_url' => $request->image_url,
-            'author' => $user->id,
+            'author' => auth()->user()->id,
         ]);
+
+        $recipe->addMedia($request->file('image'))->toMediaCollection('recipes');
+        $recipe->save();
 
         if (request()->wantsJson()) {
             return response($recipe, 201);

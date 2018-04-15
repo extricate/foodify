@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Recipe extends Model
+class Recipe extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     protected $guarded = [];
 
     public function path()
@@ -16,6 +20,16 @@ class Recipe extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'id')->first();
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('recipes')->singleFile();
+    }
+
+    public function image()
+    {
+        return $this->image();
     }
 
     public function tags()

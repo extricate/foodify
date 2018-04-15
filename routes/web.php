@@ -28,6 +28,23 @@ Route::resource('/favorites', 'FavoriteController');
 
 Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest');
 
+Route::get('storage/app/public/{id}/{filename}', function ($filename)
+{
+    $path = storage_path('public/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
 /*Route::get('/recipes', function () {
     return Recipe::latest()->pluck('name');
 });

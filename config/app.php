@@ -165,7 +165,6 @@ return [
          * Custom providers
          */
         Collective\Html\HtmlServiceProvider::class,
-        LaravelImage\ImageUploadServiceProvider::class,
 
     ],
 
@@ -221,7 +220,6 @@ return [
          */
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'ImageHelper' => LaravelImage\Image::class,
 
     ],
 
