@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Traits;
 use Validator;
+use App\Recipe;
 use App\FoodPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -136,6 +137,21 @@ class FoodPlanController extends Controller
         $foodplan->save();
 
         return redirect()->back()->with('message', 'Week reset!');
+
+    }
+
+    public function suggest()
+    {
+        $user = auth()->user();
+        $foodplan = $user->food_plan();
+
+        foreach($foodplan->days() as $day) {
+            $foodplan->$day = Recipe::inRandomOrder()->first()->id;
+        }
+
+        $foodplan->save();
+
+        return redirect()->back()->with('message', 'We\'ve suggest a new week plan for you!');
 
     }
 }

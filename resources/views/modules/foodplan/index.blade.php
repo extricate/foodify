@@ -7,12 +7,12 @@
         </div>
         <div class="col-4">
             @include('modules.foodplan.partials.save-to-history')
-            <!--@include('modules.foodplan.partials.suggest')-->
+            @include('modules.foodplan.partials.suggest')
             @include('modules.foodplan.partials.delete')
         </div>
     </div>
     <div class="row">
-        <div class="card-columns">
+        <div class="card-columns col-12">
             @foreach($foodplan->days() as $day)
                 <div class="card">
                     <h3 class="m-3 text-capitalize">{{ $day }}</h3>

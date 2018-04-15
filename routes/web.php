@@ -26,6 +26,8 @@ Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFood
 Route::resource('/history', 'HistoryController');
 Route::resource('/favorites', 'FavoriteController');
 
+Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest');
+
 /*Route::get('/recipes', function () {
     return Recipe::latest()->pluck('name');
 });
