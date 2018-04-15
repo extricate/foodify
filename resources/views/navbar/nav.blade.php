@@ -11,9 +11,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li><a class="nav-link" href="{{ route('recipes.index') }}">Recipes <i class="fal fa-utensils"></i></a></li>
+                <li><a class="nav-link" href="{{ route('recipes.index') }}">Recipes <i class="fal fa-utensils"></i></a>
+                </li>
                 <li><a class="nav-link" href="{{ route('plan.index') }}">Plan <i class="fal fa-calendar"></i></a></li>
-                <li><a class="nav-link" href="{{ route('history.index') }}">History <i class="fal fa-history"></i></a></li>
+                <li><a class="nav-link" href="{{ route('history.index') }}">History <i class="fal fa-history"></i></a>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -40,7 +42,8 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <i class="fal fa-user-circle fa-fw"></i><span class="caret"></span>
+                                {{ Auth::user()->name }} <i class="fal fa-user-circle fa-fw"></i><span
+                                        class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
