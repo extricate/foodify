@@ -1,13 +1,10 @@
 <div class="card">
     <div class="card-img-container">
         <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
-
-
         <div class="card-favorite">
             @include('modules.recipes.partials.favorite')
         </div>
     </div>
-
     <div class="card-body">
         <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
         <p class="card-text">
@@ -21,7 +18,7 @@
         <div class="container pl-5 pr-5">
             <div class="row justify-content-center">
                 @foreach ($foodplan->days() as $day)
-                    @include('modules/foodplan/partials/plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
+                    @include('modules.foodplan.partials.plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
                 @endforeach
             </div>
         </div>

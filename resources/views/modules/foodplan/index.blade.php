@@ -17,12 +17,12 @@
                 <div class="card">
                     <h3 class="m-3 text-capitalize">{{ $day }}</h3>
                     @if ($foodplan->$day() == !null)
-                        @include('modules/foodplan/partials/plan-recipe', ['recipe' => $foodplan->$day()])
+                        @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$day()])
                         <div class="card-body">
-                            @include('modules/foodplan/partials/clear', ['day' => $day, 'foodplan' => $foodplan])
+                            @include('modules.foodplan.partials.clear', ['day' => $day, 'foodplan' => $foodplan])
                         </div>
                     @else
-                        @include('modules/foodplan/partials/empty-day')
+                        @include('modules.foodplan.partials.empty-day')
                     @endif
                 </div>
             @endforeach

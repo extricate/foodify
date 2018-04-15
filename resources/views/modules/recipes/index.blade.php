@@ -3,7 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-6">
-            <h1 class="primary">Foodify recipes</h1>
+            <a href="{{ route('favorites.index') }}" class="btn btn-primary m-1">My favorites <i class="fal fa-heart"></i></a>
+            <a href="{{ route('favorites.index') }}" class="btn btn-primary m-1">Suggestions <i class="fal fa-badge-check"></i></a>
         </div>
         <div class="col-6">
             <form class="form-inline m-3 pull-right">
@@ -18,10 +19,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="card-columns">
-        @php $foodplan = Auth::user()->food_plan() @endphp
+        <div class="col-12 card-columns">
         @foreach($recipes as $recipe)
-                @include('modules.recipes.partials.recipe-card-full', ['foodplan' => $foodplan])
+                @include('modules.recipes.partials.recipe-card-full', ['foodplan' => Auth::user()->food_plan()])
         @endforeach
         </div>
         <div class="m-3">

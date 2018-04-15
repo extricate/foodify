@@ -1,12 +1,22 @@
-<div class="card m-3">
-    <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
-    <div class="card-img-overlay text-white">
-        <h1 class="card-title">{{ $recipe->name }}</h1>
-        <div class="card-body">
-            <p class="card-text">
-                {{ str_limit($recipe->description, 100) }}
-            </p>
+<div class="card">
+    <div class="card-img-container">
+        <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
+
+
+        <div class="card-favorite">
+            @include('modules.recipes.partials.favorite')
         </div>
-        <a class="btn btn-primary" href="/recipes/">Select monday meals</a>
+    </div>
+
+    <div class="card-body">
+        <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
+        <p class="card-text">
+            {{ str_limit($recipe->description, 100) }}
+        </p>
+        <div class="card-text">
+            {{--@foreach($recipe->tags() as $tag)
+                <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
+            @endforeach--}}
+        </div>
     </div>
 </div>

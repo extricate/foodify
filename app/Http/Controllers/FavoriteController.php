@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Favorite;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,12 @@ class FavoriteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $favorites = Favorite::where('user_id', auth()->user()->id)->with('recipe')->get();
+        return view('modules.favorites.index', compact('favorites'));
     }
 
     public function store(Request $request)

@@ -8,15 +8,6 @@ class FoodPlan extends Model
 {
     protected $guarded = [];
 
-    public function plan()
-    {
-        //
-    }
-    public function owner()
-    {
-        return $this->belongsTo(User::class)->getResults();
-    }
-
     static function days()
     {
         $days = array(
@@ -27,8 +18,26 @@ class FoodPlan extends Model
             'friday',
             'saturday',
             'sunday'
-    );
+        );
         return $days;
+    }
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
+
+    public function plan()
+    {
+        $plan = [];
+
+        foreach ($this->days() as $day) {
+            $plan[] = $this->$day;
+        }
+    }
+    public function owner()
+    {
+        return $this->belongsTo(User::class)->getResults();
     }
 
     public function monday()
