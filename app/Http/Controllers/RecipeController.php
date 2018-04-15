@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
+
+    protected $file;
+
     public function __construct(Recipe $recipe)
     {
         $this->recipe = $recipe;

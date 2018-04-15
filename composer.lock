@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fde15e557c84f3d46959730ffd03a32a",
+    "content-hash": "95554f7fe1b370b0a8eb9fe9a038e7f1",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1232,6 +1232,47 @@
                 "random"
             ],
             "time": "2017-09-27T21:40:39+00:00"
+        },
+        {
+            "name": "proshore/laravel-image-upload",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/proshore/laravel-image-upload.git",
+                "reference": "cd341aeafbda2b3220383e3926f80be50d1772fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/proshore/laravel-image-upload/zipball/cd341aeafbda2b3220383e3926f80be50d1772fb",
+                "reference": "cd341aeafbda2b3220383e3926f80be50d1772fb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "intervention/image": "^2.3",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelImage\\": "src/LaravelImage"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Proshore Nepal",
+                    "email": "babish@proshore.eu"
+                }
+            ],
+            "description": "Easy image upload and thumbnail management",
+            "time": "2016-09-07T16:32:20+00:00"
         },
         {
             "name": "psr/container",
@@ -4463,7 +4504,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "proshore/laravel-image-upload": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
