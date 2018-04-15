@@ -12,5 +12,8 @@
                     @include('modules.recipes.partials.recipe-card', ['recipe' => $favorite->recipe])
             @endforeach
         </div>
+        <div class="m-3">
+            {{ $recipes->links() }}
+        </div>
     </div>
 @endsection

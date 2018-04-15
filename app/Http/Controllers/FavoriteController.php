@@ -15,7 +15,7 @@ class FavoriteController extends Controller
 
     public function index()
     {
-        $favorites = Favorite::where('user_id', auth()->user()->id)->with('recipe')->get();
+        $favorites = Favorite::where('user_id', auth()->user()->id)->with('recipe')->paginate(6);
         return view('modules.favorites.index', compact('favorites'));
     }
 
