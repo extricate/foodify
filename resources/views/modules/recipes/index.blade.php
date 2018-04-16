@@ -34,7 +34,7 @@
                     @foreach($foodplan->days() as $day)
                         @php $recipe = $foodplan->$day(); @endphp
                         <div class="item">
-                            @include('modules.foodplan.partials.foodplan-days', ['recipe' => $recipe])
+                            @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
                         </div>
                     @endforeach
                 </div>
