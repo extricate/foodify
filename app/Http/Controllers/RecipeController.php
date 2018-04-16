@@ -63,7 +63,7 @@ class RecipeController extends Controller
             return response($recipe, 201);
         }
 
-        return redirect(route('recipes.show' . '/' . $recipe->id))
+        return redirect($recipe->path())
             ->with('message', 'Your recipe has been published!');
     }
 

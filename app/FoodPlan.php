@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class FoodPlan extends Model
 {
@@ -46,36 +47,36 @@ class FoodPlan extends Model
 
     public function monday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'monday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'monday')->with('media')->getResults();
     }
 
     public function tuesday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'tuesday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'tuesday')->with('media')->getResults();
     }
 
     public function wednesday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'wednesday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'wednesday')->with('media')->getResults();
     }
 
     public function thursday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'thursday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'thursday')->with('media')->getResults();
     }
 
     public function friday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'friday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'friday')->with('media')->getResults();
     }
 
     public function saturday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'saturday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'saturday')->with('media')->getResults();
     }
 
     public function sunday()
     {
-        return $this->hasOne(Recipe::class, 'id', 'sunday')->getResults();
+        return $this->hasOne(Recipe::class, 'id', 'sunday')->with('media')->getResults();
     }
 }

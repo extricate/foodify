@@ -49,6 +49,7 @@ class User extends Authenticatable
 
     public function food_plan()
     {
+        //return $this->hasOne(FoodPlan::class, 'id')->with(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'])->getResults();
         return $this->hasOne(FoodPlan::class, 'id')->getResults();
     }
 

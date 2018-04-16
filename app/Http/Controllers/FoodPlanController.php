@@ -23,7 +23,7 @@ class FoodPlanController extends Controller
      */
     public function index()
     {
-        $foodplan = Auth::user()->food_plan();
+        $foodplan = auth()->user()->food_plan();
         if($foodplan == null) {
             $this->create();
         };

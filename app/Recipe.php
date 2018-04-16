@@ -51,6 +51,11 @@ class Recipe extends Model implements HasMedia
         return $this->hasMany(Ingredient::class, 'id')->getResults();
     }
 
+    public function inPlans()
+    {
+        return $this->hasMany(FoodPlan::class, ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
+    }
+
     /**
      * Eloquent relationship for Recipe.
      *

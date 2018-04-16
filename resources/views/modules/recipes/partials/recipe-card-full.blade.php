@@ -18,7 +18,8 @@
         <div class="container pl-5 pr-5">
             <div class="row justify-content-center">
                 @foreach ($foodplan->days() as $day)
-                    @include('modules.foodplan.partials.plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan])
+                    @php $foodplan_day = $foodplan->$day() @endphp
+                    @include('modules.foodplan.partials.plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan, 'foodplan_day' => $foodplan_day])
                 @endforeach
             </div>
         </div>

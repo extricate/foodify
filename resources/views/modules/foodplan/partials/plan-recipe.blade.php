@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-img-container">
-        <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->name }}">
+        <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}" alt="{{ $recipe->name }}">
         <div class="card-favorite">
             @include('modules.recipes.partials.favorite')
         </div>
