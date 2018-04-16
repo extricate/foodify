@@ -7,6 +7,7 @@
 @import '~bootstrap/scss/bootstrap';
 // Owl Carousel
 @import '~owl.carousel/dist/assets/owl.carousel.css';
+@import '~owl.carousel/dist/assets/owl.theme.default.css';
 
 .navbar-laravel {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -69,9 +70,21 @@ h1.primary {
   }
 }
 
+.btn-today {
+  border: 2px solid;
+  border-color: $blue;
+}
+
 .btn-unfavorite {
   &:hover, &:focus, &:active {
     background-color: $yellow;
     border-color: $yellow;
   }
+}
+
+/**
+ * Owl Carousel things
+ */
+.owl-container {
+  height: 40px;
 }

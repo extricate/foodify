@@ -36,6 +36,23 @@ $('.owl-carousel').owlCarousel({
     loop: true,
     margin: 10,
     nav: false,
+    dots: true,
+    items: 7,
+    startPosition: new Date().getDay() - 1,
+    responsive : {
+        0 : {
+            items: 3,
+        },
+        480 : {
+            items: 4,
+        },
+        768 : {
+            items: 5,
+        },
+        1000 : {
+            items: 7,
+        }
+    }
 });
 
 /**

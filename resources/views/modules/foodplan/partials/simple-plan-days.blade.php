@@ -6,7 +6,7 @@
         @endif
         class="img-recipe">
     <a href="@if( $foodplan_day != null) {{ route('recipes.show', $foodplan_day->id) }} @else {{ route('recipes.index') }} @endif"
-       class="btn btn-default img-overlay text-light text-capitalize font-weight-bold">
+       class="btn btn-default img-overlay text-light text-capitalize font-weight-bold @php if ($day == strtolower(\Carbon\Carbon::today()->format('l'))) echo 'btn-today'; @endphp">
         {{ substr($day, 0, 2) }}
     </a>
 </div>

@@ -27,22 +27,23 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-12">
-            <h2>Current plan</h2>
-            <div class="owl-carousel owl-theme">
-                @foreach($foodplan->days() as $day)
-                    @php $recipe = $foodplan->$day(); @endphp
-                    <div class="item">
-                        @include('modules.foodplan.partials.foodplan-days', ['recipe' => $recipe])
-                    </div>
-                @endforeach
+            <div class="owl-container">
+                <div class="owl-carousel owl-theme">
+                    @foreach($foodplan->days() as $day)
+                        @php $recipe = $foodplan->$day(); @endphp
+                        <div class="item">
+                            @include('modules.foodplan.partials.foodplan-days', ['recipe' => $recipe])
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
         @foreach($recipes as $recipe)
-            <div class="col-4">
+            <div class="col-lg-4 col-sm-12">
                     @include('modules.recipes.partials.recipe-card-full', ['foodplan' => $foodplan])
             </div>
         @endforeach

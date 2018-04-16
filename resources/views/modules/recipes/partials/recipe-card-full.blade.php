@@ -10,11 +10,6 @@
         <p class="card-text">
             {{ str_limit($recipe->description, 100) }}
         </p>
-        <div class="card-text">
-            {{--@foreach($recipe->tags() as $tag)
-                <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
-            @endforeach--}}
-        </div>
     </div>
     <div class="card-footer">
         <div class="container pl-5 pr-5">

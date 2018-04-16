@@ -27,7 +27,14 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
-                    <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
+                    <div class="card-text">
+                        <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
+                    </div>
+                    <div class="card-text">
+                        @foreach($recipe->tags() as $tag)
+                            <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div class="card">
