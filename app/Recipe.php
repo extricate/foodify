@@ -2,30 +2,43 @@
 
 namespace App;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
 
 class Recipe extends Model implements HasMedia
 {
+    use HasSlug;
     use HasMediaTrait;
 
     protected $guarded = [];
 
     /**
-     * Path to recipe
+     * Generate slug from the name of the recipe
+     * And return the slug as path to recipe
      *
-     * @return string
      */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
+    }
+
     public function path()
     {
-        return "/recipes/{$this->id}";
+        return "/recipes/{$this->slug}";
     }
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'id')->first();
+        return $this
+            ->belongsTo(User::class, 'id')
+            ->first();
     }
 
     /**
@@ -43,17 +56,22 @@ class Recipe extends Model implements HasMedia
 
     public function tags()
     {
-        return $this->hasMany(Tag::class, 'id')->getResults();
+        return $this
+            ->hasMany(Tag::class, 'id')
+            ->getResults();
     }
 
     public function ingredients()
     {
-        return $this->hasMany(Ingredient::class, 'id')->getResults();
+        return $this
+            ->hasMany(Ingredient::class, 'id')
+            ->getResults();
     }
 
     public function inPlans()
     {
-        return $this->hasMany(FoodPlan::class, ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
+        return $this
+            ->hasMany(FoodPlan::class, ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
     }
 
     /**
@@ -63,7 +81,8 @@ class Recipe extends Model implements HasMedia
      */
     public function recipeRating()
     {
-        return $this->hasMany(RecipeRating::class);
+        return $this
+            ->hasMany(RecipeRating::class);
     }
 
     /**
@@ -73,7 +92,9 @@ class Recipe extends Model implements HasMedia
      */
     public function averageRating(Recipe $recipe)
     {
-        $average = $recipe->recipeRating()->avg('rating');
+        $average = $recipe
+            ->recipeRating()
+            ->avg('rating');
         $average = round($average, 0);
 
         if ($average == 0 | null) {
@@ -94,7 +115,9 @@ class Recipe extends Model implements HasMedia
 
     public function isFavorite()
     {
-        $userFavorites = $this->favorites()->getResults();
+        $userFavorites = $this
+            ->favorites()
+            ->getResults();
 
         // check whether there are favorites of this recipe at all
         if ($userFavorites != null) {

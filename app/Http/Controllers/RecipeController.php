@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Validator;
 use App\Recipe;
-use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -73,9 +71,12 @@ class RecipeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($param)
     {
-        $recipe = Recipe::findOrFail($id);
+        $recipe = Recipe::where('id', $param)
+        ->orWhere('slug', $param)
+        ->firstOrFail();
+
         return view('modules.recipes.show', compact('recipe'));
     }
 

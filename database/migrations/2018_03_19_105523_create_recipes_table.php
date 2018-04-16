@@ -17,6 +17,7 @@ class CreateRecipesTable extends Migration
             $table->increments('id');
 
             $table->string('name')->default('Recipe');
+            $table->string('slug')->nullable()->unique();
 
             $table->integer('type')->unsigned()->nullable();
             $table->foreign('type')->references('id')->on('categories');
