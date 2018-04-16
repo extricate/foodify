@@ -41,10 +41,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 card-columns">
-            @foreach($recipes as $recipe)
-                @include('modules.recipes.partials.recipe-card-full', ['foodplan' => $foodplan])
-            @endforeach
-        </div>
+        @foreach($recipes as $recipe)
+            <div class="col-4">
+                    @include('modules.recipes.partials.recipe-card-full', ['foodplan' => $foodplan])
+            </div>
+        @endforeach
     </div>
 @endsection

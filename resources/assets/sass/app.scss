@@ -13,7 +13,6 @@
 }
 
 body {
-  background-image: url('../images/theme/background-4.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -21,8 +20,12 @@ body {
 
 h1.primary {
   font-size: 4em;
-  color: $white;
+  //color: $black;
 }
+
+/**
+ * Just card things
+ */
 
 .card {
   border: 0;
@@ -51,6 +54,10 @@ h1.primary {
   top: 0;
   right: 15px;
   padding: 15px;
+}
+
+.card-footer {
+  background-color: $white;
 }
 
 .btn-favorite {
