@@ -31,6 +31,9 @@
                         <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
                     </div>
                     <div class="card-text">
+                        @include('modules.recipes.partials.rating', ['recipe' => $recipe])
+                    </div>
+                    <div class="card-text">
                         @foreach($recipe->tags() as $tag)
                             <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
                         @endforeach

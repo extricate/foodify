@@ -45,9 +45,19 @@ class RecipeRatingController extends Controller
             'recipe' => 'required|exists:recipes,id'
         ]);
 
+        // check whether a rating already exists
+        $check = RecipeRating::where([
+            ['recipe_id', '=', $request->recipe],
+            ['issuer', '=', auth()->user()->id]
+        ])->get();
+
+        if (!$check->isEmpty()) {
+            return redirect()->back()->with('message', 'You have already rated this recipe');
+        }
+
         $recipeRating = RecipeRating::create([
             'issuer' => auth()->user()->id,
-            'recipe' => $request->recipe,
+            'recipe_id' => $request->recipe,
             'rating' => $request->rating
         ]);
 

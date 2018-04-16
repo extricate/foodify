@@ -17,7 +17,6 @@ use App\Events\UserRegistered;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
 Route::resource('/plan', 'FoodPlanController');
@@ -26,9 +25,8 @@ Route::resource('/pantry', 'PantryController');
 Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFoodplan')->name('history.setAsFoodplan');
 Route::resource('/history', 'HistoryController');
 Route::resource('/favorites', 'FavoriteController');
-
 Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest');
-
+Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store');
 Route::get('storage/app/public/{id}/{filename}', function ($filename)
 {
     $path = storage_path('public/' . $filename);

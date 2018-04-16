@@ -165,7 +165,6 @@ return [
          * Custom providers
          */
         Collective\Html\HtmlServiceProvider::class,
-
     ],
 
     /*
