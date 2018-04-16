@@ -13,6 +13,11 @@ class Recipe extends Model implements HasMedia
 
     protected $guarded = [];
 
+    /**
+     * Path to recipe
+     *
+     * @return string
+     */
     public function path()
     {
         return "/recipes/{$this->id}";
@@ -33,7 +38,7 @@ class Recipe extends Model implements HasMedia
     }
 
     /**
-     * Handling of additional relations
+     * Handling of additional relationships
      */
 
     public function tags()
@@ -72,6 +77,11 @@ class Recipe extends Model implements HasMedia
         return $average;
     }
 
+    /**
+     * Favorites
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function favorites()
     {
         return $this->hasMany(Favorite::class);

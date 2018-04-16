@@ -8,20 +8,6 @@ class FoodPlan extends Model
 {
     protected $guarded = [];
 
-    static function days()
-    {
-        $days = array(
-            'monday',
-            'tuesday',
-            'wednesday',
-            'thursday',
-            'friday',
-            'saturday',
-            'sunday'
-        );
-        return $days;
-    }
-
     public function recipes()
     {
         return $this->hasMany(Recipe::class);
@@ -38,6 +24,24 @@ class FoodPlan extends Model
     public function owner()
     {
         return $this->belongsTo(User::class)->getResults();
+    }
+
+
+    /**
+     * Food plan day configuration
+     */
+    static function days()
+    {
+        $days = array(
+            'monday',
+            'tuesday',
+            'wednesday',
+            'thursday',
+            'friday',
+            'saturday',
+            'sunday'
+        );
+        return $days;
     }
 
     public function monday()

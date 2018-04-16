@@ -11,8 +11,7 @@
         <div class="col-lg-6 col-sm-12">
             <form class="form-group">
                 <div class="input-group">
-                    <input class="form-control" type="search" id="search" placeholder="What are you craving for?"
-                           aria-label="Type here to search">
+                    <input class="form-control" type="search" id="search" placeholder="What are you craving for?" aria-label="Type here to search">
                     <span class="input-group-append">
                         <button class="btn btn-primary" type="submit">Search <i class="fal fa-search"></i></button>
                     </span>
@@ -20,7 +19,9 @@
             </form>
         </div>
         <div class="col-lg-3">
-            {{ $recipes->links() }}
+            <div class="pull-right">
+                {{ $recipes->links() }}
+            </div>
         </div>
     </div>
     <div class="row">
