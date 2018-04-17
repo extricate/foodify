@@ -2,6 +2,10 @@
 
 @php $foodplan = auth()->user()->food_plan(); @endphp
 
+@section('submenu')
+    {{ Breadcrumbs::render('recipes.show', $recipe) }}
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-8">
@@ -9,7 +13,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
             <div class="card">
                 <div class="card-img-container">
                     <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}" alt="{{ $recipe->name }}">
@@ -24,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
@@ -34,7 +38,7 @@
                         @include('modules.recipes.partials.rating', ['recipe' => $recipe])
                     </div>
                     <div class="card-text">
-                        @foreach($recipe->tags() as $tag)
+                        @foreach($recipe->tags as $tag)
                             <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
                         @endforeach
                     </div>
@@ -43,10 +47,12 @@
             <div class="card">
                 <div class="card-body">
                     <h2>Plan this meal on </h2>
-                    @foreach ($foodplan->days() as $day)
-                        @php $foodplan_day = $foodplan->$day() @endphp
-                        @include('modules.foodplan.partials.plan-days', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan, 'foodplan_day' => $foodplan_day])
-                    @endforeach
+                    <div class="row justify-content-center">
+                        @foreach ($foodplan->days() as $day)
+                            @php $foodplan_day = $foodplan->$day() @endphp
+                            @include('modules.foodplan.partials.plan-days-recipe', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan, 'foodplan_day' => $foodplan_day])
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <br>

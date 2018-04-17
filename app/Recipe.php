@@ -2,9 +2,9 @@
 
 namespace App;
 
+use Spatie\Tags;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -13,6 +13,7 @@ class Recipe extends Model implements HasMedia
 {
     use HasSlug;
     use HasMediaTrait;
+    use Tags\HasTags;
 
     protected $guarded = [];
 
@@ -54,12 +55,12 @@ class Recipe extends Model implements HasMedia
      * Handling of additional relationships
      */
 
-    public function tags()
-    {
-        return $this
-            ->hasMany(Tag::class, 'id')
-            ->getResults();
-    }
+//    public function tags()
+//    {
+//        return $this
+//            ->hasMany(Tag::class, 'id')
+//            ->getResults();
+//    }
 
     public function ingredients()
     {

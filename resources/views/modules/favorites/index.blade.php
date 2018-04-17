@@ -1,5 +1,9 @@
 @extends('layouts\app')
 
+@section('submenu')
+    {{ Breadcrumbs::render('favorites.index') }}
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-8">

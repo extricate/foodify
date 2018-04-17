@@ -1,9 +1,13 @@
 @extends('layouts\app')
 
+@section('submenu')
+    {{ Breadcrumbs::render('history.index') }}
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-8">
-            <h1 class="primary">Your foodplan history</h1>
+            <h1 class="primary">Your saved history</h1>
         </div>
         <div class="col-4">
         </div>

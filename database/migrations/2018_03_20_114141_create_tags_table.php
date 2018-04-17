@@ -13,17 +13,17 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->string('name');
-            $table->string('description')->nullable();
-
-            $table->integer('recipe')->nullable()->unsigned();
-            $table->foreign('recipe')->references('id')->on('recipes');
-
-            $table->timestamps();
-        });
+//        Schema::create('tags', function (Blueprint $table) {
+//            $table->increments('id');
+//
+//            $table->string('name');
+//            $table->string('description')->nullable();
+//
+//            $table->integer('recipe')->nullable()->unsigned();
+//            $table->foreign('recipe')->references('id')->on('recipes');
+//
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+//        Schema::dropIfExists('tags');
     }
 }

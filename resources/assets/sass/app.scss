@@ -20,8 +20,11 @@ body {
 }
 
 h1.primary {
-  font-size: 4em;
+  font-size: 2.5em;
   //color: $black;
+  @include media-breakpoint-up(md) {
+    font-size: 4em;
+  }
 }
 
 /**

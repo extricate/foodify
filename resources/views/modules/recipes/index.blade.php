@@ -2,6 +2,10 @@
 
 @php $foodplan = auth()->user()->food_plan(); @endphp
 
+@section('submenu')
+    {{ Breadcrumbs::render('recipes.index') }}
+@endsection
+
 @section('content')
     <div class="row justify-content-around">
         <div class="col-lg-6 col-sm-12">
