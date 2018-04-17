@@ -5,17 +5,17 @@
           data-notification-message='{{ json_encode(Session::get('message')) }}'>
     <div id="app">
         @include('navbar.nav')
-        <div class="breadcrumbs">
+        <div class="breadcrumbs-container">
             <div class="container">
                 @yield('submenu')
             </div>
         </div>
-        <main class="py-4">
+        <main>
             <div class="container">
                 @yield('content')
             </div>
         </main>
     </div>
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" async></script>
     </body>
 @endsection

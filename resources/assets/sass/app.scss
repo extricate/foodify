@@ -9,8 +9,18 @@
 @import '~owl.carousel/dist/assets/owl.carousel.css';
 @import '~owl.carousel/dist/assets/owl.theme.default.css';
 
+
+/**
+ * Navbar
+ */
 .navbar-laravel {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.submenu-buttons {
+  position: absolute;
+  top: 5px;
+  right: 0;
 }
 
 body {
@@ -20,10 +30,37 @@ body {
 }
 
 h1.primary {
-  font-size: 2.5em;
-  //color: $black;
+  font-size: 2em;
+  @include media-breakpoint-up(xs) {
+    font-size: 2em;
+  }
+}
+
+/**
+ * Breadcrumbs
+ */
+
+.breadcrumbs-container {
+  background-color: $gray-200;
+}
+
+.breadcrumb {
+  @include media-breakpoint-up(sm) {
+    text-align: center;
+  }
+}
+
+.breadcrumb li {
+  display: inline;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include media-breakpoint-up(sm) {
+    max-width: 150px;
+  }
   @include media-breakpoint-up(md) {
-    font-size: 4em;
+    max-width: 400px;
   }
 }
 
@@ -96,4 +133,20 @@ h1.primary {
  */
 .owl-container {
   height: 140px;
+  @include media-breakpoint-up(md) {
+    height: 100px;
+  }
+
+}
+
+/**
+ * Pagination
+ */
+
+.pagination,
+.pagination li a {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }

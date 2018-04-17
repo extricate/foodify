@@ -19,21 +19,22 @@
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                @auth
-                    @php $foodplan = Auth::user()->food_plan() @endphp
+                <div class="d-none d-lg-inline-flex d-xl-inline-flex">
+                    @auth
+                        @php $foodplan = Auth::user()->food_plan() @endphp
 
-                    @foreach ($foodplan->days() as $day)
-                        <li class="mr-1">
-                            @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
-                        </li>
-                    @endforeach
-                @endauth
-                <li>
-                    <a href="/recipes/create" class="btn btn-primary btn-inline pull-right">
-                        Submit recipe <i class="fal fa-plus"></i>
-                    </a>
-                </li>
-
+                        @foreach ($foodplan->days() as $day)
+                            <li class="mr-1">
+                                @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
+                            </li>
+                        @endforeach
+                    @endauth
+                    <li>
+                        <a href="/recipes/create" class="btn btn-primary btn-inline pull-right">
+                            Submit recipe <i class="fal fa-plus"></i>
+                        </a>
+                    </li>
+                </div>
                 <!-- Authentication Links -->
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
@@ -45,14 +46,12 @@
                                 {{ Auth::user()->name }} <i class="fal fa-user-circle fa-fw"></i><span
                                         class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
                                     @csrf

@@ -13,7 +13,7 @@
     </div>
     <div class="card-footer">
         <div class="container pl-5 pr-5">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center clearfix">
                 <h3>Plan this meal on: </h3>
                 @foreach ($foodplan->days() as $day)
                     @php $foodplan_day = $foodplan->$day() @endphp

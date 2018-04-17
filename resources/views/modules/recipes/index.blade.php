@@ -3,20 +3,22 @@
 @php $foodplan = auth()->user()->food_plan(); @endphp
 
 @section('submenu')
-    {{ Breadcrumbs::render('recipes.index') }}
+    <div class="position-relative">
+        <div class="align-self-center">
+            {{ Breadcrumbs::render('recipes.index') }}
+        </div>
+        <div class="submenu-buttons">
+            <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+                My favorites <i class="fal fa-heart"></i>
+            </a>
+            <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+                Suggestions <i class="fal fa-badge-check"></i>
+            </a>
+        </div>
+    </div>
 @endsection
 
 @section('content')
-    <div class="row justify-content-around">
-        <div class="col-lg-6 col-sm-12">
-            <div class="mb-5 text-center">
-                <a href="{{ route('favorites.index') }}" class="btn btn-primary">My favorites <i
-                            class="fal fa-heart"></i></a>
-                <a href="{{ route('favorites.index') }}" class="btn btn-primary">Suggestions <i
-                            class="fal fa-badge-check"></i></a>
-            </div>
-        </div>
-    </div>
     <div class="row justify-content-center">
         <div class="col-lg-6 col-sm-12">
             <form class="form-group">
@@ -30,7 +32,7 @@
             </form>
         </div>
     </div>
-    <div class="row mb-sm-3 mt-lg-5">
+    <div class="row mb-sm-3 mb-md-0 mt-lg-1">
         <div class="col-12">
             <div class="owl-container">
                 <div class="owl-carousel owl-theme">
@@ -51,11 +53,9 @@
             </div>
         @endforeach
     </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="pull-right">
-                {{ $recipes->links() }}
-            </div>
+    <div class="col d-flex d-justify-content-center">
+        <div class="mx-auto">
+            {{ $recipes->links() }}
         </div>
     </div>
 @endsection

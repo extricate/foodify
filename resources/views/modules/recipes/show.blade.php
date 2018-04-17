@@ -9,7 +9,6 @@
 @section('content')
     <div class="row">
         <div class="col-8">
-            <h1 class="primary">{{ $recipe->name }}</h1>
         </div>
     </div>
     <div class="row">
@@ -23,6 +22,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">
+                    <h1 class="primary">{{ $recipe->name }}</h1>
                         {{ $recipe->description }}
                     </p>
                 </div>
