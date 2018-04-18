@@ -1,18 +1,24 @@
 @extends('layouts\app')
 
 @section('submenu')
-    {{ Breadcrumbs::render('foodplan.index') }}
+    <div class="position-relative">
+        <div class="align-self-center">
+            {{ Breadcrumbs::render('foodplan.index') }}
+        </div>
+        <div class="submenu-buttons">
+            <div class="justify-content-around clearfix">
+                @include('modules.foodplan.partials.save-to-history')
+                @include('modules.foodplan.partials.suggest')
+                @include('modules.foodplan.partials.delete')
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-6">
             <h1 class="primary">Your foodplan</h1>
-        </div>
-        <div class="col-6">
-            @include('modules.foodplan.partials.save-to-history')
-            @include('modules.foodplan.partials.suggest')
-            @include('modules.foodplan.partials.delete')
         </div>
     </div>
     <div class="row">
