@@ -20,8 +20,7 @@
     <div class="d-inline-block d-sm-none pull-right">
         <a class="btn btn-primary" data-toggle="collapse" href="#submenu-buttons" role="button" aria-expanded="false"
            aria-controls="submenu-buttons">
-            <i class="fal fa-ellipsis-v">
-            </i>
+            <i class="fal fa-ellipsis-v"></i>
         </a>
     </div>
     <div class="collapse pull-right" id="submenu-buttons">
