@@ -3,17 +3,37 @@
 @php $foodplan = auth()->user()->food_plan(); @endphp
 
 @section('submenu')
-    <div class="position-relative">
-        <div class="align-self-center">
-            {{ Breadcrumbs::render('recipes.index') }}
-        </div>
-        <div class="submenu-buttons">
-            <a href="{{ route('favorites.index') }}" class="btn btn-primary">
-                My favorites <i class="fal fa-heart"></i>
-            </a>
-            <a href="{{ route('favorites.index') }}" class="btn btn-primary">
-                Suggestions <i class="fal fa-badge-check"></i>
-            </a>
+    <div class="align-self-center">
+        {{ Breadcrumbs::render('recipes.index') }}
+    </div>
+@endsection
+
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+            My favorites <i class="fal fa-heart"></i>
+        </a>
+        <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+            Suggestions <i class="fal fa-badge-check"></i>
+        </a>
+    </div>
+    <div class="d-inline-block d-sm-none pull-right">
+        <a class="btn btn-primary" data-toggle="collapse" href="#submenu-buttons" role="button" aria-expanded="false"
+           aria-controls="submenu-buttons">
+            <i class="fal fa-ellipsis-v">
+            </i>
+        </a>
+    </div>
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+                    My favorites <i class="fal fa-heart"></i>
+                </a>
+                <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+                    Suggestions <i class="fal fa-badge-check"></i>
+                </a>
+            </div>
         </div>
     </div>
 @endsection
@@ -23,7 +43,8 @@
         <div class="col-lg-6 col-sm-12">
             <form class="form-group">
                 <div class="input-group input-group-lg">
-                    <input class="form-control" type="search" id="search" placeholder="What are you craving for?" aria-label="Type here to search">
+                    <input class="form-control" type="search" id="search" placeholder="What are you craving for?"
+                           aria-label="Type here to search">
                     <span class="input-group-append">
                         <button class="btn btn-primary" type="submit">Search <i class="fal fa-search"></i></button>
                     </span>

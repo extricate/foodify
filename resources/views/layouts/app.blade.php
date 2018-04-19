@@ -5,11 +5,7 @@
           data-notification-message='{{ json_encode(Session::get('message')) }}'>
     <div id="app">
         @include('navbar.nav')
-        <div class="breadcrumbs-container">
-            <div class="container">
-                @yield('submenu')
-            </div>
-        </div>
+        @include('navbar.submenu')
         <main>
             <div class="container">
                 @yield('content')

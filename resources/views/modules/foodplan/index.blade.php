@@ -1,12 +1,29 @@
 @extends('layouts\app')
 
 @section('submenu')
-    <div class="position-relative">
-        <div class="align-self-center">
-            {{ Breadcrumbs::render('foodplan.index') }}
+    <div class="align-self-center">
+        {{ Breadcrumbs::render('foodplan.index') }}
+    </div>
+@endsection
+
+@section('submenu-buttons')
+    <div class="d-none d-md-inline-block">
+        <div class="justify-content-around clearfix">
+            @include('modules.foodplan.partials.save-to-history')
+            @include('modules.foodplan.partials.suggest')
+            @include('modules.foodplan.partials.delete')
         </div>
-        <div class="submenu-buttons">
-            <div class="justify-content-around clearfix">
+    </div>
+    <div class="d-inline-block d-md-none pull-right">
+        <a class="btn btn-primary" data-toggle="collapse" href="#submenu-buttons" role="button" aria-expanded="false"
+           aria-controls="submenu-buttons">
+            <i class="fal fa-ellipsis-v">
+            </i>
+        </a>
+    </div>
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
                 @include('modules.foodplan.partials.save-to-history')
                 @include('modules.foodplan.partials.suggest')
                 @include('modules.foodplan.partials.delete')
