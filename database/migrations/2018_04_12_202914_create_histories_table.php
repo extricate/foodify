@@ -17,6 +17,7 @@ class CreateHistoriesTable extends Migration
             $table->increments('id');
 
             $table->integer('week')->unsigned();
+            $table->string('name')->nullable();
 
             $table->integer('owner')->unsigned();
             $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');

@@ -47,7 +47,7 @@
     </div>
     <div class="row">
         @foreach($recipes as $recipe)
-            <div class="col-lg-4 col-sm-12">
+            <div class="col-lg-4 col-sm-12 mb-3">
                 @include('modules.recipes.partials.recipe-card-full', ['foodplan' => $foodplan])
             </div>
         @endforeach
