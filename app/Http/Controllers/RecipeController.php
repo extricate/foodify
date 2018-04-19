@@ -55,7 +55,10 @@ class RecipeController extends Controller
             'author' => auth()->user()->id,
         ]);
 
-        $recipe->addMediaFromRequest('image')->toMediaCollection();
+        $recipe
+            ->addMediaFromRequest('image')
+            ->withResponsiveImages()
+            ->toMediaCollection();
 
         if (request()->wantsJson()) {
             return response($recipe, 201);
