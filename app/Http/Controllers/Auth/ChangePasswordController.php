@@ -30,9 +30,8 @@ class ChangePasswordController extends Controller
 
     public function changePassword(Request $request)
     {
-
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
-            // The passwords matches
+            // The passwords match
             return redirect()->back()->with(['message' => 'Wrong current password. Please try again.', 'alert_type' => 'error']);
         }
 
