@@ -17,6 +17,14 @@ use App\Events\UserRegistered;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+
+/**
+ * User settings
+ */
+
+Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
+Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
+
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
 Route::resource('/plan', 'FoodPlanController');
