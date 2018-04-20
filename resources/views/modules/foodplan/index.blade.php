@@ -8,10 +8,18 @@
 
 @section('submenu-buttons')
     <div class="d-none d-md-inline-block">
-        <div class="justify-content-around clearfix">
-            @include('modules.foodplan.partials.save-to-history')
-            @include('modules.foodplan.partials.suggest')
-            @include('modules.foodplan.partials.delete')
+        <div class="justify-content-end clearfix">
+            <div class="row">
+                <div class="col">
+                    @include('modules.foodplan.partials.save-to-history')
+                </div>
+                <div class="col">
+                    @include('modules.foodplan.partials.suggest')
+                </div>
+                <div class="col">
+                    @include('modules.foodplan.partials.delete')
+                </div>
+            </div>
         </div>
     </div>
     <div class="d-inline-block d-md-none pull-right">
@@ -26,9 +34,17 @@
     <div class="collapse pull-right" id="submenu-buttons">
         <div class="card submenu-collapsible">
             <div class="card-body">
-                @include('modules.foodplan.partials.save-to-history')
-                @include('modules.foodplan.partials.suggest')
-                @include('modules.foodplan.partials.delete')
+                <div class="row">
+                    <div class="col">
+                        @include('modules.foodplan.partials.save-to-history')
+                    </div>
+                    <div class="col">
+                        @include('modules.foodplan.partials.suggest')
+                    </div>
+                    <div class="col">
+                        @include('modules.foodplan.partials.delete')
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -9,7 +9,6 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -23,6 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $foodplan = auth()->user()->food_plan();
+        return view('home', compact('foodplan', $foodplan));
     }
 }

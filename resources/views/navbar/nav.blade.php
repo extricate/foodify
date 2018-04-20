@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light navbar-laravel sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}" height="30" width="50">
+        <a class="navbar-brand navbar-logo" href="{{ url('/') }}" height="30" width="50">
             @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
         </a>
         <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
