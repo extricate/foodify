@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('submenu')
     <div class="align-self-center">
         {{ Breadcrumbs::render('home') }}

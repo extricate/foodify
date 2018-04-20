@@ -1,5 +1,7 @@
 @extends('layouts/app')
 
+@section('title', 'Recipes')
+
 @php $foodplan = auth()->user()->food_plan(); @endphp
 
 @section('submenu')
@@ -76,9 +78,11 @@
             </div>
         @endforeach
     </div>
-    <div class="col d-flex d-justify-content-center">
-        <div class="mx-auto">
-            {{ $recipes->links() }}
+    <div class="row">
+        <div class="col d-flex d-justify-content-center">
+            <div class="mx-auto">
+                {{ $recipes->links() }}
+            </div>
         </div>
     </div>
 @endsection

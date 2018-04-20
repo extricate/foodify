@@ -1,5 +1,7 @@
 @extends('layouts\app')
 
+@section('title', 'Favorites')
+
 @section('submenu')
     {{ Breadcrumbs::render('favorites.index') }}
 @endsection

@@ -1,5 +1,7 @@
 @extends('layouts/app')
 
+@section('title', $recipe->name)
+
 @php $foodplan = auth()->user()->food_plan(); @endphp
 
 @section('submenu')

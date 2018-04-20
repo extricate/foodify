@@ -1,5 +1,7 @@
 @extends('layouts\app')
 
+@section('title', 'History')
+
 @section('submenu')
     {{ Breadcrumbs::render('history.index') }}
 @endsection
@@ -12,9 +14,9 @@
         <div class="col-4">
         </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         @foreach($history as $foodplan)
-            <div class="card m-3">
+            <div class="card m-2">
                 <div class="card-body">
                     <h3 class="m-3 text-capitalize">Plan of week {{ $foodplan->week }}</h3>
                     @foreach($foodplan->days() as $day)
@@ -29,6 +31,12 @@
                 </div>
             </div>
         @endforeach
-            {{ $history->links() }}
+    </div>
+    <div class="row">
+        <div class="col d-flex d-justify-content-center">
+            <div class="mx-auto">
+                {{ $history->links() }}
+            </div>
+        </div>
     </div>
 @endsection

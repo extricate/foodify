@@ -1,5 +1,7 @@
 @extends('layouts\app')
 
+@section('title', 'Your foodplan')
+
 @section('submenu')
     <div class="align-self-center">
         {{ Breadcrumbs::render('foodplan.index') }}
