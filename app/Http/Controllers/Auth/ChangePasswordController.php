@@ -11,12 +11,10 @@ class ChangePasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Controller
+    | Password Change Controller
     |--------------------------------------------------------------------------
     |
     | This controller is responsible for handling password change requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
     |
     */
 
@@ -35,14 +33,12 @@ class ChangePasswordController extends Controller
 
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error",
-                "Your current password does not matches with the password you provided. Please try again.");
+            return redirect()->back()->with(['message' => 'Wrong current password. Please try again.', 'alert_type' => 'error']);
         }
 
         if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
-            //Current password and new password are same
-            return redirect()->back()->with("error",
-                "New Password cannot be same as your current password. Please choose a different password.");
+            // Current password and new password are same
+            return redirect()->back()->with(['message' => 'Your new password cannot be identical to your current password. Please choose a different new password.', 'alert_type' => 'error']);
         }
 
         $validatedData = $request->validate([
