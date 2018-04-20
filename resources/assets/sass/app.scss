@@ -16,6 +16,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.navbar-logo {
+  width: 90px;
+  height: auto;
+}
+
 .submenu-buttons {
   position: absolute;
   top: 5px;
@@ -23,6 +28,7 @@
 }
 
 .submenu-collapsible {
+  text-align: center;
   z-index: $zindex-dropdown;
 }
 

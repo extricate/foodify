@@ -165,6 +165,7 @@ return [
          * Custom providers
          */
         Collective\Html\HtmlServiceProvider::class,
+        BladeSvg\BladeSvgServiceProvider::class,
     ],
 
     /*

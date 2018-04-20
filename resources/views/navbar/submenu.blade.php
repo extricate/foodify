@@ -8,3 +8,4 @@
         </div>
     </div>
 </div>
+@yield('submenu-buttons-mobile')

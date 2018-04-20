@@ -17,12 +17,16 @@
             Suggestions <i class="fal fa-badge-check"></i>
         </a>
     </div>
-    <div class="d-inline-block d-sm-none pull-right">
-        <a class="btn btn-primary" data-toggle="collapse" href="#submenu-buttons" role="button" aria-expanded="false"
+    <div class="d-sm-none">
+        <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
+           aria-expanded="false"
            aria-controls="submenu-buttons">
             <i class="fal fa-ellipsis-v"></i>
         </a>
     </div>
+@endsection
+
+@section('submenu-buttons-mobile')
     <div class="collapse pull-right" id="submenu-buttons">
         <div class="card submenu-collapsible">
             <div class="card-body">

@@ -20,6 +20,9 @@
             <i class="fal fa-ellipsis-v"></i>
         </a>
     </div>
+@endsection
+
+@section('submenu-buttons-mobile')
     <div class="collapse pull-right" id="submenu-buttons">
         <div class="card submenu-collapsible">
             <div class="card-body">
