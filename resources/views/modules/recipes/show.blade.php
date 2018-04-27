@@ -72,4 +72,21 @@
             </div>
         </div>
     </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">What others say about this recipe</h2>
+
+                    @foreach($recipe->comments() as $comment)
+                        @include('modules.comments.index', ['comment' => $comment])
+                    @endforeach
+
+                    @auth
+                        @include('modules.comments.create')
+                    @endauth
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

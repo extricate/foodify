@@ -27,6 +27,9 @@ Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->n
 
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
+
+Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
+Route::post('/recipes/destroy', 'CommentController@destroy')->name('comments.destroy');
 Route::resource('/plan', 'FoodPlanController');
 Route::resource('/ingredients', 'IngredientController');
 Route::resource('/pantry', 'PantryController');
@@ -35,6 +38,7 @@ Route::resource('/history', 'HistoryController');
 Route::resource('/favorites', 'FavoriteController');
 Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest');
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store');
+
 Route::get('storage/app/public/{id}/{filename}', function ($filename)
 {
     $path = storage_path('public/' . $filename);
@@ -51,15 +55,5 @@ Route::get('storage/app/public/{id}/{filename}', function ($filename)
 
     return $response;
 });
-
-/*Route::get('/recipes', function () {
-    return Recipe::latest()->pluck('name');
-});
-
-Route::post('/recipes', function() {
-    $recipe = Recipe::forceCreate(request(['name']));
-
-    event(new NewRecipe($recipe));
-});*/
 
 Auth::routes();
