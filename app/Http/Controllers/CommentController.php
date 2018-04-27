@@ -38,7 +38,8 @@ class CommentController extends Controller
     public function edit($id)
     {
         $comment = Comment::findOrFail($id);
-        return view('modules.comments.edit', compact('comment'));
+        $recipe = Recipe::findOrFail($comment->onRecipe()->getResults()->id);
+        return view('modules.comments.edit', compact('comment', 'recipe'));
     }
 
     public function update(Request $request)

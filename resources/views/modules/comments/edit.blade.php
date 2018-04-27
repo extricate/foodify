@@ -32,6 +32,7 @@
             </div>
             <input type="hidden" class="hidden" name="id" value="{{ $comment->id }}">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ $recipe->path() }}" class="btn btn-secondary">Cancel</a>
             {!! Form::close() !!}
         </div>
     </div>

@@ -31,3 +31,8 @@ Breadcrumbs::register('history.index', function ($breadcrumbs) {
     $breadcrumbs->parent('foodplan.index');
     $breadcrumbs->push('Your saved history', route('history.index'));
 });
+
+Breadcrumbs::register('error-404', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('We cannot find that page! Error 404');
+});

@@ -1,4 +1,4 @@
-<div class="float-right">
+<div class="form-inline pull-right mr-1">
     {!! Form::open([
 'method' => 'POST',
 'route' => ['comments.destroy'],
