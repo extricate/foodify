@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <p class="card-text">
                     <h1 class="primary">{{ $recipe->name }}</h1>
-                        {{ $recipe->description }}
+                    {{ $recipe->description }}
                     </p>
                 </div>
             </div>
@@ -74,18 +74,24 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">What others say about this recipe</h2>
+            <h2>What others say about this recipe</h2>
 
-                    @foreach($recipe->comments() as $comment)
-                        @include('modules.comments.index', ['comment' => $comment])
-                    @endforeach
-
-                    @auth
-                        @include('modules.comments.create')
-                    @endauth
-                </div>
+            <div class="card-columns">
+                @foreach($recipe->comments()->get() as $comment)
+                    @include('modules.comments.index', ['comment' => $comment])
+                @endforeach
+                @auth
+                    @include('modules.comments.create')
+                @endauth
+                @guest
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">
+                                Please login to leave a comment.
+                            </p>
+                        </div>
+                    </div>
+                @endguest
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Validator;
 use App\Comment;
 use Illuminate\Http\Request;
@@ -32,7 +33,51 @@ class CommentController extends Controller
         ]);
 
         return back()->with('message', 'Your comment has been published!');
+    }
 
+    public function edit($id)
+    {
+        $comment = Comment::findOrFail($id);
+        return view('modules.comments.edit', compact('comment'));
+    }
+
+    public function update(Request $request)
+    {
+
+        Validator::make($request->all(), [
+            'id' => 'required|exists:comments',
+            'text' => 'required|min:10|max:400'
+        ]);
+
+        $comment = Comment::findOrFail($request->id);
+
+        if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
+            $comment->update([
+                'text' => $request->text,
+            ]);
+
+            return redirect($comment->onRecipe()->path());
+        }
+
+
+    }
+
+    public function destroy(Request $request)
+    {
+        Validator::make($request->all(), [
+            'comment_id' => 'required|exists:comments'
+        ]);
+
+        $comment = Comment::findOrFail($request->comment_id);
+
+        // Check whether the user is the owner or an administrator
+        if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin == true) {
+            $comment->destroy($request->comment_id);
+
+            return back()->with('message', 'Comment removed.');
+        }
+
+        return back()->with('message', 'That is not your comment.');
 
     }
 }

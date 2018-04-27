@@ -136,6 +136,6 @@ class Recipe extends Model implements HasMedia
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class)->getResults();
+        return $this->hasMany(Comment::class);
     }
 }

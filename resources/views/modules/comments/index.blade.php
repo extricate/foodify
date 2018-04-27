@@ -1,15 +1,21 @@
 <div class="card">
     <div class="card-body">
-        <h2>{{ $comment->author()->name }}</h2>
+        <div class="card-title">
+            <div class="h4">{{ $comment->author()->name }}
+                <small class="badge badge-pill">({{ $comment->created_at->diffForHumans() }})</small>
+            </div>
 
-        @if ($comment->author()->id == auth()->user()->id || auth()->user()->admin())
-            @include('modules.comments.destroy')
-        @endif
+        </div>
         <p class="card-text">
             {{ $comment->text }}
         </p>
-        <div class="card-footer">
-            {{ $comment->create_at }}
-        </div>
+    </div>
+    <div class="card-footer">
+        Posted {{ $comment->created_at->diffForHumans() }} on {{ $comment->created_at }}
+
+        @if ($comment->author()->id == auth()->user()->id || auth()->user()->admin())
+            <a href="{{ route('comments.edit', $comment->id) }}">Edit</a>
+            @include('modules.comments.destroy')
+        @endif
     </div>
 </div>

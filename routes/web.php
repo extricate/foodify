@@ -28,6 +28,9 @@ Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->n
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
 
+Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('comments.edit');
+Route::post('/recipes/comment/edit', 'CommentController@update')->name('comments.update');
+
 Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
 Route::post('/recipes/destroy', 'CommentController@destroy')->name('comments.destroy');
 Route::resource('/plan', 'FoodPlanController');
