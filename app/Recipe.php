@@ -38,7 +38,7 @@ class Recipe extends Model implements HasMedia
     public function author()
     {
         return $this
-            ->belongsTo(User::class, 'id')
+            ->belongsTo(User::class, 'author', 'id')
             ->first();
     }
 

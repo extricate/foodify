@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="card-title h1 primary">{{ $recipe->name }}</div>
                     <p class="card-text">
-                    {{ $recipe->description }}
+                        {{ $recipe->description }}
                     </p>
                 </div>
             </div>

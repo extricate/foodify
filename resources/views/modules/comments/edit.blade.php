@@ -12,7 +12,7 @@
     <div class="card mt-3">
         <div class="card-body">
             {!! Form::open([
-                'method' => 'POST',
+                'method' => 'PATCH',
                 'route' => ['comments.update'],
                 'enctype' => 'multipart/form-data'
                 ]) !!}
