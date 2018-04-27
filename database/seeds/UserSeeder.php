@@ -17,5 +17,9 @@ class UserSeeder extends Seeder
             'password' => bcrypt('secret'),
             'admin' => true,
         ]);
+
+        DB::table('food_plans')->insert([
+            'owner' => 1,
+        ]);
     }
 }
