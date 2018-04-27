@@ -89,9 +89,15 @@ class RecipeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($param)
     {
-        //
+        $recipe = Recipe::where('id', $param)
+            ->orWhere('slug', $param)
+            ->firstOrFail();
+
+        if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
+            return view('modules.recipe.edit', compact('recipe'));
+        }
     }
 
     /**

@@ -28,6 +28,7 @@ Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->n
 
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
+Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit');
 
 Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('comments.edit');
 Route::post('/recipes/comment/edit', 'CommentController@update')->name('comments.update');

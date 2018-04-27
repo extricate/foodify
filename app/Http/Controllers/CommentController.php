@@ -40,7 +40,7 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($id);
         $recipe = Recipe::findOrFail($comment->onRecipe()->getResults()->id);
 
-        if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin == true) {
+        if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
             return view('modules.comments.edit', compact('comment', 'recipe'));
         }
     }

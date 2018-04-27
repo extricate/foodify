@@ -31,7 +31,7 @@ class HistoryController extends Controller
     {
         $user = auth()->user();
         $history = History::where('owner', '=', $user->id)->orderBy('created_at', 'desc')->paginate(4);
-        return view('modules/history/index', compact('history'));
+        return view('modules.history.index', compact('history'));
     }
 
     /**
