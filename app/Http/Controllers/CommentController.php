@@ -6,6 +6,7 @@ use Validator;
 use App\Recipe;
 use App\Comment;
 use Illuminate\Http\Request;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class CommentController extends Controller
 {

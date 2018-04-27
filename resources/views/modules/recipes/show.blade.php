@@ -23,14 +23,23 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="card-title h1 primary">{{ $recipe->name }}</div>
                     <p class="card-text">
-                    <h1 class="primary">{{ $recipe->name }}</h1>
                     {{ $recipe->description }}
                     </p>
                 </div>
             </div>
         </div>
         <div class="col-12 col-lg-4">
+            @if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin())
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">

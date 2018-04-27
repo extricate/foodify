@@ -45,7 +45,7 @@ class RecipeController extends Controller
     {
         Validator::make($request->all(), [
             'name' => 'required|unique:recipes|max:255',
-            'description' => 'required',
+            'description' => 'required|min:50|max:1000',
             'image' => 'required|image|max:2048'
         ])->validate();
 
@@ -86,8 +86,8 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $param
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function edit($param)
     {
@@ -96,20 +96,48 @@ class RecipeController extends Controller
             ->firstOrFail();
 
         if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
-            return view('modules.recipe.edit', compact('recipe'));
+            return view('modules.recipes.edit', compact('recipe'));
         }
+
+        return redirect(route('home'))->with('message', 'You do not have permission to edit that recipe.');
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  $param
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $param)
     {
-        //
+        $recipe = Recipe::where('id', $param)
+            ->orWhere('slug', $param)
+            ->firstOrFail();
+
+        Validator::make($request->all(), [
+            'name' => 'unique:recipes|max:255',
+            'description' => 'min:50|max:1000',
+            'image' => 'image|max:2048'
+        ])->validate();
+
+        if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
+
+            $recipe->update($request->all());
+
+            if ($request->image) {
+                $recipe
+                    ->addMediaFromRequest('image')
+                    ->withResponsiveImages()
+                    ->toMediaCollection();
+            }
+
+            return back()->withInput();
+        }
+
+        return redirect(route('home'))->with('message', 'You do not have permission to edit that recipe.');
+
     }
 
     /**

@@ -15,6 +15,13 @@ Breadcrumbs::register('recipes.show', function ($breadcrumbs, $recipe) {
     $breadcrumbs->push($recipe->name, route('recipes.show', $recipe->slug));
 });
 
+Breadcrumbs::register('recipes.edit', function ($breadcrumbs, $recipe) {
+    $breadcrumbs->parent('recipes.index');
+    $breadcrumbs->push($recipe->name, route('recipes.show', $recipe->slug));
+    $breadcrumbs->push('Editing ' . $recipe->name);
+});
+
+
 Breadcrumbs::register('favorites.index', function ($breadcrumbs) {
     $breadcrumbs->parent('recipes.index');
     $breadcrumbs->push('Your favorites', route('favorites.index'));
