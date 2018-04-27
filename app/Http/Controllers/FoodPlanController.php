@@ -14,6 +14,11 @@ class FoodPlanController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $foodplan = auth()->user()->food_plan();
+        if ($foodplan == null) {
+            $this->create();
+        };
     }
 
     /**
@@ -23,11 +28,6 @@ class FoodPlanController extends Controller
      */
     public function index()
     {
-        $foodplan = auth()->user()->food_plan();
-        if($foodplan == null) {
-            $this->create();
-        };
-
         return view('modules.foodplan.index', compact('foodplan'));
     }
 
@@ -38,9 +38,8 @@ class FoodPlanController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
         $foodplan = FoodPlan::create([
-            'owner' => $user->id,
+            'owner' => auth()->user()->id,
         ]);
 
         return $foodplan;

@@ -39,7 +39,10 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
         $recipe = Recipe::findOrFail($comment->onRecipe()->getResults()->id);
-        return view('modules.comments.edit', compact('comment', 'recipe'));
+
+        if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin == true) {
+            return view('modules.comments.edit', compact('comment', 'recipe'));
+        }
     }
 
     public function update(Request $request)

@@ -27,7 +27,6 @@ class FoodPlan extends Model
         return $this->belongsTo(User::class)->getResults();
     }
 
-
     /**
      * Food plan day configuration
      */

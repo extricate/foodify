@@ -61,12 +61,14 @@
         <div class="col-12">
             <div class="owl-container">
                 <div class="owl-carousel owl-theme">
-                    @foreach($foodplan->days() as $day)
-                        @php $recipe = $foodplan->$day(); @endphp
-                        <div class="item">
-                            @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
-                        </div>
-                    @endforeach
+                    @if($foodplan != null)
+                        @foreach($foodplan->days() as $day)
+                            @php $recipe = $foodplan->$day(); @endphp
+                            <div class="item">
+                                @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
