@@ -63,3 +63,8 @@ Route::get('storage/app/public/{id}/{filename}', function ($filename)
 });
 
 Auth::routes();
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
