@@ -1,4 +1,4 @@
-@extends('layouts\app')
+@extends('layouts.app')
 
 @section('title', 'History')
 
@@ -21,7 +21,7 @@
                     <h3 class="m-3 text-capitalize">Plan of week {{ $foodplan->week }}</h3>
                     @foreach($foodplan->days() as $day)
                         <div class="p-1">
-                            @include('modules/foodplan/partials/simple-plan-days', ['recipe' => $foodplan->$day()])
+                            @include('modules.foodplan.partials.simple-plan-days', ['recipe' => $foodplan->$day()])
                         </div>
                     @endforeach
                 </div>
