@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
 use Validator;
+use App\Recipe;
 use App\Comment;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        Validator::make($request->all(), [
             'recipe' => 'required|exists:recipes,id',
             'text' => 'required|min:10|max:400',
         ])->validate();
@@ -50,15 +50,17 @@ class CommentController extends Controller
         ]);
 
         $comment = Comment::findOrFail($request->id);
+        $recipe = Recipe::findOrFail($comment->onRecipe()->getResults()->id);
 
         if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
             $comment->update([
                 'text' => $request->text,
             ]);
 
-            return redirect($comment->onRecipe()->path());
+            return redirect($recipe->path())->with('message', 'Comment edited.');
         }
 
+        return redirect($recipe->path())->with('message', 'That is not your comment.');
 
     }
 
