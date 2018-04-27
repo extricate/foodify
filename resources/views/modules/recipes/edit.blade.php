@@ -23,7 +23,7 @@
                 'method' => 'PATCH',
                 'route' => ['recipe.update', $recipe->id],
                 'enctype' => 'multipart/form-data',
-                'class' => 'form-inline'
+                'class' => 'form-inline d-inline'
                 ]) !!}
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -36,8 +36,8 @@
                 @endif
                 {{ csrf_field() }}
                 <div class="card-body form-group">
-                    <label for="image">Image</label>
-                    <input type="file" name="image" id="image" value="{{ old('image') }}">
+                    <label for="image">Image </label>
+                    <input type="file" name="image" id="image" value="{{ old('image') }} ">
                     <button type="submit" class="btn btn-primary">Change image</button>
                 </div>
                 {!! Form::close() !!}
@@ -60,10 +60,13 @@
                 {{ csrf_field() }}
 
                 <div class="card-body form-group">
-                    <textarea type="text" rows="1" class="form-control card-title h1 primary"
-                              name="name">{{ $recipe->name }}</textarea>
                     <input type="hidden" class="hidden" name="id" value="{{ $recipe->id }}">
-                    <button type="submit" class="btn btn-primary">Change name</button>
+                    <div class="input-group">
+                        <input type="text" rows="1" class="form-control" name="name" value="{{ $recipe->name}}">
+                        <div class="input-group-append">
+                            <button type="submit" class="mr-2 btn btn-primary">Change name</button>
+                        </div>
+                    </div>
                 </div>
                 {!! Form::close() !!}
 
