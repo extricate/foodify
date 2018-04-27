@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "fooodify/platform",
+    "description": "The Fooodify platform.",
+    "keywords": ["platform", "fooodify"],
     "license": "MIT",
     "type": "project",
     "require": {
