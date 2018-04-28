@@ -13,13 +13,15 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /**
-         * Disabled recipes viewcomposer to save queries
-         */
         view()->composer(
             '*',
             'App\Http\ViewComposers\UserComposer'
         );
+
+        /*view()->composer(
+            '*',
+            'App\Http\ViewComposers\WeekPlanComposer'
+        );*/
     }
 
     /**

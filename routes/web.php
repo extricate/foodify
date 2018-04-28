@@ -26,6 +26,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
 
+Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
+
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
 Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit');

@@ -2,18 +2,18 @@
 
 namespace App\Http\ViewComposers;
 
-use App\User;
+use App\FoodPlan;
 use Illuminate\View\View;
 
-class UserComposer
+class WeekPlanComposer
 {
-    protected $user;
+    protected $plan;
     /**
-     * Create the user composer
+     * Create a foodplan composer
      */
-    public function __construct(User $user)
+    public function __construct(FoodPlan $plan)
     {
-        $this->user = auth()->user();
+        $this->plan = auth()->user()->food_plan();
     }
 
     /**
@@ -24,6 +24,6 @@ class UserComposer
      */
     public function compose(View $view)
     {
-        $view->with('user', $this->user);
+        $view->with('plan', $this->plan);
     }
 }

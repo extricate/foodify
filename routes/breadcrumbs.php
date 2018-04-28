@@ -5,6 +5,11 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push('Dashboard', route('home'));
 });
 
+Breadcrumbs::register('user.show', function ($breadcrumbs, $viewinguser) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($viewinguser->name . '\'s plan for this week');
+});
+
 Breadcrumbs::register('recipes.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Recipes', route('recipes.index'));
