@@ -25,7 +25,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <h1 class="primary">Hi {{ auth()->user()->name }}, this is your dashboard</h1>
+            <h1 class="primary">Hi {{ $user->name }}, this is your dashboard</h1>
             <p>This page serves as the headquarter of your fooodify planning.</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 <div class="card m-1">
                     <div class="card-body">
                         <div class="card-title">Your created recipes</div>
-                        @foreach(auth()->user()->recipes() as $recipe)
+                        @foreach($user->recipes() as $recipe)
                             <div class="card">
                                 <div class="card-body">
                                     <a href="{{ $recipe->path() }}">{{ $recipe->name }}</a>
@@ -43,7 +43,7 @@
                             </div>
                         @endforeach
 
-                        {{ auth()->user()->recipes()->links() }}
+                        {{ $user->recipes()->links() }}
                     </div>
                 </div>
                 <div class="card m-1">
@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <div class="card-title">Your favorites</div>
 
-                        @foreach(auth()->user()->showFavorites() as $favorite)
+                        @foreach($user->showFavorites() as $favorite)
                             <div class="card">
                                 <div class="card-body">
                                     <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
@@ -63,7 +63,7 @@
                             </div>
                         @endforeach
 
-                        {{ auth()->user()->showFavorites()->links() }}
+                        {{ $user->showFavorites()->links() }}
                     </div>
                 </div>
             </div>

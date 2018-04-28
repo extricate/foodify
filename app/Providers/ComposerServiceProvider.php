@@ -16,10 +16,10 @@ class ComposerServiceProvider extends ServiceProvider
         /**
          * Disabled recipes viewcomposer to save queries
          */
-        /*view()->composer(
+        view()->composer(
             '*',
-            'App\Http\ViewComposers\RecipeComposer'
-        );*/
+            'App\Http\ViewComposers\UserComposer'
+        );
     }
 
     /**

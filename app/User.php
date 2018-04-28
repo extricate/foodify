@@ -39,7 +39,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function recipes()
     {
-        return Recipe::where('author', '=', auth()->user()->id)->paginate(6);
+        return Recipe::where('author', '=', auth()->user()->id)->paginate(6, ['*'], 'recipes');
     }
 
     public function recipeRatings()
@@ -70,7 +70,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function showFavorites()
     {
-        return Favorite::where('user_id', '=', auth()->user()->id)->paginate(6);
+        return Favorite::where('user_id', '=', auth()->user()->id)->paginate(6, ['*'], 'favorites');
     }
 
     /**
