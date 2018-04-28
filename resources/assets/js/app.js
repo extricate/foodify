@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import InstantSearch from 'vue-instantsearch';
+Vue.use(InstantSearch);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14,10 +16,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-//Vue.component('recipe-component', require('./components/AddRecipe.vue'));
+Vue.component('recipe-search-component', require('./components/RecipeSearchComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });
 
 /**
@@ -26,7 +28,7 @@ const app = new Vue({
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-})
+});
 
 /**
  * Owl carousel
@@ -39,17 +41,17 @@ $('.owl-carousel').owlCarousel({
     dots: true,
     items: 7,
     startPosition: new Date().getDay() - 1,
-    responsive : {
-        0 : {
+    responsive: {
+        0: {
             items: 2,
         },
-        480 : {
+        480: {
             items: 3,
         },
-        768 : {
+        768: {
             items: 4,
         },
-        1000 : {
+        1000: {
             items: 7,
         }
     }
@@ -61,6 +63,7 @@ $('.owl-carousel').owlCarousel({
 
 import fontawesome from '@fortawesome/fontawesome';
 import light from '@fortawesome/fontawesome-pro-light';
+
 fontawesome.library.add(light);
 
 /**

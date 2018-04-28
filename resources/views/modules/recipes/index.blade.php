@@ -44,19 +44,7 @@
 @endsection
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-sm-12">
-            <form class="form-group">
-                <div class="input-group input-group-lg">
-                    <input class="form-control" type="search" id="search" placeholder="What are you craving for?"
-                           aria-label="Type here to search">
-                    <span class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Search <i class="fal fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
+    <recipe-search-component></recipe-search-component>
     <div class="row mb-sm-3 mb-md-0 mt-lg-1">
         <div class="col-12">
             <div class="owl-container">

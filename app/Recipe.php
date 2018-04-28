@@ -3,6 +3,7 @@
 namespace App;
 
 use Spatie\Tags;
+use Laravel\Scout\Searchable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,7 @@ class Recipe extends Model implements HasMedia
     use HasSlug;
     use HasMediaTrait;
     use Tags\HasTags;
+    use Searchable;
 
     protected $guarded = [];
 
