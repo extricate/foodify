@@ -34,7 +34,12 @@ class User extends \TCG\Voyager\Models\User
 
     public function created_recipes()
     {
-        return $this->hasMany(Recipe::class, 'id')->getResults();
+        return $this->hasMany(Recipe::class, 'author')->getResults();
+    }
+
+    public function recipes()
+    {
+        return Recipe::where('author', '=', auth()->user()->id)->paginate(6);
     }
 
     public function recipeRatings()
@@ -61,6 +66,11 @@ class User extends \TCG\Voyager\Models\User
     public function favorites()
     {
         return $this->hasMany(Favorite::class)->getResults();
+    }
+
+    public function showFavorites()
+    {
+        return Favorite::where('user_id', '=', auth()->user()->id)->paginate(6);
     }
 
     /**

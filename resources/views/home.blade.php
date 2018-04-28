@@ -24,23 +24,47 @@
         </div>
     </div>
     <div class="row">
-        <h1 class="primary">Hi {{ auth()->user()->name }}</h1>
+        <div class="col-12">
+            <h1 class="primary">Hi {{ auth()->user()->name }}, this is your dashboard</h1>
+            <p>This page serves as the headquarter of your fooodify planning.</p>
+        </div>
     </div>
     <div class="row">
-        <div class="card-group">
-            <div class="card m-1">
-                <div class="card-body">
-                    <div class="card-title">Your recipes</div>
-                </div>
-            </div>
-            <div class="card m-1">
-                <div class="card-body">
-                    <div class="card-title">Your dietary analytics</div>
-                </div>
-            </div>
-            <div class="card m-1">
-                <div class="card-body">
+        <div class="col-12">
+            <div class="card-group">
+                <div class="card m-1">
+                    <div class="card-body">
+                        <div class="card-title">Your created recipes</div>
+                        @foreach(auth()->user()->recipes() as $recipe)
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="{{ $recipe->path() }}">{{ $recipe->name }}</a>
+                                </div>
+                            </div>
+                        @endforeach
 
+                        {{ auth()->user()->recipes()->links() }}
+                    </div>
+                </div>
+                <div class="card m-1">
+                    <div class="card-body">
+                        <div class="card-title">Your dietary analytics</div>
+                    </div>
+                </div>
+                <div class="card m-1">
+                    <div class="card-body">
+                        <div class="card-title">Your favorites</div>
+
+                        @foreach(auth()->user()->showFavorites() as $favorite)
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        {{ auth()->user()->showFavorites()->links() }}
+                    </div>
                 </div>
             </div>
         </div>
