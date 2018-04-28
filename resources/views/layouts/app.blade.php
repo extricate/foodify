@@ -11,6 +11,8 @@
                 @yield('content')
             </div>
         </main>
+
+        @include('footer.footer')
     </div>
     <script src="{{ mix('js/app.js') }}" defer></script>
     </body>

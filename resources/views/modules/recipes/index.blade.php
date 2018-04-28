@@ -44,7 +44,9 @@
 @endsection
 
 @section('content')
+
     <recipe-search-component></recipe-search-component>
+
     <div class="row mb-sm-3 mb-md-0 mt-lg-1">
         <div class="col-12">
             <div class="owl-container">
