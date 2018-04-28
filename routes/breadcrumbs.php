@@ -5,6 +5,12 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push('Dashboard', route('home'));
 });
 
+Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($page->name, route('page.show', $page->slug));
+});
+
+
 Breadcrumbs::register('user.show', function ($breadcrumbs, $viewinguser) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push($viewinguser->name . '\'s plan for this week');
@@ -44,4 +50,9 @@ Breadcrumbs::register('history.index', function ($breadcrumbs) {
 Breadcrumbs::register('error-404', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('We cannot find that page! Error 404');
+});
+
+Breadcrumbs::register('error-500', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Something went wrong on our side! Error 500');
 });

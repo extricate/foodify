@@ -19,34 +19,69 @@ use App\Events\UserRegistered;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 
+
+/**
+ * Pages are only editable from the admin interface.
+ */
+Route::get('/page/{param}', 'PageController@show')->name('page.show');
+
 /**
  * User settings
  */
-
 Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
-
 Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
 
+
+/**
+ * Recipes
+ */
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
 Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit');
 Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update');
-
-Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('comments.edit');
-Route::patch('/recipes/comment/edit', 'CommentController@update')->name('comments.update');
-
-Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
-Route::post('/recipes/destroy', 'CommentController@destroy')->name('comments.destroy');
-Route::resource('/plan', 'FoodPlanController');
-Route::resource('/ingredients', 'IngredientController');
-Route::resource('/pantry', 'PantryController');
-Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFoodplan')->name('history.setAsFoodplan');
-Route::resource('/history', 'HistoryController');
-Route::resource('/favorites', 'FavoriteController');
-Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest');
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store');
 
+/**
+ * Ingredients
+ */
+Route::resource('/ingredients', 'IngredientController');
+
+/**
+ * Comments
+ */
+Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('comments.edit');
+Route::patch('/recipes/comment/edit', 'CommentController@update')->name('comments.update');
+Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
+Route::post('/recipes/destroy', 'CommentController@destroy')->name('comments.destroy');
+
+/**
+ * Food plan
+ */
+Route::resource('/plan', 'FoodPlanController');
+Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest');
+
+
+/**
+ * History
+ */
+
+Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFoodplan')->name('history.setAsFoodplan');
+Route::resource('/history', 'HistoryController');
+
+/**
+ * Pantry (not implemented)
+ */
+Route::resource('/pantry', 'PantryController');
+
+/**
+ * Favorites
+ */
+Route::resource('/favorites', 'FavoriteController');
+
+/**
+ * Image storage technique
+ */
 Route::get('storage/app/public/{id}/{filename}', function ($filename)
 {
     $path = storage_path('public/' . $filename);

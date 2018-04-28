@@ -15,6 +15,7 @@ class Recipe extends Model implements HasMedia
     use HasSlug;
     use HasMediaTrait;
     use Tags\HasTags;
+
     use Searchable;
 
     protected $guarded = [];
@@ -24,12 +25,11 @@ class Recipe extends Model implements HasMedia
      * And return the slug as path to recipe
      *
      */
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug')
-            ->doNotGenerateSlugsOnUpdate();
+            ->saveSlugsTo('slug');
     }
 
     public function path()
@@ -150,7 +150,13 @@ class Recipe extends Model implements HasMedia
     public function toSearchableArray()
     {
         $record = $this->toArray();
-        $record['image'] = $this->getFirstMedia()->getUrl();
+        // this is currently breaking the creation of new recipes because the
+        // event fires before the images are set
+        if (!empty($this->getFirstMedia())) {
+            $record['image'] = $this->getFirstMedia()->getUrl();
+        } else {
+            $record['image'] = 'default';
+        }
 
         return $record;
     }

@@ -37,6 +37,9 @@
   z-index: $zindex-dropdown;
 }
 
+/**
+ * Body
+ */
 body {
   background-repeat: no-repeat;
   background-size: cover;
@@ -83,7 +86,15 @@ h1.card-title {
 }
 
 /**
- * Just card things
+ * Pages
+ */
+
+.page {
+  min-height: 75vh;
+}
+
+/**
+ * Cards
  */
 
 .card {
@@ -103,6 +114,7 @@ h1.card-title {
   overflow: hidden;
   border-radius: $border-radius;
 }
+
 .img-recipe {
   border-radius: $border-radius;
   transition: .2s ease;
@@ -206,5 +218,6 @@ h1.card-title {
  */
 
 footer {
+  margin-top: -40px;
   background-color: $dark-grey;
 }

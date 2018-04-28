@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfb05bad53dd6daa8c7db53ba50b5b45",
+    "content-hash": "5c4b3c4022aa9f5d7e1b73fa9345af28",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -3462,16 +3462,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.1.5",
+            "version": "7.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "3fbf76a929d553fa027b8fe123bc0f9a968348ca"
+                "reference": "fbee7dca01bd9290eea8076f4a30f7e180106ec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/3fbf76a929d553fa027b8fe123bc0f9a968348ca",
-                "reference": "3fbf76a929d553fa027b8fe123bc0f9a968348ca",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/fbee7dca01bd9290eea8076f4a30f7e180106ec1",
+                "reference": "fbee7dca01bd9290eea8076f4a30f7e180106ec1",
                 "shasum": ""
             },
             "require": {
@@ -3540,7 +3540,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2018-04-13T08:54:17+00:00"
+            "time": "2018-04-26T14:51:57+00:00"
         },
         {
             "name": "spatie/laravel-sluggable",

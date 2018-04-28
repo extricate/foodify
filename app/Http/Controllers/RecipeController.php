@@ -45,7 +45,7 @@ class RecipeController extends Controller
     {
         Validator::make($request->all(), [
             'name' => 'required|unique:recipes|max:255',
-            'description' => 'required|min:50|max:1000',
+            'description' => 'required|min:50|max:5000',
             'image' => 'required|image|max:2048'
         ])->validate();
 
@@ -124,7 +124,7 @@ class RecipeController extends Controller
 
         if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
 
-            $recipe->update($request->all());
+            $recipe->update($request->except('image'));
 
             if ($request->image) {
                 $recipe
