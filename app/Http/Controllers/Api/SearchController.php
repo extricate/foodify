@@ -16,10 +16,16 @@ class SearchController extends Controller
         if($request->has('q')) {
 
             // Using the Laravel Scout syntax to search the products table.
-            $recipe = Recipe::search($request->get('q'))->get();
+            $recipes = Recipe::search($request->get('q'))->get();
+
+            // Adding the image relationships to the recipes
+            foreach ($recipes as $recipe) {
+                $image = Recipe::find($recipe)->first()->getFirstMedia()->getUrl();
+                $recipe['image'] = $image;
+            }
 
             // If there are results return them, if none, return the error message.
-            return $recipe->count() ? $recipe : $error;
+            return $recipes->count() ? $recipes : $error;
         }
 
         // Return the error message if no keywords existed

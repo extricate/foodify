@@ -140,4 +140,18 @@ class Recipe extends Model implements HasMedia
     {
         return $this->hasMany(Comment::class);
     }
+
+    /**
+     * Custom searchable array for Algolia live search.
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $record = $this->toArray();
+        $record['image'] = $this->getFirstMedia()->getUrl();
+
+        return $record;
+    }
 }

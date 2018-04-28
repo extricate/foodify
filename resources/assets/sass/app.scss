@@ -94,6 +94,11 @@ h1.card-title {
   border: 0;
 }
 
+.card-truncated {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
 .img-recipe-container {
   overflow: hidden;
   border-radius: $border-radius;
