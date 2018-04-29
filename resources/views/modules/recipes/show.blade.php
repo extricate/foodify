@@ -2,7 +2,12 @@
 
 @section('title', $recipe->name)
 
-@php $foodplan = auth()->user()->food_plan(); @endphp
+@auth
+    @php $foodplan = auth()->user()->food_plan(); @endphp
+@endauth
+@guest
+    @php $foodplan = null; @endphp
+@endguest
 
 @section('submenu')
     {{ Breadcrumbs::render('recipes.show', $recipe) }}
@@ -18,9 +23,11 @@
             <div class="card">
                 <div class="card-img-container">
                     <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}" alt="{{ $recipe->name }}">
-                    <div class="card-favorite">
-                        @include('modules.recipes.partials.favorite')
-                    </div>
+                    @auth
+                        <div class="card-favorite">
+                            @include('modules.recipes.partials.favorite')
+                        </div>
+                    @endauth
                 </div>
                 <div class="card-body">
                     <div class="card-title h1 primary">{{ $recipe->name }}</div>
@@ -31,15 +38,17 @@
             </div>
         </div>
         <div class="col-12 col-lg-4">
-            @if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin())
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-text">
-                            <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+            @auth
+                @if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin())
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endif
+                @endif
+            @endauth
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
@@ -55,17 +64,19 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h2>Plan this meal on </h2>
-                    <div class="row justify-content-center">
-                        @foreach ($foodplan->days() as $day)
-                            @php $foodplan_day = $foodplan->$day() @endphp
-                            @include('modules.foodplan.partials.plan-days-recipe', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan, 'foodplan_day' => $foodplan_day])
-                        @endforeach
+            @auth
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Plan this meal on </h2>
+                        <div class="row justify-content-center">
+                            @foreach ($foodplan->days() as $day)
+                                @php $foodplan_day = $foodplan->$day() @endphp
+                                @include('modules.foodplan.partials.plan-days-recipe', ['day' => $day, 'recipe' => $recipe, 'foodplan' => $foodplan, 'foodplan_day' => $foodplan_day])
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endauth
             <br>
             <div class="card">
                 <div class="card-body">

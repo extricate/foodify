@@ -2,7 +2,12 @@
 
 @section('title', 'Recipes')
 
-@php $foodplan = auth()->user()->food_plan(); @endphp
+@auth
+    @php $foodplan = auth()->user()->food_plan(); @endphp
+@endauth
+@guest
+    @php $foodplan = null; @endphp
+@endguest
 
 @section('submenu')
     <div class="align-self-center">
@@ -47,6 +52,7 @@
 
     <recipe-search-component></recipe-search-component>
 
+    @auth
     <div class="row mb-sm-3 mb-md-0 mt-lg-1">
         <div class="col-12">
             <div class="owl-container">
@@ -63,6 +69,7 @@
             </div>
         </div>
     </div>
+    @endauth
     <div class="row">
         @foreach($recipes as $recipe)
             <div class="col-lg-4 col-sm-12 mb-3">

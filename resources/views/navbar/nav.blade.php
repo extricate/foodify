@@ -30,7 +30,7 @@
                         @endforeach
                     @endauth
                     <li>
-                        <a href="/recipes/create" class="btn btn-primary btn-inline pull-right">
+                        <a href="{{ route('recipes.create') }}" class="btn btn-primary btn-inline pull-right">
                             Submit recipe <i class="fal fa-plus"></i>
                         </a>
                     </li>
@@ -47,6 +47,14 @@
                                         class="caret"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('settings.index') }}" class="dropdown-item">
+                                    Settings
+                                </a>
+                                @if (Auth::user()->admin == true)
+                                    <a href="/admin" class="dropdown-item">
+                                        Admin panel
+                                    </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -58,7 +66,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                @endguest
             </ul>
         </div>
     </div>

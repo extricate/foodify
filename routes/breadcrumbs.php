@@ -10,6 +10,25 @@ Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
     $breadcrumbs->push($page->name, route('page.show', $page->slug));
 });
 
+Breadcrumbs::register('settings.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Settings', route('settings.index'));
+});
+
+Breadcrumbs::register('settings.password', function ($breadcrumbs) {
+    $breadcrumbs->parent('settings.index');
+    $breadcrumbs->push('Change your password');
+});
+
+Breadcrumbs::register('user.login', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Login');
+});
+
+Breadcrumbs::register('user.register', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Registering new account');
+});
 
 Breadcrumbs::register('user.show', function ($breadcrumbs, $viewinguser) {
     $breadcrumbs->parent('home');

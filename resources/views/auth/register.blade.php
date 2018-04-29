@@ -2,6 +2,12 @@
 
 @section('title', 'Register')
 
+@section('submenu')
+    <div class="align-self-center">
+        {{ Breadcrumbs::render('user.register') }}
+    </div>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

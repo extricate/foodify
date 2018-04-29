@@ -28,6 +28,7 @@ Route::get('/page/{param}', 'PageController@show')->name('page.show');
 /**
  * User settings
  */
+Route::get('/settings', 'Auth\UserSettingsController@index')->name('settings.index')->middleware('auth');
 Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
 Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
@@ -38,9 +39,9 @@ Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
  */
 Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show');
-Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit');
-Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update');
-Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store');
+Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit')->middleware('auth');
+Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
+Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store')->middleware('auth');
 
 /**
  * Ingredients

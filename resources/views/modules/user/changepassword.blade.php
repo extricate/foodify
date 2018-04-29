@@ -2,6 +2,12 @@
 
 @section('title', 'Password - Settings')
 
+@section('submenu')
+    <div class="align-self-center">
+        {{ Breadcrumbs::render('settings.password') }}
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

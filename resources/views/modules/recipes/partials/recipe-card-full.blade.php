@@ -1,9 +1,11 @@
 <div class="card h-100">
     <div class="card-img-container">
         <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}" alt="{{ $recipe->name }}">
+        @auth
         <div class="card-favorite">
             @include('modules.recipes.partials.favorite')
         </div>
+        @endauth
     </div>
     <div class="card-body">
         <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
@@ -11,6 +13,7 @@
             {{ str_limit($recipe->description, 100) }}
         </p>
     </div>
+    @auth
     <div class="card-footer">
         <div class="container pl-5 pr-5">
             <div class="row justify-content-center clearfix">
@@ -22,4 +25,5 @@
             </div>
         </div>
     </div>
+    @endauth
 </div>
