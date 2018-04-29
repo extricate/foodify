@@ -54,6 +54,12 @@ class BlogController extends Controller
         ])->validate();
 
         $post->update($request->only('name', 'description'));
+
+        // save the new slug
+        $post->slug = $post->slug();
+        $post->save();
+
+        return redirect($post->path())->with('message', 'Post created!');
     }
 
     public function destroy($param)
