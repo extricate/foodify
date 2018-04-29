@@ -54,11 +54,13 @@
                     </div>
                 </div>
             </ais-results>
-            <ais-no-results slot-scope="props" v-if="props.query !== ''">
-                <template>
+            <ais-no-results>
+                <template slot-scope="props">
                     <div class="row">
-                        <div class="col text-center">
-                            <p>No results were found for "<i>{{ props.query }}</i>".</p>
+                        <div class="col text-center" v-if="props.query !== ''">
+                            <div class="alert alert-warning" role="alert">
+                                No results were found for <strong>"<i>{{ props.query }}</i>"</strong>.
+                            </div>
                         </div>
                     </div>
                 </template>
@@ -80,22 +82,22 @@
     export default {
         props: ['appId', 'apiKey', 'index', 'query'],
         methods: {
-            searchFunction: function (helper) {
+            /*searchFunction: function (helper) {
                 let searchResults = $('.search-results');
-                if (this.props.query === '') {
+                if (this.searchStore.query === '') {
                     searchResults.hide();
                     return;
                 }
                 helper.search();
                 searchResults.show();
-            },
+            },*/
             onPageChange() {
                 window.scrollTo(0, 0);
             },
         },
-        mounted: function () {
+        /*mounted: function () {
             this.searchFunction();
-        }
+        }*/
     }
 </script>
 
