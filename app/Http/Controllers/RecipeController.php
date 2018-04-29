@@ -60,6 +60,10 @@ class RecipeController extends Controller
             ->withResponsiveImages()
             ->toMediaCollection();
 
+        // update the searchable with added media by changing the name, cannot force this otherwise
+        $recipe->name = $request->name;
+        $recipe->save();
+
         if (request()->wantsJson()) {
             return response($recipe, 201);
         }

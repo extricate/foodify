@@ -14,8 +14,6 @@
                                     :classNames="{
                             'ais-input': 'form-control search-form'
                         }"
-                                    v-model.lazy="keywords"
-                                    v-debounce="300"
                             />
                             <span class="input-group-append">
                         <button class="btn btn-primary" type="button">Search <i class="fal fa-search"></i></button>
@@ -27,9 +25,9 @@
         </div>
         <div class="search-results">
             <ais-results inline-template :results-per-page="3">
-                <div class="row">
+                <div class="row card-columns">
                     <div class="col-md-4" v-for="result in results" :key="result.objectID">
-                        <div class="card h-100 mt-3">
+                        <div class="card mt-3">
                             <div class="card-img-container">
                                 <img class="card-img-top" :src="result.image" :alt="result.name">
                             </div>
@@ -40,6 +38,9 @@
                                     </h1>
                                 </a>
                                 <p class="card-text card-truncated" v-html="result.description"></p>
+                                <p class="text-center">
+                                    <a v-bind:href="'/recipes/'+ result.id" class="btn btn-primary">Go to recipe <i class="fal fa-arrow-right"></i></a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -47,13 +48,19 @@
             </ais-results>
             <ais-no-results>
                 <template slot-scope="props">
-                    No results were found for "<i>{{ props.query }}</i>".
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>No results were found for "<i>{{ props.query }}</i>".</p>
+                        </div>
+                    </div>
                 </template>
             </ais-no-results>
         </div>
         <div class="text-center">
             <ais-pagination class="pagination" :classNames="{
                                         'ais-pagination': 'pagination',
+                                        'ais-pagination__item': 'page-item',
+                                        'ais-pagination__link': 'page-link',
                                         'ais-pagination__item--active': 'active',
                                         'ais-pagination__item--disabled': 'disabled'
                                     }" v-on:page-change="onPageChange"/>
@@ -65,6 +72,15 @@
     export default {
         props: ['appId', 'apiKey', 'index', 'query'],
         methods: {
+            searchFunction: function(helper) {
+                var searchResults = $('.search-results');
+                if (helper.state.query === '') {
+                    searchResults.hide();
+                    return;
+                }
+                helper.search();
+                searchResults.show();
+            },
             onPageChange() {
                 window.scrollTo(0, 0);
             },

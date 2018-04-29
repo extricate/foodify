@@ -1,5 +1,11 @@
 @extends('layouts/app')
 
+@section('title', 'Submitting new recipe')
+
+@section('submenu')
+    {{ Breadcrumbs::render('recipes.create') }}
+@endsection
+
 @section('content')
     <div class="row">
         <div class="card">

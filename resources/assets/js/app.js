@@ -7,8 +7,14 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import InstantSearch from 'vue-instantsearch';
-Vue.use(InstantSearch);
+import { Index, SearchBox, Results, Pagination, NoResults, Input, Highlight } from 'vue-instantsearch';
+Vue.component('ais-index', Index);
+Vue.component('ais-input', Input);
+Vue.component('ais-search-box', SearchBox);
+Vue.component('ais-results', Results);
+Vue.component('ais-pagination', Pagination);
+Vue.component('ais-no-results', NoResults);
+Vue.component('ais-highlight', Highlight);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

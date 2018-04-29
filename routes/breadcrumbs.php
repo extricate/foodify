@@ -32,6 +32,11 @@ Breadcrumbs::register('recipes.edit', function ($breadcrumbs, $recipe) {
     $breadcrumbs->push('Editing ' . $recipe->name);
 });
 
+Breadcrumbs::register('recipes.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('recipes.index');
+    $breadcrumbs->push('Submitting new recipe');
+});
+
 Breadcrumbs::register('favorites.index', function ($breadcrumbs) {
     $breadcrumbs->parent('recipes.index');
     $breadcrumbs->push('Your favorites', route('favorites.index'));
