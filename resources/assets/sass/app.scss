@@ -198,7 +198,15 @@ h1.card-title {
   @include media-breakpoint-up(md) {
     height: 100px;
   }
+}
 
+/**
+ * Algolia
+ */
+
+.algolia {
+  text-align: center;
+  margin: 5px;
 }
 
 /**

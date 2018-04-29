@@ -3,11 +3,12 @@
             app-id="MN94X6PY1W"
             api-key="cbec1d46afcb648b88fc833049994eb2"
             index-name="recipes"
+            v-bind:auto-search=false
     >
         <div class="row justify-content-center">
             <div class="col-lg-6 col-sm-12">
                 <form class="form-group">
-                    <ais-search-box>
+                    <ais-search-box placeholder="What are you craving for?">
                         <div class="input-group input-group-lg">
                             <ais-input
                                     placeholder="What are you craving for?"
@@ -16,8 +17,13 @@
                         }"
                             />
                             <span class="input-group-append">
-                        <button class="btn btn-primary" type="button">Search <i class="fal fa-search"></i></button>
-                    </span>
+                                <button class="btn btn-primary" type="button">
+                                    Search <i class="fal fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="algolia pull-right">
+                            <ais-powered-by></ais-powered-by>
                         </div>
                     </ais-search-box>
                 </form>
@@ -39,15 +45,17 @@
                                 </a>
                                 <p class="card-text card-truncated" v-html="result.description"></p>
                                 <p class="text-center">
-                                    <a v-bind:href="'/recipes/'+ result.id" class="btn btn-primary">Go to recipe <i class="fal fa-arrow-right"></i></a>
+                                    <a v-bind:href="'/recipes/'+ result.id" class="btn btn-primary">
+                                        Go to recipe <i class="fal fa-arrow-right"></i>
+                                    </a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </ais-results>
-            <ais-no-results>
-                <template slot-scope="props">
+            <ais-no-results slot-scope="props" v-if="props.query !== ''">
+                <template>
                     <div class="row">
                         <div class="col text-center">
                             <p>No results were found for "<i>{{ props.query }}</i>".</p>
@@ -72,9 +80,9 @@
     export default {
         props: ['appId', 'apiKey', 'index', 'query'],
         methods: {
-            searchFunction: function(helper) {
-                var searchResults = $('.search-results');
-                if (helper.state.query === '') {
+            searchFunction: function (helper) {
+                let searchResults = $('.search-results');
+                if (this.props.query === '') {
                     searchResults.hide();
                     return;
                 }
@@ -85,6 +93,9 @@
                 window.scrollTo(0, 0);
             },
         },
+        mounted: function () {
+            this.searchFunction();
+        }
     }
 </script>
 
