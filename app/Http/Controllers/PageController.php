@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        // we don't have a page overview yet, only directly linked pages from menus
     }
 
     /**
@@ -24,7 +28,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        // pages are created from the admin panel using a BREAD controller
     }
 
     /**

@@ -122,7 +122,7 @@ class RecipeController extends Controller
 
         Validator::make($request->all(), [
             'name' => 'unique:recipes|max:255',
-            'description' => 'min:50|max:1000',
+            'description' => 'min:50|max:5000',
             'image' => 'image|max:2048'
         ])->validate();
 

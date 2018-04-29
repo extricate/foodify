@@ -44,6 +44,12 @@ Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store')->middleware('auth');
 
 /**
+ * Blog
+ */
+
+Route::resource('/blog', 'BlogController');
+
+/**
  * Ingredients
  */
 Route::resource('/ingredients', 'IngredientController');
