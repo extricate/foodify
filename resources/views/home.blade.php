@@ -42,19 +42,21 @@
                                 </div>
                             </div>
                         @endforeach
-
                         {{ $user->recipes()->links() }}
                     </div>
                 </div>
                 <div class="card m-1">
                     <div class="card-body">
                         <div class="card-title">Your dietary analytics</div>
+                        <div class="chart">
+                            {!! $chart->container() !!}
+                        </div>
+                        {!! $chart->script() !!}
                     </div>
                 </div>
                 <div class="card m-1">
                     <div class="card-body">
                         <div class="card-title">Your favorites</div>
-
                         @foreach($user->showFavorites() as $favorite)
                             <div class="card">
                                 <div class="card-body">
@@ -62,7 +64,6 @@
                                 </div>
                             </div>
                         @endforeach
-
                         {{ $user->showFavorites()->links() }}
                     </div>
                 </div>

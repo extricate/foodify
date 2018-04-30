@@ -20,6 +20,7 @@
                     <a class="navbar-brand navbar-logo" href="{{ url('/') }}" height="30" width="50">
                         @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
                     </a>
+                    <p>Copyright &copy; Foodify. All rights reserved.</p>
                 </div>
             </div>
             <div class="col-4"></div>

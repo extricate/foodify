@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\DietaryChart;
+use App\Http\Controllers\ChartController;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,33 @@ class HomeController extends Controller
     public function index()
     {
         $foodplan = auth()->user()->food_plan();
-        return view('home', compact('foodplan', $foodplan));
+        $chart = $this->chart();
+        return view('home', compact(['foodplan', $foodplan, 'chart', $chart]));
+    }
+
+    /**
+     * Kinda breaking the single responsibility principle here
+     * Will have to find a better solution for that.
+     * Still testing the functionality.
+     * @return DietaryChart
+     */
+    public function chart()
+    {
+        $chart = new DietaryChart;
+        // Additional logic depending on the chart approach
+        $chart
+            ->labels(['Fiber', 'Protein', 'Carbonhydrates', 'Vitamins', 'Minerals'])
+            ->dataset('Your diet', 'doughnut', [
+                100,
+                65,
+                84,
+                45,
+                90
+            ])
+            ->options([
+                'borderColor' => ['#B3CC57', '#ECF081', '#FFBE40', '#EF746F', '#AB3E5B'],
+                'backgroundColor' => ['#B3CC57', '#ECF081', '#FFBE40', '#EF746F', '#AB3E5B']
+            ]);
+        return $chart;
     }
 }

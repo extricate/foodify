@@ -13,6 +13,7 @@ try {
     require('bootstrap');
     require('owl.carousel');
     require('bootstrap-notify');
+    require('chart.js');
 
 } catch (e) {}
 
