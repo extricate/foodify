@@ -16,6 +16,43 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.nav-buttons {
+  transition: all .2s ease;
+  border-bottom: 2px solid #f5f8fa;
+}
+
+.nav-recipes {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #B3CC57 !important;
+    border-bottom-color: #B3CC57;
+  }
+}
+
+.nav-plan {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #EF746F !important;
+    border-bottom-color: #EF746F;
+  }
+}
+
+.nav-history {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #AB3E5B !important;
+    border-bottom-color: #AB3E5B;
+  }
+}
+
+.nav-blog {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #FFBE40 !important;
+    border-bottom-color: #FFBE40;
+  }
+}
+
 .navbar-logo {
   width: 90px;
   height: auto;

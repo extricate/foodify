@@ -13,22 +13,22 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="{{ route('recipes.index') }}">
+                    <a class="nav-link nav-recipes" href="{{ route('recipes.index') }}">
                         Recipes <i class="fal fa-utensils"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('plan.index') }}">
+                    <a class="nav-link nav-plan" href="{{ route('plan.index') }}">
                         Plan <i class="fal fa-calendar"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('history.index') }}">
+                    <a class="nav-link nav-history" href="{{ route('history.index') }}">
                         History <i class="fal fa-history"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('blog.index') }}">
+                    <a class="nav-link nav-blog" href="{{ route('blog.index') }}">
                         Blog <i class="fal fa-comment"></i>
                     </a>
                 </li>
