@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Charts\DietaryChart;
-use App\Http\Controllers\ChartController;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -38,7 +37,9 @@ class HomeController extends Controller
     public function chart()
     {
         $chart = new DietaryChart;
-        // Additional logic depending on the chart approach
+
+        // create the chart that is shown on the homepage.
+        // we don't actually have statistic logic yet though, so for now it returns dummy data
         $chart
             ->labels(['Fiber', 'Protein', 'Carbonhydrates', 'Vitamins', 'Minerals'])
             ->dataset('Your diet', 'doughnut', [

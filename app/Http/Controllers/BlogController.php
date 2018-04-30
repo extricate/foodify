@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
@@ -15,7 +16,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $posts = Blog::all();
+        $posts = Blog::paginate(6);
         return view('modules.blog.index', compact('posts'));
     }
 
@@ -42,6 +43,20 @@ class BlogController extends Controller
         return view('modules.blog.edit', compact('post'));
     }
 
+    public function store(Request $request)
+    {
+        Validator::make($request->all(), [
+            'title' => 'unique:blogs|min:3|max:255|string',
+            'text' => 'min:50|max:3000',
+        ])->validate();
+
+        $post = Blog::create([
+            'title' => $request->title,
+            'content' => $request->text,
+        ]);
+
+        return view('modules.blog.show', compact('post'))->with('message', 'Post created!');
+    }
     public function update(Request $request, $param)
     {
         $post = Blog::where('id', $param)
@@ -49,17 +64,16 @@ class BlogController extends Controller
             ->firstOrFail();
 
         Validator::make($request->all(), [
-            'name' => 'unique:blog|max:255',
-            'description' => 'min:50|max:3000',
+            'title' => 'min:3|max:255|string',
+            'content' => 'min:50|max:3000',
         ])->validate();
 
-        $post->update($request->only('name', 'description'));
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->text
+        ]);
 
-        // save the new slug
-        $post->slug = $post->slug();
-        $post->save();
-
-        return redirect($post->path())->with('message', 'Post created!');
+        return redirect($post->path())->with('message', 'Post updated!');
     }
 
     public function destroy($param)

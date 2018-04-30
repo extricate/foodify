@@ -15,7 +15,6 @@ class Recipe extends Model implements HasMedia
     use HasSlug;
     use HasMediaTrait;
     use Tags\HasTags;
-
     use Searchable;
 
     protected $guarded = [];

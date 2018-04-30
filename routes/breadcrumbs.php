@@ -10,6 +10,26 @@ Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
     $breadcrumbs->push($page->name, route('page.show', $page->slug));
 });
 
+Breadcrumbs::register('blog.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Blog', route('blog.index'));
+});
+
+Breadcrumbs::register('blog.show', function ($breadcrumbs, $post) {
+    $breadcrumbs->parent('blog.index');
+    $breadcrumbs->push($post->title, route('blog.show', $post->slug));
+});
+
+Breadcrumbs::register('blog.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('blog.index');
+    $breadcrumbs->push('Creating new blog post');
+});
+
+Breadcrumbs::register('blog.update', function ($breadcrumbs, $post) {
+    $breadcrumbs->parent('blog.show', $post);
+    $breadcrumbs->push('Editing ' . $post->title);
+});
+
 Breadcrumbs::register('settings.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Settings', route('settings.index'));

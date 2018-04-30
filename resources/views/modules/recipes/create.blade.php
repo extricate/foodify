@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="card">
+        <div class="card w-100">
             <div class="card-body">
                 {!! Form::open([
 'method' => 'POST',
