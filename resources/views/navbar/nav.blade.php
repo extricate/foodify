@@ -3,7 +3,8 @@
         <a class="navbar-brand navbar-logo" href="{{ url('/') }}" height="30" width="50">
             @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
         </a>
-        <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fal fa-bars"></span>
         </button>
@@ -11,10 +12,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li><a class="nav-link" href="{{ route('recipes.index') }}">Recipes <i class="fal fa-utensils"></i></a>
+                <li>
+                    <a class="nav-link" href="{{ route('recipes.index') }}">
+                        Recipes <i class="fal fa-utensils"></i>
+                    </a>
                 </li>
-                <li><a class="nav-link" href="{{ route('plan.index') }}">Plan <i class="fal fa-calendar"></i></a></li>
-                <li><a class="nav-link" href="{{ route('history.index') }}">History <i class="fal fa-history"></i></a>
+                <li>
+                    <a class="nav-link" href="{{ route('plan.index') }}">
+                        Plan <i class="fal fa-calendar"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('history.index') }}">
+                        History <i class="fal fa-history"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('blog.index') }}">
+                        Blog <i class="fal fa-comment"></i>
+                    </a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->
@@ -28,20 +44,25 @@
                                 @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
                             </li>
                         @endforeach
+                        @if (Auth::user()->admin == true)
+                            <li>
+                                <a href="{{ route('recipes.create') }}" class="btn btn-primary btn-inline pull-right">
+                                    Submit recipe <i class="fal fa-plus"></i>
+                                </a>
+                            </li>
+                        @endif
                     @endauth
-                    <li>
-                        <a href="{{ route('recipes.create') }}" class="btn btn-primary btn-inline pull-right">
-                            Submit recipe <i class="fal fa-plus"></i>
-                        </a>
-                    </li>
                 </div>
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                    <li><a class="btn btn-primary btn-inline ml-1" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    <li><a class="btn btn-primary btn-inline ml-1"
+                           href="{{ route('register') }}">{{ __('Register') }}</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="btn btn-primary btn-inline ml-1 dropdown-toggle" href="#"
+                               role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <i class="fal fa-user-circle fa-fw"></i><span
                                         class="caret"></span>
@@ -66,7 +87,7 @@
                                 </form>
                             </div>
                         </li>
-                @endguest
+                        @endguest
             </ul>
         </div>
     </div>

@@ -10,7 +10,7 @@ class RecipeController extends Controller
 {
     public function __construct(Recipe $recipe)
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('admin')->except(['index', 'show']);
     }
 
     /**
