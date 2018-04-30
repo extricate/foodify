@@ -46,6 +46,13 @@ body {
   background-attachment: fixed;
 }
 
+/**
+ * Main
+ */
+main {
+  min-height: 75vh;
+}
+
 h1.primary {
   font-size: 2em;
   @include media-breakpoint-up(xs) {

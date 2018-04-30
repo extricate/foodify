@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c4b3c4022aa9f5d7e1b73fa9345af28",
+    "content-hash": "58dab80043e2cf94b98126633e46f4f0",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -423,6 +423,50 @@
                 "validator"
             ],
             "time": "2018-01-31T13:17:27+00:00"
+        },
+        {
+            "name": "consoletvs/charts",
+            "version": "6.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Charts.git",
+                "reference": "e0e2f8685b045e006462bbf27315a1bc67046850"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/e0e2f8685b045e006462bbf27315a1bc67046850",
+                "reference": "e0e2f8685b045e006462bbf27315a1bc67046850",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ConsoleTVs\\Charts\\ChartsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ConsoleTVs\\Charts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Èrik Campobadal Forés",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "The laravel charting package",
+            "time": "2018-03-14T17:25:32+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
