@@ -29,12 +29,22 @@
   }
 }
 
+.nav-recipes.active {
+  color: #B3CC57 !important;
+  border-bottom-color: #B3CC57;
+}
+
 .nav-plan {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #EF746F !important;
     border-bottom-color: #EF746F;
   }
+}
+
+.nav-plan.active {
+  color: #EF746F !important;
+  border-bottom-color: #EF746F;
 }
 
 .nav-history {
@@ -45,12 +55,22 @@
   }
 }
 
+.nav-history.active {
+  color: #AB3E5B !important;
+  border-bottom-color: #AB3E5B;
+}
+
 .nav-blog {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #FFBE40 !important;
     border-bottom-color: #FFBE40;
   }
+}
+
+.nav-blog.active {
+  color: #FFBE40 !important;
+  border-bottom-color: #FFBE40;
 }
 
 .navbar-logo {
