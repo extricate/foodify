@@ -141,11 +141,18 @@ class FoodPlanController extends Controller
 
     }
 
+    /**
+     * Suggest a new menu for the users.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function suggest()
     {
         $user = auth()->user();
         $foodplan = $user->food_plan();
 
+        // Just randomly suggest recipes in random order. In future versions this should
+        // obviously be based on the user preferences.
         foreach($foodplan->days() as $day) {
             $foodplan->$day = Recipe::inRandomOrder()->first()->id;
         }

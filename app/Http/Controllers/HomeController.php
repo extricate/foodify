@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Charts\DietaryChart;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,12 @@ class HomeController extends Controller
     {
         $foodplan = auth()->user()->food_plan();
         $chart = $this->chart();
-        return view('home', compact(['foodplan', $foodplan, 'chart', $chart]));
+        $users = $this->latestUsers();
+        return view('home', compact([
+            'foodplan', $foodplan,
+            'chart', $chart,
+            'users', $users
+        ]));
     }
 
     /**
@@ -54,5 +60,11 @@ class HomeController extends Controller
                 'backgroundColor' => ['#B3CC57', '#ECF081', '#FFBE40', '#EF746F', '#AB3E5B']
             ]);
         return $chart;
+    }
+
+    public function latestUsers()
+    {
+        $users = User::all()->take(6)->sortByDesc('created_at');
+        return $users;
     }
 }
