@@ -22,9 +22,26 @@ class FoodPlan extends Model
             $plan[] = $this->$day;
         }
     }
+
     public function owner()
     {
         return $this->belongsTo(User::class)->getResults();
+    }
+
+    public function isEmpty()
+    {
+        // default is that the plan is empty
+        $isEmpty = true;
+        foreach ($this->days() as $day) {
+            if ($this->$day() == null) {
+                // this day is empty so continue checking the rest
+                continue;
+            } else {
+                // a day is filled with something so the plan is not empty
+                $isEmpty = false;
+            }
+        }
+        return $isEmpty;
     }
 
     /**

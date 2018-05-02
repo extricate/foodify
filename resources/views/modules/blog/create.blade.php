@@ -33,6 +33,7 @@
                     <label for="content">Content</label>
                     <textarea type="text" class="form-control" id="text" name="text" placeholder="Post content" rows="4">{{ old('text') }}</textarea>
                 </div>
+                <p>Some <b>Markdown</b> is supported.</p>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
                 {!! Form::close() !!}

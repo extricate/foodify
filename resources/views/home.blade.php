@@ -29,6 +29,20 @@
             <p>This page serves as the headquarter of your fooodify planning.</p>
         </div>
     </div>
+    @if ($user->food_plan()->isEmpty() == true)
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <div class="alert alert-info text-center">
+                    <p class="lead">It appears your current food plan is empty! Would you like us to suggest some meals we think you'd like?</p>
+                    <div class="inline-block text-center">
+                        @include('modules.foodplan.partials.suggest')
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card-group">
@@ -36,7 +50,7 @@
                     <div class="card-body">
                         <div class="card-title">Your created recipes</div>
                         @foreach($user->recipes() as $recipe)
-                            <div class="card">
+                            <div class="card m-1">
                                 <div class="card-body">
                                     <a href="{{ $recipe->path() }}">{{ $recipe->name }}</a>
                                 </div>
@@ -58,7 +72,7 @@
                     <div class="card-body">
                         <div class="card-title">Your favorites</div>
                         @foreach($user->showFavorites() as $favorite)
-                            <div class="card">
+                            <div class="card m-1">
                                 <div class="card-body">
                                     <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
                                 </div>

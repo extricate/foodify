@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <h1 class="card-title">{{ $post->title }}</h1>
                     <div class="card-text">
-                        {{ $post->content }}
+                        {!! Markdown::convertToHtml($post->content) !!}
                     </div>
                 </div>
                 <div class="card-footer">

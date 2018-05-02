@@ -47,7 +47,7 @@ class BlogController extends Controller
     {
         Validator::make($request->all(), [
             'title' => 'unique:blogs|min:3|max:255|string',
-            'text' => 'min:50|max:3000',
+            'text' => 'min:50|max:10000',
         ])->validate();
 
         $post = Blog::create([
@@ -65,7 +65,7 @@ class BlogController extends Controller
 
         Validator::make($request->all(), [
             'title' => 'min:3|max:255|string',
-            'content' => 'min:50|max:3000',
+            'content' => 'min:50|max:10000',
         ])->validate();
 
         $post->update([
