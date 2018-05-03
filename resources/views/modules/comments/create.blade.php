@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mt-3">
     <div class="card-body">
         {!! Form::open([
             'method' => 'POST',
@@ -20,7 +20,7 @@
             <textarea type="text" class="form-control" id="text" name="text" placeholder="Write your comment here" rows="4">{{ old('text') }}</textarea>
         </div>
         <input class="hidden" type="hidden" id="recipe" name="recipe" value="{{ $recipe->id }}">
-        <p>Some <b>Markdown</b> is supported.</p>
+        <p class="small">Some <b>Markdown</b> is supported.</p>
         <button type="submit" class="btn btn-primary">Submit</button>
         {!! Form::close() !!}
     </div>

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mt-3">
     <div class="card-body">
         <div class="card-title">
             <div class="h4">{{ $comment->author()->name }}</div>
@@ -8,7 +8,6 @@
         </p>
     </div>
     <div class="card-footer">
-
         <small>
             Posted <i title="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}.</i>
 

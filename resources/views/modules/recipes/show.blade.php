@@ -17,10 +17,11 @@
     @if(auth()->user()->isAdmin())
 @section('submenu-buttons')
     <div class="d-none d-sm-inline-block">
-        <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+        <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe <i class="fal fa-edit"></i></a>
     </div>
     <div class="d-none d-sm-inline-block">
-        <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe</a>
+        <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe <i
+                    class="fal fa-trash"></i></a>
     </div>
 @endsection
 
@@ -60,12 +61,45 @@
                     </p>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h2>Comments</h2>
+                    @foreach($recipe->comments()->get() as $comment)
+                        @include('modules.comments.index', ['comment' => $comment])
+                    @endforeach
+                    @auth
+                        @if(auth()->user()->banned == false)
+                            @include('modules.comments.create')
+                        @else
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <div class="card-text">
+                                        You are banned and therefore cannot post a comment.
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endauth
+                    @guest
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Please login to leave a comment.
+                                </p>
+                            </div>
+                        </div>
+                    @endguest
+                </div>
+            </div>
         </div>
+
         <div class="col-12 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
-                        <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
+                        <h2>Rate this recipe <span class="badge badge-secondary">(under construction)</span></h2>
+                        <span class="badge badge-primary"><i
+                                    class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}</span>
                     </div>
                     <div class="card-text">
                         @include('modules.recipes.partials.rating', ['recipe' => $recipe])
@@ -102,39 +136,6 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-12">
-            <h2>What others say about this recipe</h2>
-
-            <div class="card-columns">
-                @foreach($recipe->comments()->get() as $comment)
-                    @include('modules.comments.index', ['comment' => $comment])
-                @endforeach
-                @auth
-                    @if(auth()->user()->banned == false)
-                        @include('modules.comments.create')
-                    @else
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-text">
-                                    You are banned and therefore cannot post a comment yourself.
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                @endauth
-                @guest
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text">
-                                Please login to leave a comment.
-                            </p>
-                        </div>
-                    </div>
-                @endguest
             </div>
         </div>
     </div>

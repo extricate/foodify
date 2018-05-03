@@ -2,10 +2,36 @@
 
 @section('title', 'Editing ' . $recipe->name)
 
-@php $foodplan = auth()->user()->food_plan(); @endphp
-
 @section('submenu')
     {{ Breadcrumbs::render('recipes.edit', $recipe) }}
+@endsection
+
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        <a class="btn btn-primary" href="{{ $recipe->path() }}">
+            Exit edit mode <i class="fal fa-sign-out"></i>
+        </a>
+    </div>
+    <div class="d-none d-sm-inline-block">
+        <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">
+            Delete recipe <i class="fal fa-trash"></i>
+        </a>
+    </div>
+@endsection
+
+@section('submenu-buttons-mobile')
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                <a class="btn btn-primary" href="{{ $recipe->path() }}">
+                    Exit edit mode <i class="fal fa-sign-out"></i>
+                </a>
+                <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">
+                    Delete recipe <i class="fal fa-trash"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('content')
@@ -100,15 +126,6 @@
             </div>
         </div>
         <div class="col-12 col-lg-4">
-            @if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin())
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-text">
-                            <a class="btn btn-primary" href="{{ $recipe->path() }}">Exit edit mode</a>
-                        </div>
-                    </div>
-                </div>
-            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
