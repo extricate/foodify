@@ -20,8 +20,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::paginate(6);
-
+        $recipes = Recipe::latest('updated_at')->paginate(6);
         return view('modules.recipes.index', compact('recipes'));
     }
 
