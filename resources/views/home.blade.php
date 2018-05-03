@@ -16,20 +16,6 @@
             </h1>
         </div>
     </div>
-    @if ($user->food_plan()->isEmpty() == true)
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-6">
-                <div class="alert alert-info text-center">
-                    <p><strong>It appears your current food plan is empty!</strong> Would you like us to suggest some
-                        meals
-                        we think you'd like?</p>
-                    <div class="inline-block text-center">
-                        @include('modules.foodplan.partials.suggest')
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
     <div class="row mb-sm-3 mb-md-0 mt-lg-1">
         <div class="col-12">
             <div class="owl-container">
@@ -44,6 +30,20 @@
             </div>
         </div>
     </div>
+    @if ($user->food_plan()->isEmpty() == true)
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <div class="alert alert-info text-center">
+                    <p><strong>It appears your current food plan is empty!</strong> Would you like us to suggest some
+                        meals
+                        we think you'd like?</p>
+                    <div class="inline-block text-center">
+                        @include('modules.foodplan.partials.suggest')
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card-group">

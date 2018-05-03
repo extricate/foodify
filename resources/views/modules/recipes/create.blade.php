@@ -35,6 +35,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="name">Preparation time in minutes</label>
+                    <div class="input-group">
+                    <input type="number" class="form-control" id="preparation_time" name="preparation_time" placeholder="Eg. 45 (minutes)" value="{{ old('preparation_time') }}">
+                        <div class="input-group-append">
+                            <span class="input-group-text">minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" name="image" id="image" value="{{ old('image') }}">
                 </div>

@@ -61,7 +61,7 @@
                     </p>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-3 mb-3">
                 <div class="col-12">
                     <h2>Comments</h2>
                     @foreach($recipe->comments()->get() as $comment)
@@ -71,7 +71,7 @@
                         @if(auth()->user()->banned == false)
                             @include('modules.comments.create')
                         @else
-                            <div class="card mt-3">
+                            <div class="card mt-3 mb-3">
                                 <div class="card-body">
                                     <div class="card-text">
                                         You are banned and therefore cannot post a comment.
@@ -94,7 +94,7 @@
         </div>
 
         <div class="col-12 col-lg-4">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-body">
                     <div class="card-text">
                         <h2>Rate this recipe <span class="badge badge-secondary">(under construction)</span></h2>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             @auth
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h2>Plan this meal on </h2>
                         <div class="row justify-content-center">
@@ -124,7 +124,6 @@
                     </div>
                 </div>
             @endauth
-            <br>
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">

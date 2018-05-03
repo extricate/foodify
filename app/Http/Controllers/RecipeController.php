@@ -46,13 +46,15 @@ class RecipeController extends Controller
         Validator::make($request->all(), [
             'name' => 'required|unique:recipes|max:255',
             'description' => 'required|min:50|max:5000',
-            'image' => 'required|image|max:2048'
+            'image' => 'required|image|max:2048',
+            'preparation_time' => 'integer|max:1000'
         ])->validate();
 
         $recipe = Recipe::create([
             'name' => $request->name,
             'description' => $request->description,
             'author' => auth()->user()->id,
+            'preparation_time' => $request->preparation_time,
         ]);
 
         $recipe
