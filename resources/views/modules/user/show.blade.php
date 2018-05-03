@@ -12,8 +12,8 @@
 
 @section('submenu-buttons')
     <div class="d-none d-sm-inline-block">
-        <a href="{{ route('favorites.index') }}" class="btn btn-primary mr-1">
-            Suggestions <i class="fal fa-badge-check"></i>
+        <a href="#" class="btn btn-primary mr-1">
+            Share <i class="fal fa-share"></i>
         </a>
         @include('modules.user.partials.ban-user', ['user_id' => $user->id])
         @if($viewinguser->admin == false)
@@ -35,9 +35,15 @@
     <div class="collapse pull-right" id="submenu-buttons">
         <div class="card submenu-collapsible">
             <div class="card-body">
-                <a href="{{ route('favorites.index') }}" class="btn btn-primary">
-                    Suggestions <i class="fal fa-badge-check"></i>
+                <a href="#" class="btn btn-primary mr-1">
+                    Share <i class="fal fa-share"></i>
                 </a>
+                @include('modules.user.partials.ban-user', ['user_id' => $user->id])
+                @if($viewinguser->admin == false)
+                    @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => true])
+                @else
+                    @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => false])
+                @endif
             </div>
         </div>
     </div>

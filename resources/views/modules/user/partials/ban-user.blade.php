@@ -6,6 +6,6 @@
 ]) !!}
     {{ csrf_field() }}
     <input type="hidden" class="hidden" name="user_id" value="{{ $user_id }}">
-    <button type="submit" class="btn btn-danger"><i class="fal fa-user-lock"></i></button>
+    <button type="submit" class="btn btn-danger">Ban <i class="fal fa-user-lock"></i></button>
     {!! Form::close() !!}
 </div>
