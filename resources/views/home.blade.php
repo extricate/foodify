@@ -130,7 +130,9 @@
                                         <a href="{{ $comment->onRecipe()->getResults()->path()}}">
                                             {{ $comment->onRecipe()->getResults()->name }}
                                         </a>
-                                        <a href="{{ route('user.show', $comment->author()->id) }}">{{ $comment->author()->name }}</a>
+                                        <a href="{{ route('user.show', $comment->author()->id) }}">
+                                            {{ $comment->author()->name }}
+                                        </a>
                                             said:
                                         <div class="card-text">
                                             <strong>"{{ str_limit($comment->text, 100) }}"</strong>

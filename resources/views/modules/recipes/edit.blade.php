@@ -84,11 +84,10 @@
                     </div>
                 @endif
                 {{ csrf_field() }}
-
                 <div class="card-body form-group">
                     <input type="hidden" class="hidden" name="id" value="{{ $recipe->id }}">
                     <div class="input-group">
-                        <input type="text" rows="1" class="form-control" name="name" value="{{ $recipe->name}}">
+                        <input type="text" class="form-control" name="name" value="{{ $recipe->name}}">
                         <div class="input-group-append">
                             <button type="submit" class="mr-2 btn btn-primary">Change name</button>
                         </div>
@@ -111,7 +110,6 @@
                     </div>
                 @endif
                 {{ csrf_field() }}
-
                 <div class="card-body">
                     <div class="form-group">
                         <textarea type="text" class="form-control" id="description" name="description"
@@ -128,6 +126,41 @@
         <div class="col-12 col-lg-4">
             <div class="card">
                 <div class="card-body">
+                    <h2 class="card-title">
+                        Details
+                    </h2>
+                    <div class="card-text">
+                        {!! Form::open([
+                'method' => 'PATCH',
+                'route' => ['recipe.update', $recipe->id],
+                'enctype' => 'multipart/form-data'
+                ]) !!}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        {{ csrf_field() }}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="preparation_time">Preparation time</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="preparation_time"
+                                           name="preparation_time"
+                                           placeholder="{{ $recipe->preparation_time }}">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="mr-2 btn btn-primary">Change time</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" class="hidden" name="id" value="{{ $recipe->id }}">
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
                     <div class="card-text">
                         @foreach($recipe->tags as $tag)
                             <a href="/recipes/tags/{{ $tag->name }}"
@@ -136,16 +169,16 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
-                    <h2 class="card-title">
-                        Ingredients
-                    </h2>
-                    <ul>
-                        @foreach ($recipe->ingredients() as $ingredient)
-                            <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
-                        @endforeach
-                    </ul>
+                    <h2 class="card-title">Ingredients</h2>
+                    <div class="card-text">
+                        <ul>
+                            @foreach ($recipe->ingredients() as $ingredient)
+                                <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
