@@ -10,6 +10,39 @@
     </div>
 @endsection
 
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        <a href="{{ route('favorites.index') }}" class="btn btn-primary mr-1">
+            Suggestions <i class="fal fa-badge-check"></i>
+        </a>
+        @include('modules.user.partials.ban-user', ['user_id' => $user->id])
+        @if($viewinguser->admin == false)
+            @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => true])
+        @else
+            @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => false])
+        @endif
+    </div>
+    <div class="d-sm-none">
+        <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
+           aria-expanded="false"
+           aria-controls="submenu-buttons">
+            <i class="fal fa-ellipsis-v"></i>
+        </a>
+    </div>
+@endsection
+
+@section('submenu-buttons-mobile')
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                <a href="{{ route('favorites.index') }}" class="btn btn-primary">
+                    Suggestions <i class="fal fa-badge-check"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="row mb-sm-3 mb-md-0 mt-lg-1">
         <div class="col-12">

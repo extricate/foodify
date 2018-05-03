@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->only(['ban']);
+        $this->middleware('admin')->only(['ban', 'admin']);
     }
 
     /**
@@ -37,7 +37,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +48,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -60,7 +60,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -71,8 +71,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -83,7 +83,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -103,5 +103,27 @@ class UserController extends Controller
         $user->save();
 
         return back()->with('message', 'User ' . $user->name . ' has been banned from making comments.');
+    }
+
+    public function admin(Request $request)
+    {
+        // ban a user from posting content
+        Validator::make($request->all(), [
+            'user_id' => 'required|exists:users',
+            'action' => 'required|boolean'
+        ]);
+
+        $user = User::findOrFail($request->user_id);
+
+        if ($request->action == true) {
+            $user->admin = true;
+            $user->save();
+            return back()->with('message', 'User ' . $user->name . ' has been made an admin.');
+
+        }
+
+        $user->admin = false;
+        $user->save();
+        return back()->with('message', 'User ' . $user->name . ' has been removed as an admin.');
     }
 }

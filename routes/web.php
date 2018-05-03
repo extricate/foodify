@@ -33,6 +33,7 @@ Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswo
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
 Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
 Route::post('/user/ban', 'UserController@ban')->name('user.ban');
+Route::post('/user/admin', 'UserController@admin')->name('user.admin');
 
 
 /**

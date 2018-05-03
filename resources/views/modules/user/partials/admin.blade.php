@@ -1,11 +1,12 @@
 <div class="form-inline pull-right mr-1">
     {!! Form::open([
 'method' => 'POST',
-'route' => ['user.ban'],
+'route' => ['user.admin'],
 'enctype' => 'multipart/form-data'
 ]) !!}
     {{ csrf_field() }}
     <input type="hidden" class="hidden" name="user_id" value="{{ $user_id }}">
-    <button type="submit" class="btn btn-danger"><i class="fal fa-user-lock"></i></button>
+    <input type="hidden" class="hidden" name="action" value="{{ $action }}">
+    <button type="submit" class="btn btn-success">@if( $action == true) Make admin @else Remove admin @endif <i class="fal fa-user-shield"></i></button>
     {!! Form::close() !!}
 </div>
