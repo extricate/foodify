@@ -59,19 +59,20 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Your favorites</div>
-                        @if(empty($user->showFavorites()))
-                        @foreach($user->showFavorites() as $favorite)
-                            <div class="card m-1">
-                                <div class="card-body">
-                                    <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
+                        @if($user->showFavorites()->count() > 0)
+                            @foreach($user->showFavorites() as $favorite)
+                                <div class="card m-1">
+                                    <div class="card-body">
+                                        <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
-                        {{ $user->showFavorites()->links() }}
+                            @endforeach
+                            {{ $user->showFavorites()->links() }}
                         @else
                             <div class="card-text">
                                 <div class="alert alert-primary">
-                                    <i class="fal fa-info-circle"></i> You can add a recipe to your favorites by pressing on the heart button on a recipe.
+                                    <i class="fal fa-info-circle"></i> You can add a recipe to your favorites by
+                                    pressing on the heart button on a recipe.
                                 </div>
                             </div>
                         @endif
