@@ -16,7 +16,7 @@
             </h1>
         </div>
     </div>
-    <div class="row mb-sm-3 mb-md-0 mt-lg-1">
+    <div class="row mb-sm-3 mb-md-0 mt-lg-3 mb-lg-3">
         <div class="col-12">
             <div class="owl-container">
                 <div class="owl-carousel owl-theme">
@@ -82,9 +82,9 @@
         </div>
     </div>
     @if (auth()->user()->admin == true)
-        <div class="row mt-3">
+        <div class="row mt-5 mb-5">
             <div class="col-12">
-                <h1 class="primary">Admin panel</h1>
+                <h1 class="primary">Quick admin panel</h1>
             </div>
             <div class="col-12">
                 <div class="card-group">
@@ -101,7 +101,10 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{ $user->recipes()->links() }}
+                            <div class="mt-3 mb-3">
+                                {{ $user->recipes()->links() }}
+                            </div>
+
                         </div>
                     </div>
                     <div class="card">

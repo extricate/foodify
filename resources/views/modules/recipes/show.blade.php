@@ -61,7 +61,7 @@
                     </p>
                 </div>
             </div>
-            <div class="row mt-3 mb-3">
+            <div class="row mt-5 mb-3">
                 <div class="col-12">
                     <h2>Comments</h2>
                     @foreach($recipe->comments()->get() as $comment)
@@ -81,7 +81,7 @@
                         @endif
                     @endauth
                     @guest
-                        <div class="card">
+                        <div class="card mt-3 mb-3">
                             <div class="card-body">
                                 <p class="card-text">
                                     Please login to leave a comment.
@@ -97,7 +97,15 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="card-text">
-                        <h2>Rate this recipe <span class="badge badge-secondary">(under construction)</span></h2>
+                        <h2>Details <span class="badge badge-secondary">(under construction)</span></h2>
+                        <div class="card-text">
+                            Preparation time:
+                            @if($recipe->preparation_time > 0)
+                                {{ $recipe->preparation_time }} minutes
+                            @else
+                                not set.
+                            @endif
+                        </div>
                         <span class="badge badge-primary"><i
                                     class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}</span>
                     </div>
@@ -109,6 +117,18 @@
                             <a href="/recipes/tags/{{ $tag->name }}" class="badge badge-primary">{{ $tag->name }}</a>
                         @endforeach
                     </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        Ingredients
+                    </h2>
+                    <ul>
+                        @foreach ($recipe->ingredients() as $ingredient)
+                            <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             @auth
@@ -124,18 +144,6 @@
                     </div>
                 </div>
             @endauth
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">
-                        Ingredients
-                    </h2>
-                    <ul>
-                        @foreach ($recipe->ingredients() as $ingredient)
-                            <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
