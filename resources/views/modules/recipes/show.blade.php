@@ -64,7 +64,7 @@
             <div class="row mt-5 mb-3">
                 <div class="col-12">
                     <h2>Comments</h2>
-                    @foreach($recipe->comments()->get() as $comment)
+                    @foreach($recipe->comments()->orderBy('created_at', 'desc')->get() as $comment)
                         @include('modules.comments.index', ['comment' => $comment])
                     @endforeach
                     @auth

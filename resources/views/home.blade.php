@@ -124,21 +124,18 @@
                         <div class="card-body">
                             <div class="card-title">Latest comments</div>
                             @foreach($comments as $comment)
-                                <div class="card m-1">
+                                <div class="card mt-2">
                                     <div class="card-body">
                                         On
                                         <a href="{{ $comment->onRecipe()->getResults()->path()}}">
                                             {{ $comment->onRecipe()->getResults()->name }}
                                         </a>
                                         <a href="{{ route('user.show', $comment->author()->id) }}">{{ $comment->author()->name }}</a>
-                                        said
-                                    </div>
-                                    <hr>
-                                    <div class="card-body">
+                                            said:
                                         <div class="card-text">
-                                            "{{ str_limit($comment->text, 100) }}"
+                                            <strong>"{{ str_limit($comment->text, 100) }}"</strong>
                                         </div>
-                                        <div class="card-text">
+                                        <div class="card-text text-right">
                                             <div class="badge badge-primary badge-pill"
                                                  title="{{ $comment->created_at }}">
                                                 Posted {{ $comment->created_at->diffForHumans() }}
