@@ -113,7 +113,7 @@
                             @foreach($users as $user)
                                 <div class="card m-1">
                                     <div class="card-body">
-                                        <a href="{{ $user }}">{{ $user->name }}</a>
+                                        <a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a>
                                         <i>Created at: {{ $user->created_at }}</i>
                                     </div>
                                 </div>
