@@ -138,23 +138,23 @@
                                         <div class="card-text">
                                             "{{ str_limit($comment->text, 100) }}"
                                         </div>
+                                        <div class="card-text">
+                                            <div class="badge badge-primary badge-pill"
+                                                 title="{{ $comment->created_at }}">
+                                                Posted {{ $comment->created_at->diffForHumans() }}
+                                            </div>
+                                            <br>
+                                            @if ($comment->created_at != $comment->updated_at)
+                                                <div class="badge badge-primary badge-pill"
+                                                     title="{{ $comment->updated_at }}">
+                                                    Updated {{ $comment->updated_at->diffForHumans() }}
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="card-footer">
                                         <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="badge badge-primary badge-pill"
-                                                     title="{{ $comment->created_at }}">
-                                                    Posted {{ $comment->created_at->diffForHumans() }}
-                                                </div>
-                                                <br>
-                                                @if ($comment->created_at != $comment->updated_at)
-                                                    <div class="badge badge-primary badge-pill"
-                                                         title="{{ $comment->updated_at }}">
-                                                        Updated {{ $comment->updated_at->diffForHumans() }}
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 @include('modules.comments.partials.actions')
                                             </div>
                                         </div>
