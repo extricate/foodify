@@ -74,13 +74,13 @@ class HomeController extends Controller
      */
     public function latestUsers()
     {
-        $users = User::all()->take(6)->sortByDesc('created_at');
+        $users = User::all()->sortByDesc('created_at')->take(6);
         return $users;
     }
 
     public function latestComments()
     {
-        $comments = Comment::all()->take(2)->sortByDesc('created_at');
+        $comments = Comment::all()->sortByDesc('created_at')->take(2);
         return $comments;
     }
 }
