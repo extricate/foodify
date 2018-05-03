@@ -9,7 +9,7 @@
 @endsection
 
 @auth
-    @if(auth()->user()->isAdmin())
+@if(auth()->user()->isAdmin())
 @section('submenu-buttons')
     <div class="d-none d-sm-inline-block">
         <a href="{{ route('blog.create') }}" class="btn btn-primary">
@@ -41,13 +41,13 @@
 
 @section('content')
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6">
             <h1 class="display-3">
                 The Foodiblog <br>
                 <small class="text-muted">All about food!</small>
             </h1>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
@@ -62,7 +62,7 @@
     </div>
     <div class="row card-columns">
         @foreach($posts as $post)
-            <div class="col-6">
+            <div class="col-lg-6">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="card-title">

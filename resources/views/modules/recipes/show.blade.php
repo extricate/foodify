@@ -13,6 +13,30 @@
     {{ Breadcrumbs::render('recipes.show', $recipe) }}
 @endsection
 
+@auth
+    @if(auth()->user()->isAdmin())
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+    </div>
+    <div class="d-none d-sm-inline-block">
+        <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe</a>
+    </div>
+@endsection
+
+@section('submenu-buttons-mobile')
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+                <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe</a>
+            </div>
+        </div>
+    </div>
+@endsection
+@endif
+@endauth
+
 @section('content')
     <div class="row">
         <div class="col-8">
@@ -38,17 +62,6 @@
             </div>
         </div>
         <div class="col-12 col-lg-4">
-            @auth
-                @if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin())
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            @endauth
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
@@ -103,7 +116,7 @@
                 @auth
                     @if(auth()->user()->banned == false)
                         @include('modules.comments.create')
-                        @else
+                    @else
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-text">
