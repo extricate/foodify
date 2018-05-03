@@ -101,7 +101,17 @@
                     @include('modules.comments.index', ['comment' => $comment])
                 @endforeach
                 @auth
-                    @include('modules.comments.create')
+                    @if(auth()->user()->banned == false)
+                        @include('modules.comments.create')
+                        @else
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text">
+                                    You are banned and therefore cannot post a comment yourself.
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 @endauth
                 @guest
                     <div class="card">

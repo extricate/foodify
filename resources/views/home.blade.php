@@ -11,8 +11,9 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1 class="primary">Hi {{ $user->name }}, this is your dashboard</h1>
-            <p>This page serves as the headquarter of your fooodify planning.</p>
+            <h1 class="primary">{{ $user->name }}'s dashboard
+                <small class="text-muted">This page serves as the headquarter of your Foodify planning</small>
+            </h1>
         </div>
     </div>
     @if ($user->food_plan()->isEmpty() == true)
@@ -58,6 +59,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Your favorites</div>
+                        @if(empty($user->showFavorites()))
                         @foreach($user->showFavorites() as $favorite)
                             <div class="card m-1">
                                 <div class="card-body">
@@ -66,6 +68,13 @@
                             </div>
                         @endforeach
                         {{ $user->showFavorites()->links() }}
+                        @else
+                            <div class="card-text">
+                                <div class="alert alert-primary">
+                                    <i class="fal fa-info-circle"></i> You can add a recipe to your favorites by pressing on the heart button on a recipe.
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -74,7 +83,7 @@
     @if (auth()->user()->admin == true)
         <div class="row mt-3">
             <div class="col-12">
-                <h1 class="primary">Admin section</h1>
+                <h1 class="primary">Admin panel</h1>
             </div>
             <div class="col-12">
                 <div class="card-group">
@@ -85,7 +94,9 @@
                                 <div class="card m-1">
                                     <div class="card-body">
                                         <a href="{{ $recipe->path() }}">{{ $recipe->name }}</a>
-                                        <a href="{{ $recipe->path() }}/edit" class="btn btn-primary btn-sm pull-right">Edit</a>
+                                        <a href="{{ $recipe->path() }}/edit" class="btn btn-primary btn-sm pull-right">
+                                            <i class="fal fa-edit"></i>
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
@@ -100,6 +111,49 @@
                                     <div class="card-body">
                                         <a href="{{ $user }}">{{ $user->name }}</a>
                                         <i>Created at: {{ $user->created_at }}</i>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">Latest comments</div>
+                            @foreach($comments as $comment)
+                                <div class="card m-1">
+                                    <div class="card-body">
+                                        On
+                                        <a href="{{ $comment->onRecipe()->getResults()->path()}}">
+                                            {{ $comment->onRecipe()->getResults()->name }}
+                                        </a>
+                                        <a href="{{ route('user.show', $comment->author()->id) }}">{{ $comment->author()->name }}</a>
+                                        said
+                                    </div>
+                                    <hr>
+                                    <div class="card-body">
+                                        <div class="card-text">
+                                            "{{ str_limit($comment->text, 100) }}"
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="badge badge-primary badge-pill"
+                                                     title="{{ $comment->created_at }}">
+                                                    Posted {{ $comment->created_at->diffForHumans() }}
+                                                </div>
+                                                <br>
+                                                @if ($comment->created_at != $comment->updated_at)
+                                                    <div class="badge badge-primary badge-pill"
+                                                         title="{{ $comment->updated_at }}">
+                                                        Updated {{ $comment->updated_at->diffForHumans() }}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6">
+                                                @include('modules.comments.partials.actions')
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

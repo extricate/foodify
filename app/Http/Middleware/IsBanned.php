@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class IsAdmin
+class IsBanned
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,12 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
 
-        if (Auth::user() &&  Auth::user()->admin == true) {
+        if (Auth::user() &&  Auth::user()->banned == false) {
+            // User is not banned
             return $next($request);
         }
 
-        return redirect(route('home'))->with(['message' => 'You do not have sufficient permissions to do that.', 'alert_type' => 'danger']);
+        return back()->with(['message' => 'You do not have sufficient permissions to do that.', 'alert_type' => 'danger']);
 
     }
 }

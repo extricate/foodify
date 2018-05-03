@@ -32,6 +32,7 @@ Route::get('/settings', 'Auth\UserSettingsController@index')->name('settings.ind
 Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
 Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
+Route::post('/user/ban', 'UserController@ban')->name('user.ban');
 
 
 /**
@@ -60,7 +61,7 @@ Route::resource('/ingredients', 'IngredientController');
 Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('comments.edit');
 Route::patch('/recipes/comment/edit', 'CommentController@update')->name('comments.update');
 Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
-Route::post('/recipes/destroy', 'CommentController@destroy')->name('comments.destroy');
+Route::post('/recipes/comment/destroy', 'CommentController@destroy')->name('comments.destroy');
 
 /**
  * Food plan

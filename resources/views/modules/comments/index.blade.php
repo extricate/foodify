@@ -16,11 +16,6 @@
                 Edit <i title="{{ $comment->updated_at }}">{{ $comment->updated_at->diffForHumans() }}.</i>
             @endif
         </small>
-        @if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin())
-            <div class="d-inline float-right">
-                <a class="btn btn-primary btn-sm" href="{{ route('comments.edit', $comment->id) }}">Edit</a>
-            </div>
-            @include('modules.comments.destroy')
-        @endif
+        @include('modules.comments.partials.actions')
     </div>
 </div>

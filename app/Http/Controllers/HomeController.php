@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Comment;
 use App\Charts\DietaryChart;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
-     *
+     * HomeController constructor.
+     * @param DashboardRepository $repository
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -27,17 +31,19 @@ class HomeController extends Controller
         $foodplan = auth()->user()->food_plan();
         $chart = $this->chart();
         $users = $this->latestUsers();
+        $comments = $this->latestComments();
         return view('home', compact([
-            'foodplan', $foodplan,
-            'chart', $chart,
-            'users', $users
+            'foodplan',
+            'chart',
+            'users',
+            'comments'
         ]));
     }
 
     /**
      * Kinda breaking the single responsibility principle here
      * Will have to find a better solution for that.
-     * Still testing the functionality.
+     * Still testing the functionality though.
      * @return DietaryChart
      */
     public function chart()
@@ -62,9 +68,19 @@ class HomeController extends Controller
         return $chart;
     }
 
+    /**
+     * Get a list of the latest users for the admin part of the dashboard
+     * Again breaking single responsibility. In the future I would like this in a repository?
+     */
     public function latestUsers()
     {
         $users = User::all()->take(6)->sortByDesc('created_at');
         return $users;
+    }
+
+    public function latestComments()
+    {
+        $comments = Comment::all()->take(2)->sortByDesc('created_at');
+        return $comments;
     }
 }

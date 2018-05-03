@@ -13,6 +13,7 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('banned')->only(['store', 'update', 'delete', 'edit']);
     }
 
     public function create()
@@ -48,7 +49,6 @@ class CommentController extends Controller
 
     public function update(Request $request)
     {
-
         Validator::make($request->all(), [
             'id' => 'required|exists:comments',
             'text' => 'required|min:10|max:400'
