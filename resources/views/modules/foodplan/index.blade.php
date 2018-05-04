@@ -58,10 +58,37 @@
             <h1 class="primary">Your foodplan</h1>
         </div>
     </div>
+    @php $today = strtolower(\Carbon\Carbon::today()->format('l')); @endphp
+    @if($foodplan->$today() == !null)
+        <div class="row">
+            <div class="col-12">
+                <div class="card text-white bg-primary mt-3 mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h2 class="card-title display-3">Today's menu</h2>
+                                <div class="text-right d-none d-lg-block">
+                                    @svg('curved-arrow', 'arrow-icon')
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card text-dark">
+                                    @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$today()])
+                                    <div class="card-body">
+                                        @include('modules.foodplan.partials.clear', ['day' => $today, 'foodplan' => $foodplan])
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
-        <div class="card-columns col-12">
-            @foreach($foodplan->days() as $day)
-                <div class="card">
+        @foreach($foodplan->days() as $day)
+            <div class="col-lg-4 col-md-6">
+                <div class="card mt-3 @php if ($day == strtolower(\Carbon\Carbon::today()->format('l'))) echo 'card-today'; @endphp">
                     <h3 class="m-3 text-capitalize">{{ $day }}</h3>
                     @if ($foodplan->$day() == !null)
                         @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$day()])
@@ -72,7 +99,7 @@
                         @include('modules.foodplan.partials.empty-day')
                     @endif
                 </div>
-            @endforeach
-        </div>
+            </div>
+        @endforeach
     </div>
 @endsection
