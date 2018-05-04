@@ -1,7 +1,7 @@
 {!! Form::open([
 'method' => 'PATCH',
 'route' => ['plan.update', $foodplan->id],
-'class' => 'form-inline mb-1 col justify-content-center'
+'class' => 'form-inline ml-1'
 ]) !!}
 <input name="_method" type="hidden" value="PUT">
 <input name="day" value="{{ $day }}" type="hidden">

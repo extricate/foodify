@@ -106,8 +106,9 @@
                                 not set.
                             @endif
                         </div>
-                        <span class="badge badge-primary"><i
-                                    class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}</span>
+                        <span class="badge badge-primary">
+                            <i class="fal fa-star fa-fw"></i> {{ $recipe->averageRating($recipe) }}
+                        </span>
                     </div>
                     <div class="card-text">
                         @include('modules.recipes.partials.rating', ['recipe' => $recipe])
