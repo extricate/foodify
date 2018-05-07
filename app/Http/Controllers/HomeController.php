@@ -13,7 +13,6 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      * HomeController constructor.
-     * @param DashboardRepository $repository
      */
 
     public function __construct()
@@ -60,7 +59,7 @@ class HomeController extends Controller
     public function latestUsers()
     {
         $user = new User;
-        $users = $user->latestUsers('6')->sortByDesc('created_at')->take(6);
+        $users = $user->latestUsers('6')->sortByDesc('created_at');
         return $users;
     }
 

@@ -45,12 +45,6 @@
                 <div class="card-img-container">
                     <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}" alt="{{ $recipe->name }}">
                 </div>
-                {!! Form::open([
-                'method' => 'PATCH',
-                'route' => ['recipe.update', $recipe->id],
-                'enctype' => 'multipart/form-data',
-                'class' => 'form-inline d-inline'
-                ]) !!}
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -60,6 +54,12 @@
                         </ul>
                     </div>
                 @endif
+                {!! Form::open([
+                'method' => 'PATCH',
+                'route' => ['recipe.update', $recipe->id],
+                'enctype' => 'multipart/form-data',
+                'class' => 'form-inline d-inline'
+                ]) !!}
                 {{ csrf_field() }}
                 <div class="card-body form-group">
                     <label for="image">Image </label>
@@ -74,15 +74,6 @@
                 'enctype' => 'multipart/form-data',
                 'class' => 'form-inline'
                 ]) !!}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 {{ csrf_field() }}
                 <div class="card-body form-group">
                     <input type="hidden" class="hidden" name="id" value="{{ $recipe->id }}">
@@ -100,15 +91,6 @@
                 'route' => ['recipe.update', $recipe->id],
                 'enctype' => 'multipart/form-data'
                 ]) !!}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
@@ -135,15 +117,6 @@
                 'route' => ['recipe.update', $recipe->id],
                 'enctype' => 'multipart/form-data'
                 ]) !!}
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">

@@ -138,7 +138,7 @@ class RecipeController extends Controller
                     ->toMediaCollection();
             }
 
-            return back()->withInput();
+            return back()->withInput()->with('message', 'Edited successfully.');
         }
 
         return redirect(route('home'))->with('message', 'You do not have permission to edit that recipe.');
