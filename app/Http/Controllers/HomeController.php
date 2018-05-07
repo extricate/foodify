@@ -49,22 +49,7 @@ class HomeController extends Controller
     public function chart()
     {
         $chart = new DietaryChart;
-
-        // create the chart that is shown on the homepage.
-        // we don't actually have statistic logic yet though, so for now it returns dummy data
-        $chart
-            ->labels(['Fiber', 'Protein', 'Carbonhydrates', 'Vitamins', 'Minerals'])
-            ->dataset('Your diet', 'doughnut', [
-                100,
-                65,
-                84,
-                45,
-                90
-            ])
-            ->options([
-                'borderColor' => ['#B3CC57', '#ECF081', '#FFBE40', '#EF746F', '#AB3E5B'],
-                'backgroundColor' => ['#B3CC57', '#ECF081', '#FFBE40', '#EF746F', '#AB3E5B']
-            ]);
+        $chart->dummyChart();
         return $chart;
     }
 
