@@ -88,4 +88,9 @@ class User extends \TCG\Voyager\Models\User
         }
         return false;
     }
+
+    public function latestUsers(Int $amount)
+    {
+        return User::all()->sortByDesc('created_at')->take($amount);
+    }
 }

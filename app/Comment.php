@@ -17,4 +17,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Recipe::class, 'recipe_id', 'id');
     }
+
+    public function latestComments(Int $amount)
+    {
+        return Comment::all()->sortByDesc('created_at')->take($amount);;
+    }
 }
