@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use App\User;
 use App\Comment;
 use App\Charts\DietaryChart;
@@ -18,6 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin')->only(['admin']);
     }
 
     /**
@@ -66,15 +68,21 @@ class HomeController extends Controller
         return $comments;
     }
 
+    public function allPages()
+    {
+        $pages = Page::paginate(6);
+        return $pages;
+    }
+
     public function admin()
     {
-        $foodplan = auth()->user()->food_plan();
-        $chart = $this->chart();
         $users = $this->latestUsers();
         $comments = $this->latestComments();
+        $pages = $this->allPages();
         return view('modules.admin.dashboard', compact([
             'users',
-            'comments'
+            'comments',
+            'pages'
         ]));
     }
 }

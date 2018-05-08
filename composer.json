@@ -1,9 +1,10 @@
 {
-    "name": "fooodify/platform",
+    "name": "fooodify/framework",
     "description": "The Fooodify platform.",
     "keywords": [
         "platform",
-        "fooodify"
+        "fooodify",
+        "foodify"
     ],
     "license": "MIT",
     "type": "project",

@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="row mt-5 mb-5">
+    <div class="row mb-5">
         <div class="col-12">
             <h1 class="primary">Quick admin panel</h1>
         </div>
@@ -91,5 +91,51 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">Pages</div>
+                        @foreach($pages as $page)
+                            <div class="card m-1">
+                                <div class="card-body">
+                                    <a href="{{ route('page.show', $page->slug) }}">{{ $page->name }}</a>
+                                    <a href="{{ route('page.edit', $page->id) }}"
+                                       class="btn btn-primary btn-sm pull-right">
+                                        <i class="fal fa-edit"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{ $pages->links() }}
+                        <div class="text-right">
+                            <a href="{{ route('page.create') }}" class="btn btn-primary">
+                                New page
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection

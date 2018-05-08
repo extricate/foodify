@@ -89,7 +89,7 @@ class User extends \TCG\Voyager\Models\User
         return false;
     }
 
-    public function latestUsers(Int $amount)
+    public function latestUsers(Int $amount = 6)
     {
         return User::all()->sortByDesc('created_at')->take($amount);
     }

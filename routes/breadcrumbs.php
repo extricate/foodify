@@ -15,6 +15,11 @@ Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
     $breadcrumbs->push($page->name, route('page.show', $page->slug));
 });
 
+Breadcrumbs::register('page.edit', function ($breadcrumbs, $page) {
+    $breadcrumbs->parent('page.show', $page);
+    $breadcrumbs->push('Editing page: ' . $page->name, route('page.show', $page->slug));
+});
+
 Breadcrumbs::register('blog.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Blog', route('blog.index'));

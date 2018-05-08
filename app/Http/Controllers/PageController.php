@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -28,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        // pages are created from the admin panel using a BREAD controller
+        return view('modules.pages.edit');
     }
 
     /**
@@ -39,7 +40,15 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|unique:pages|max:255',
+            'text' => 'required|min:0|max:10000',
+        ])->validate();
+
+        $page = Page::create([
+            'name' => $request->name,
+            'content' => $request->text,
+        ]);
     }
 
     /**
@@ -59,24 +68,40 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Page $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit($param)
     {
-        //
+        $page = Page::where('id', $param)
+            ->orWhere('slug', $param)
+            ->firstOrFail();
+        return view('modules.pages.edit', compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Page $page
+     * @param  $param
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, $param)
     {
-        //
+        $page = Page::where('id', $param)
+            ->orWhere('slug', $param)
+            ->firstOrFail();
+
+        Validator::make($request->all(), [
+            'name' => 'unique:pages|max:255',
+            'text' => 'min:0|max:10000',
+        ])->validate();
+
+        $page->update([
+            'name' => $request->name,
+            'content' => $request->text,
+        ]);
+
+        return back()->withInput()->with('message', 'Edited successfully.');;
     }
 
     /**

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
 use App\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RecipeController extends Controller
 {

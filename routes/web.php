@@ -18,12 +18,13 @@ use App\Events\UserRegistered;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
-Route::get('/home/admin', 'HomeController@admin')->name('home.admin');
+Route::get('/home/admin', 'HomeController@admin')->name('home.admin')->middleware('admin');
 
 
 /**
  * Pages are only editable from the admin interface.
  */
+Route::resource('/page', 'PageController');
 Route::get('/page/{param}', 'PageController@show')->name('page.show');
 
 /**

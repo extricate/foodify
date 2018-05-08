@@ -72,13 +72,16 @@
                                     Settings
                                 </a>
                                 @admin
+                                    <a href="{{ route('home.admin') }}" class="dropdown-item">
+                                        Admin dashboard
+                                    </a>
                                     <a href="/admin" class="dropdown-item">
-                                        Admin panel
+                                        Full back-end
                                     </a>
                                 @endadmin
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                   document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -87,7 +90,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                @endguest
             </ul>
         </div>
     </div>
