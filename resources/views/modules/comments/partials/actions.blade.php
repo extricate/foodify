@@ -5,7 +5,7 @@
         </div>
         @include('modules.comments.destroy')
     @endif
-    @if(auth()->user()->isAdmin())
+    @admin
         @include('modules.user.partials.ban-user', ['user_id' => $comment->author()->id])
-    @endif
+    @endadmin
 @endauth
