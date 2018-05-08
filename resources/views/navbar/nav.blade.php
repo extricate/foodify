@@ -44,13 +44,13 @@
                                 @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
                             </li>
                         @endforeach
-                        @if (Auth::user()->admin == true)
+                        @admin
                             <li>
                                 <a href="{{ route('recipes.create') }}" class="btn btn-primary btn-inline pull-right">
                                     Submit recipe <i class="fal fa-plus"></i>
                                 </a>
                             </li>
-                        @endif
+                        @endadmin
                     @endauth
                 </div>
                 <!-- Authentication Links -->
@@ -71,11 +71,11 @@
                                 <a href="{{ route('settings.index') }}" class="dropdown-item">
                                     Settings
                                 </a>
-                                @if (Auth::user()->admin == true)
+                                @admin
                                     <a href="/admin" class="dropdown-item">
                                         Admin panel
                                     </a>
-                                @endif
+                                @endadmin
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
