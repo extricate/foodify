@@ -8,6 +8,35 @@
     </div>
 @endsection
 
+@admin
+    @section('submenu-buttons')
+        <div class="d-none d-sm-inline-block">
+            <a href="{{ route('home.admin') }}" class="btn btn-primary">
+                Admin dashboard <i class="fal fa-user-shield"></i>
+            </a>
+        </div>
+        <div class="d-sm-none">
+            <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
+               aria-expanded="false"
+               aria-controls="submenu-buttons">
+                <i class="fal fa-ellipsis-v"></i>
+            </a>
+        </div>
+    @endsection
+
+    @section('submenu-buttons-mobile')
+        <div class="collapse pull-right" id="submenu-buttons">
+            <div class="card submenu-collapsible">
+                <div class="card-body">
+                    <a href="{{ route('home.admin') }}" class="btn btn-primary">
+                        Admin dashboard <i class="fal fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    @endsection
+@endadmin
+
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -45,6 +74,48 @@
         </div>
     @endif
     <div class="row">
+        @php
+            $today = strtolower(\Carbon\Carbon::today()->format('l'));
+            $tomorrow = strtolower(\Carbon\Carbon::tomorrow()->format('l'));
+        @endphp
+        <div class="col-lg-8">
+            @if($foodplan->$today() == !null)
+                <div class="card text-white bg-primary mt-3 mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h1>Today's menu</h1>
+                                <div class="text-right d-none d-lg-block">
+                                    @svg('curved-arrow', 'arrow-icon')
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card text-dark">
+                                    @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$today()])
+                                    <div class="card-body">
+                                        @include('modules.foodplan.partials.clear', ['day' => $today, 'foodplan' => $foodplan])
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-4">
+            @if($foodplan->$tomorrow() == !null)
+                <div class="card bg-default mt-3 mb-3">
+                    <div class="card-body">
+                        <h3>Tomorrow's menu</h3>
+                        <div class="card text-dark">
+                            @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$today()])
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12">
             <div class="card-group">
                 <div class="card">
@@ -81,7 +152,4 @@
             </div>
         </div>
     </div>
-    @admin
-        @include('modules.admin.dashboard')
-    @endadmin
 @endsection

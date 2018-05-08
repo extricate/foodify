@@ -5,6 +5,11 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push('Dashboard', route('home'));
 });
 
+Breadcrumbs::register('home.admin', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Admin Dashboard', route('home.admin'));
+});
+
 Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push($page->name, route('page.show', $page->slug));

@@ -18,6 +18,7 @@ use App\Events\UserRegistered;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
+Route::get('/home/admin', 'HomeController@admin')->name('home.admin');
 
 
 /**

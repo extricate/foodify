@@ -28,7 +28,7 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="text">Edit your comment. <b>Markdown</b> is supported.</label>
-                <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $comment->text }}" rows="4">{{ $comment->text }}</textarea>
+                <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $comment->text }}" rows="4" maxlength="400">{{ $comment->text }}</textarea>
             </div>
             <input type="hidden" class="hidden" name="id" value="{{ $comment->id }}">
             <button type="submit" class="btn btn-primary">Submit</button>

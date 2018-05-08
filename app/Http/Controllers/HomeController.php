@@ -29,13 +29,9 @@ class HomeController extends Controller
     {
         $foodplan = auth()->user()->food_plan();
         $chart = $this->chart();
-        $users = $this->latestUsers();
-        $comments = $this->latestComments();
         return view('home', compact([
             'foodplan',
-            'chart',
-            'users',
-            'comments'
+            'chart'
         ]));
     }
 
@@ -68,5 +64,17 @@ class HomeController extends Controller
         $comment = new Comment;
         $comments = $comment->latestComments(2)->sortByDesc('created_at');
         return $comments;
+    }
+
+    public function admin()
+    {
+        $foodplan = auth()->user()->food_plan();
+        $chart = $this->chart();
+        $users = $this->latestUsers();
+        $comments = $this->latestComments();
+        return view('modules.admin.dashboard', compact([
+            'users',
+            'comments'
+        ]));
     }
 }
