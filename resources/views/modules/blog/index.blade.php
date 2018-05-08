@@ -8,36 +8,34 @@
     </div>
 @endsection
 
-@auth
-@if(auth()->user()->isAdmin())
-@section('submenu-buttons')
-    <div class="d-none d-sm-inline-block">
-        <a href="{{ route('blog.create') }}" class="btn btn-primary">
-            New blog post
-        </a>
-    </div>
-    <div class="d-sm-none">
-        <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
-           aria-expanded="false"
-           aria-controls="submenu-buttons">
-            <i class="fal fa-ellipsis-v"></i>
-        </a>
-    </div>
-@endsection
+@admin
+    @section('submenu-buttons')
+        <div class="d-none d-sm-inline-block">
+            <a href="{{ route('blog.create') }}" class="btn btn-primary">
+                New blog post
+            </a>
+        </div>
+        <div class="d-sm-none">
+            <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
+               aria-expanded="false"
+               aria-controls="submenu-buttons">
+                <i class="fal fa-ellipsis-v"></i>
+            </a>
+        </div>
+    @endsection
 
-@section('submenu-buttons-mobile')
-    <div class="collapse pull-right" id="submenu-buttons">
-        <div class="card submenu-collapsible">
-            <div class="card-body">
-                <a href="{{ route('blog.create') }}" class="btn btn-primary">
-                    New blog post
-                </a>
+    @section('submenu-buttons-mobile')
+        <div class="collapse pull-right" id="submenu-buttons">
+            <div class="card submenu-collapsible">
+                <div class="card-body">
+                    <a href="{{ route('blog.create') }}" class="btn btn-primary">
+                        New blog post
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-@endsection
-@endif
-@endauth
+    @endsection
+@endadmin
 
 @section('content')
     <div class="row">
