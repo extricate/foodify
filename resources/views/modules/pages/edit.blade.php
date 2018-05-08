@@ -38,27 +38,18 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-
                 {!! Form::open([
                 'method' => 'PATCH',
                 'route' => ['page.update', $page->id],
                 'enctype' => 'multipart/form-data'
                 ]) !!}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $page->text }}" rows="4" maxlength="400">{{ $page->text }}</textarea>
+                <div class="form-group mt-3">
+                    <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $page->text }}" rows="8" maxlength="400">{{ $page->text }}</textarea>
                 </div>
                 <input type="hidden" class="hidden" name="id" value="{{ $page->id }}">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-secondary" href="/page/{{ $page->slug }}">Cancel</a>
                 {!! Form::close() !!}
             </div>
         </div>
