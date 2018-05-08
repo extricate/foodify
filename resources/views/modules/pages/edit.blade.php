@@ -55,7 +55,7 @@
                 @endif
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $page->content }}" rows="4" maxlength="400">{{ $page->content }}</textarea>
+                    <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $page->text }}" rows="4" maxlength="400">{{ $page->text }}</textarea>
                 </div>
                 <input type="hidden" class="hidden" name="id" value="{{ $page->id }}">
                 <button type="submit" class="btn btn-primary">Submit</button>

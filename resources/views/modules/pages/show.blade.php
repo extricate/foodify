@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col-8">
-                {{ $page->content }}
+                {{ $page->text }}
             </div>
         </div>
     </div>

@@ -96,10 +96,7 @@ class PageController extends Controller
             'text' => 'min:0|max:10000',
         ])->validate();
 
-        $page->update([
-            'name' => $request->name,
-            'content' => $request->text,
-        ]);
+        $page->update($request->only(['name', 'text']));
 
         return back()->withInput()->with('message', 'Edited successfully.');;
     }
