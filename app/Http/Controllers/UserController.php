@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->only(['ban', 'admin']);
+        $this->middleware('admin')->only(['ban', 'unban', 'admin']);
     }
 
     /**
@@ -91,6 +91,12 @@ class UserController extends Controller
         //
     }
 
+    /**
+     * Ban a user from making comments
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function ban(Request $request)
     {
         // ban a user from posting content
@@ -105,6 +111,32 @@ class UserController extends Controller
         return back()->with('message', 'User ' . $user->name . ' has been banned from making comments.');
     }
 
+    /**
+     * Unban a user from making comments
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function unban(Request $request)
+    {
+        // ban a user from posting content
+        Validator::make($request->all(), [
+            'user_id' => 'required|exists:users'
+        ]);
+
+        $user = User::findOrFail($request->user_id);
+        $user->banned = false;
+        $user->save();
+
+        return back()->with('message', 'User ' . $user->name . ' has been banned from making comments.');
+    }
+
+    /**
+     * Grant or remove admin privileges.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function admin(Request $request)
     {
         // ban a user from posting content

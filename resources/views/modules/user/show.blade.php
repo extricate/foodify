@@ -15,12 +15,18 @@
         <a href="#" class="btn btn-primary mr-1">
             Share <i class="fal fa-share"></i>
         </a>
-        @include('modules.user.partials.ban-user', ['user_id' => $user->id])
-        @if($viewinguser->admin == false)
-            @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => true])
-        @else
-            @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => false])
-        @endif
+        @admin
+            @if($viewinguser->banned == false)
+                @include('modules.user.partials.ban-user', ['user_id' => $viewinguser->id])
+            @else
+                @include('modules.user.partials.unban-user', ['user_id' => $viewinguser->id])
+            @endif
+            @if($viewinguser->admin == false)
+                @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => true])
+            @else
+                @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => false])
+            @endif
+        @endadmin
     </div>
     <div class="d-sm-none">
         <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
