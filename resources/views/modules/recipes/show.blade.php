@@ -13,30 +13,28 @@
     {{ Breadcrumbs::render('recipes.show', $recipe) }}
 @endsection
 
-@auth
-    @if(auth()->user()->isAdmin())
-@section('submenu-buttons')
-    <div class="d-none d-sm-inline-block">
-        <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe <i class="fal fa-edit"></i></a>
-    </div>
-    <div class="d-none d-sm-inline-block">
-        <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe <i
-                    class="fal fa-trash"></i></a>
-    </div>
-@endsection
+@admin
+    @section('submenu-buttons')
+        <div class="d-none d-sm-inline-block">
+            <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe <i class="fal fa-edit"></i></a>
+        </div>
+        <div class="d-none d-sm-inline-block">
+            <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe <i
+                        class="fal fa-trash"></i></a>
+        </div>
+    @endsection
 
-@section('submenu-buttons-mobile')
-    <div class="collapse pull-right" id="submenu-buttons">
-        <div class="card submenu-collapsible">
-            <div class="card-body">
-                <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
-                <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe</a>
+    @section('submenu-buttons-mobile')
+        <div class="collapse pull-right" id="submenu-buttons">
+            <div class="card submenu-collapsible">
+                <div class="card-body">
+                    <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
+                    <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe</a>
+                </div>
             </div>
         </div>
-    </div>
-@endsection
-@endif
-@endauth
+    @endsection
+@endadmin
 
 @section('content')
     <div class="row">
