@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
+            $table->string('slug');
+
             $table->boolean('admin')->default(false);
 
             $table->integer('age')->nullable()->unsigned();

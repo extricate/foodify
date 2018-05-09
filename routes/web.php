@@ -33,7 +33,8 @@ Route::get('/page/{param}', 'PageController@show')->name('page.show');
 Route::get('/settings', 'Auth\UserSettingsController@index')->name('settings.index')->middleware('auth');
 Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
-Route::get('/user/{id}/plan', 'UserController@show')->name('user.show');
+Route::get('/users', 'UserController@index')->name('users.index')->middleware('admin');
+Route::get('/user/{param}/plan', 'UserController@show')->name('user.show');
 Route::post('/user/admin', 'UserController@admin')->name('user.admin');
 
 Route::post('/user/ban', 'UserController@ban')->name('user.ban');

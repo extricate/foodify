@@ -2,11 +2,14 @@
 
 namespace App;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends \TCG\Voyager\Models\User
 {
+    use HasSlug;
     use Notifiable;
 
     /**
@@ -27,9 +30,16 @@ class User extends \TCG\Voyager\Models\User
         'password', 'remember_token',
     ];
 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['name', 'id'])
+            ->saveSlugsTo('slug');
+    }
+
     public function slug()
     {
-        return '/users/' . $this->name . '-' . $this->id;
+        return '/users/' . $this->slug;
     }
 
     public function created_recipes()

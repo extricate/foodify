@@ -21,7 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(6);
+
+        return view('modules.user.index', compact('users'));
     }
 
     /**
@@ -51,9 +53,12 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($param)
     {
-        $viewinguser = User::findOrFail($id);
+        $viewinguser = User::where('id', $param)
+            ->orWhere('slug', $param)
+            ->firstOrFail();
+
         return view('modules.user.show', compact('viewinguser'));
     }
 

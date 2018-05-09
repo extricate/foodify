@@ -15,6 +15,11 @@ Breadcrumbs::register('comment.moderation', function ($breadcrumbs) {
     $breadcrumbs->push('Comment moderation queue', route('comments.moderation'));
 });
 
+Breadcrumbs::register('users.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home.admin');
+    $breadcrumbs->push('Manage all users', route('users.index'));
+});
+
 Breadcrumbs::register('page.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Pages', route('page.index'));
