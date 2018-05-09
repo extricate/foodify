@@ -67,8 +67,8 @@ Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('commen
 Route::patch('/recipes/comment/edit', 'CommentController@update')->name('comments.update');
 Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
 Route::post('/recipes/comment/destroy', 'CommentController@destroy')->name('comments.destroy');
-Route::get('/recipes/comments/moderation', 'CommentController@moderation')->name('comments.moderation')->middleware('admin');
-Route::post('/recipes/comments/moderation/{id}', 'CommentController@moderate')->name('comments.moderation.action')->middleware('admin');
+Route::get('/moderation', 'CommentController@moderation')->name('comments.moderation')->middleware('admin');
+Route::post('/moderation/{id}', 'CommentController@moderate')->name('comments.moderation.action')->middleware('admin');
 
 /**
  * Food plan

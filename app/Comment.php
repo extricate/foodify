@@ -22,4 +22,9 @@ class Comment extends Model
     {
         return Comment::all()->sortByDesc('created_at')->take($amount);;
     }
+
+    public function needModeration()
+    {
+        return Comment::where('published', '=', null)->paginate(6, ['*'], 'comments');
+    }
 }

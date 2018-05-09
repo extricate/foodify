@@ -99,7 +99,7 @@
                     <div class="card-body">
                         <div class="card-title">Pages</div>
                         @foreach($pages as $page)
-                            <div class="card m-1">
+                            <div class="card mt-2 mb-2">
                                 <div class="card-body">
                                     <a href="{{ route('page.show', $page) }}">{{ $page->name }}</a>
                                     <a href="{{ route('page.edit', $page->id) }}"
@@ -109,8 +109,10 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{ $pages->links() }}
-                        <div class="text-right">
+                        <div class="mt-3 mb-3">
+                            {{ $pages->links() }}
+                        </div>
+                        <div class="mt-3 mb-3 text-right">
                             <a href="{{ route('page.create') }}" class="btn btn-primary">
                                 New page
                                 <i class="fal fa-plus"></i>
@@ -171,8 +173,8 @@
                     </div>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
     </div>
     </div>
 @endsection

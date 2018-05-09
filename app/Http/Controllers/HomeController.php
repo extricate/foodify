@@ -70,7 +70,7 @@ class HomeController extends Controller
 
     public function allPages()
     {
-        $pages = Page::paginate(6);
+        $pages = Page::paginate(6, ['*'], 'pages');
         return $pages;
     }
 

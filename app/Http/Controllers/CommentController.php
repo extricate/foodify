@@ -91,7 +91,8 @@ class CommentController extends Controller
 
     public function moderation()
     {
-        $comments = Comment::all()->where('published', '=', null);
+        $comment = new Comment;
+        $comments = $comment->needModeration();
 
         return view('modules.comments.moderation', compact('comments'));
     }

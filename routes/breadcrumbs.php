@@ -10,6 +10,11 @@ Breadcrumbs::register('home.admin', function ($breadcrumbs) {
     $breadcrumbs->push('Admin Dashboard', route('home.admin'));
 });
 
+Breadcrumbs::register('comment.moderation', function ($breadcrumbs) {
+    $breadcrumbs->parent('home.admin');
+    $breadcrumbs->push('Comment moderation queue', route('comments.moderation'));
+});
+
 Breadcrumbs::register('page.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Pages', route('page.index'));

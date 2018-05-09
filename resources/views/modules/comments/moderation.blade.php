@@ -4,15 +4,15 @@
 
 @section('submenu')
     <div class="align-self-center">
-        {{ Breadcrumbs::render('page.index') }}
+        {{ Breadcrumbs::render('comment.moderation') }}
     </div>
 @endsection
 
 @admin
 @section('submenu-buttons')
     <div class="d-none d-sm-inline-block">
-        <a href="{{ route('page.create') }}" class="btn btn-primary">
-            Create page <i class="fal fa-plus"></i>
+        <a href="{{ route('home.admin') }}" class="btn btn-primary">
+            Admin dashboard <i class="fal fa-shield"></i>
         </a>
     </div>
     <div class="d-sm-none">
@@ -28,8 +28,8 @@
     <div class="collapse pull-right" id="submenu-buttons">
         <div class="card submenu-collapsible">
             <div class="card-body">
-                <a href="{{ route('page.create') }}" class="btn btn-primary">
-                    Create page <i class="fal fa-plus"></i>
+                <a href="{{ route('home.admin') }}" class="btn btn-primary">
+                    Admin dashboard <i class="fal fa-shield"></i>
                 </a>
             </div>
         </div>
@@ -77,6 +77,21 @@
                     </div>
                 </div>
             @endforeach
+
+
+            @if(count($comments) < 1)
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="alert alert-primary text-center">
+                            <p class="mb-0">It appears the moderation queue is empty. Good job!</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            <div class="mt-3 mb-3">
+                {{ $comments->links() }}
+            </div>
         </div>
     </div>
 @endsection
