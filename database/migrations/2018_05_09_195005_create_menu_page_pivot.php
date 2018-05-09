@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenuPostPivot extends Migration
+class CreateMenuPagePivot extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateMenuPostPivot extends Migration
      */
     public function up()
     {
-        Schema::create('menu_post', function(Blueprint $table)
+        Schema::create('menu_page', function(Blueprint $table)
         {
             $table->integer('menu_id')->unsigned()->index();
-            $table->foreign('menu_id')->references('id')->on('menu')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
 
-            $table->integer('post_id')->unsigned()->index();
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->integer('page_id')->unsigned()->index();
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -2,6 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="mt-3">
+                @php $menu = App\Menu::where('name', '=', 'Footer')->firstOrFail() @endphp
+                <ul class="list-unstyled">
+                @foreach($menu->elements as $element)
+                    <li>
+                        <a href="{{ $element->slug() }}">{{ $element->name }}</a>
+                    </li>
+                @endforeach
+                </ul>
             </div>
         </div>
         <div class="row pb-3">

@@ -26,6 +26,11 @@ class Page extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function slug()
+    {
+        return '/page/' . $this->slug;
+    }
+
     /**
      * Get the menus this page is in.
      *
@@ -33,6 +38,6 @@ class Page extends Model
      */
     public function inMenu()
     {
-        return $this->belongsToMany('App\Menu');
+        return $this->belongsToMany('App\Menu')->withTimestamps();
     }
 }

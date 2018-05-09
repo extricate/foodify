@@ -16,6 +16,6 @@ class Menu extends Model
      */
     public function elements()
     {
-        return $this->belongsToMany('App\Page');
+        return $this->belongsToMany('App\Page')->withTimestamps();
     }
 }
