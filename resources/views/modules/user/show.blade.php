@@ -56,18 +56,18 @@
 @endsection
 
 @section('content')
-    <div class="row mb-sm-3 mb-md-0 mt-lg-1">
+    <div class="row">
         <div class="col-12">
-            <div class="owl-container">
-                <div class="owl-carousel owl-theme">
-                    @if($foodplan != null)
+            <div class="card mb-3">
+                <div class="owl-container m-3">
+                    <div class="owl-carousel owl-theme">
                         @foreach($foodplan->days() as $day)
                             @php $recipe = $foodplan->$day(); @endphp
                             <div class="item">
                                 @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
                             </div>
                         @endforeach
-                    @endif
+                    </div>
                 </div>
             </div>
         </div>
