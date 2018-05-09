@@ -1,5 +1,5 @@
 @if($comment->published === null)
-<div class="form-inline pull-left ml-1">
+<div class="form-inline pull-left">
     {!! Form::open([
 'method' => 'POST',
 'route' => ['comments.moderation.action', $comment],
@@ -8,7 +8,7 @@
     {{ csrf_field() }}
     <input type="hidden" class="hidden" name="id" value="{{ $comment->id }}">
     <input type="hidden" class="hidden" name="action" value="1">
-    <button type="submit" class="btn btn-success">Approve <i class="fal fa-check"></i></button>
+    <button type="submit" class="btn btn-success"><span class="d-none d-lg-inline-block">Approve</span> <i class="fal fa-check"></i></button>
     {!! Form::close() !!}
 </div>
 
@@ -21,11 +21,11 @@
     {{ csrf_field() }}
     <input type="hidden" class="hidden" name="id" value="{{ $comment->id }}">
     <input type="hidden" class="hidden" name="action" value="0">
-    <button type="submit" class="btn btn-danger">Disapprove <i class="fal fa-times"></i></button>
+    <button type="submit" class="btn btn-danger"><span class="d-none d-lg-inline-block">Disapprove</span> <i class="fal fa-times"></i></button>
     {!! Form::close() !!}
 </div>
 @else
-    <div class="form-inline pull-left ml-1">
+    <div class="form-inline pull-left">
         {!! Form::open([
     'method' => 'POST',
     'route' => ['comments.moderation.action', $comment],
