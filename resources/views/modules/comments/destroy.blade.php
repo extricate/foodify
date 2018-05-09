@@ -6,6 +6,6 @@
 ]) !!}
     {{ csrf_field() }}
     <input type="hidden" class="hidden" name="comment_id" value="{{ $comment->id }}">
-    <button type="submit" class="btn btn-danger">Delete <i class="fal fa-trash"></i></button>
+    <button type="submit" class="btn btn-danger"><i class="fal fa-trash"></i></button>
     {!! Form::close() !!}
 </div>

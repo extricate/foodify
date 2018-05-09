@@ -35,7 +35,7 @@ class CommentController extends Controller
             'recipe_id' => $request->recipe
         ]);
 
-        return back()->with('message', 'Your comment has been published!');
+        return back()->with('message', 'Success! Your comment will be published after a moderator approves it.');
     }
 
     public function edit($id)
