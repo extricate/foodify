@@ -9,32 +9,32 @@
 @endsection
 
 @admin
-    @section('submenu-buttons')
-        <div class="d-none d-sm-inline-block">
-            <a href="{{ route('home.admin') }}" class="btn btn-primary">
-                Admin dashboard <i class="fal fa-user-shield"></i>
-            </a>
-        </div>
-        <div class="d-sm-none">
-            <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
-               aria-expanded="false"
-               aria-controls="submenu-buttons">
-                <i class="fal fa-ellipsis-v"></i>
-            </a>
-        </div>
-    @endsection
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        <a href="{{ route('home.admin') }}" class="btn btn-primary">
+            Admin dashboard <i class="fal fa-user-shield"></i>
+        </a>
+    </div>
+    <div class="d-sm-none">
+        <a class="btn btn-primary pull-right" data-toggle="collapse" href="#submenu-buttons" role="button"
+           aria-expanded="false"
+           aria-controls="submenu-buttons">
+            <i class="fal fa-ellipsis-v"></i>
+        </a>
+    </div>
+@endsection
 
-    @section('submenu-buttons-mobile')
-        <div class="collapse pull-right" id="submenu-buttons">
-            <div class="card submenu-collapsible">
-                <div class="card-body">
-                    <a href="{{ route('home.admin') }}" class="btn btn-primary">
-                        Admin dashboard <i class="fal fa-heart"></i>
-                    </a>
-                </div>
+@section('submenu-buttons-mobile')
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                <a href="{{ route('home.admin') }}" class="btn btn-primary">
+                    Admin dashboard <i class="fal fa-heart"></i>
+                </a>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 @endadmin
 
 @section('content')
@@ -43,20 +43,6 @@
             <h1 class="primary">{{ $user->name }}'s dashboard
                 <small class="text-muted">This page serves as the headquarter of your Foodify planning</small>
             </h1>
-        </div>
-    </div>
-    <div class="row mb-sm-3 mb-md-0 mt-lg-3 mb-lg-3">
-        <div class="col-12">
-            <div class="owl-container">
-                <div class="owl-carousel owl-theme">
-                    @foreach($foodplan->days() as $day)
-                        @php $recipe = $foodplan->$day(); @endphp
-                        <div class="item">
-                            @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
-                        </div>
-                    @endforeach
-                </div>
-            </div>
         </div>
     </div>
     @if ($user->food_plan()->isEmpty() == true)
@@ -113,6 +99,22 @@
                     </div>
                 </div>
             @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="owl-container m-3">
+                    <div class="owl-carousel owl-theme">
+                        @foreach($foodplan->days() as $day)
+                            @php $recipe = $foodplan->$day(); @endphp
+                            <div class="item">
+                                @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">

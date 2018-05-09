@@ -262,9 +262,8 @@ h1.card-title {
  * Owl Carousel things
  */
 .owl-container {
-  height: 140px;
   @include media-breakpoint-up(md) {
-    height: 100px;
+    height: auto;
   }
 }
 
