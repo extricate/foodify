@@ -66,7 +66,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-4">
-                                <h2 class="card-title display-3">Today's menu</h2>
+                                <h1 class="card-title">Today's menu</h1>
                                 <div class="text-right d-none d-lg-block">
                                     @svg('curved-arrow', 'arrow-icon')
                                 </div>

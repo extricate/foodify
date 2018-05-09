@@ -7,7 +7,7 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends \TCG\Voyager\Models\User
+class User extends Authenticatable
 {
     use HasSlug;
     use Notifiable;
@@ -62,16 +62,30 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasOne(Pantry::class, 'id')->getResults();
     }
 
+    /**
+     * Get the users' current plan.
+     * @return mixed
+     */
     public function food_plan()
     {
         return $this->hasOne(FoodPlan::class, 'owner')->getResults();
     }
 
+    /**
+     * Get the user saved plans.
+     *
+     * @return mixed
+     */
     public function history()
     {
         return $this->hasMany(History::class, 'owner')->getResults();
     }
 
+    /**
+     * Get all user favorites.
+     *
+     * @return mixed
+     */
     public function favorites()
     {
         return $this->hasMany(Favorite::class)->getResults();
@@ -83,7 +97,8 @@ class User extends \TCG\Voyager\Models\User
     }
 
     /**
-     * Get all user comments
+     * Get all user comments.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
@@ -91,6 +106,11 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * Check whether the user is an admin.
+     *
+     * @return bool
+     */
     public function isAdmin()
     {
         if ($this->admin == true) {

@@ -89,6 +89,11 @@
   right: 0;
 }
 
+#submenu-buttons {
+  position: absolute;
+  right: 10px;
+}
+
 .submenu-collapsible {
   text-align: center;
   z-index: $zindex-dropdown;
@@ -229,6 +234,14 @@ h1.card-title {
 
 .card-footer {
   background-color: $white;
+}
+
+.card-text {
+  overflow: hidden;
+}
+
+.card-text img {
+  max-width: 100%;
 }
 
 .btn-favorite {

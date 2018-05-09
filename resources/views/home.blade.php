@@ -40,9 +40,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1 class="primary">{{ $user->name }}'s dashboard
-                <small class="text-muted">This page serves as the headquarter of your Foodify planning</small>
-            </h1>
+            <h1 class="primary">{{ $user->name }}'s dashboard</h1>
         </div>
     </div>
     @if ($user->food_plan()->isEmpty() == true)

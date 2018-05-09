@@ -25,4 +25,14 @@ class Page extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    /**
+     * Get the menus this page is in.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function inMenu()
+    {
+        return $this->belongsToMany('App\Menu');
+    }
 }

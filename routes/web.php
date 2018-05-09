@@ -36,7 +36,7 @@ Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->n
 
 // View users
 Route::get('/users', 'UserController@index')->name('users.index')->middleware('admin');
-Route::get('/user/{param}/plan', 'UserController@show')->name('user.show');
+Route::get('/users/{param}', 'UserController@show')->name('user.show');
 Route::post('/user/admin', 'UserController@admin')->name('user.admin');
 
 Route::post('/user/ban', 'UserController@ban')->name('user.ban');
@@ -117,8 +117,3 @@ Route::get('storage/app/public/{id}/{filename}', function ($filename)
 });
 
 Auth::routes();
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
