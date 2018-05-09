@@ -19,7 +19,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        // we don't have a page overview yet, only directly linked pages from menus
+        $pages = Page::all();
+        return view('modules.pages.index', compact('pages'));
     }
 
     /**
@@ -29,7 +30,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('modules.pages.edit');
+        return view('modules.pages.create');
     }
 
     /**
@@ -109,6 +110,7 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page->destroy($page->id);
+        return route('home')->with('message', 'Page deleted successfully.');
     }
 }

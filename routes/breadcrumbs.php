@@ -10,6 +10,11 @@ Breadcrumbs::register('home.admin', function ($breadcrumbs) {
     $breadcrumbs->push('Admin Dashboard', route('home.admin'));
 });
 
+Breadcrumbs::register('page.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Pages', route('page.index'));
+});
+
 Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push($page->name, route('page.show', $page->slug));
@@ -18,6 +23,11 @@ Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
 Breadcrumbs::register('page.edit', function ($breadcrumbs, $page) {
     $breadcrumbs->parent('page.show', $page);
     $breadcrumbs->push('Editing page: ' . $page->name, route('page.show', $page->slug));
+});
+
+Breadcrumbs::register('page.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('home.admin');
+    $breadcrumbs->push('Creating new page');
 });
 
 Breadcrumbs::register('blog.index', function ($breadcrumbs) {

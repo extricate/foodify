@@ -101,7 +101,7 @@
                         @foreach($pages as $page)
                             <div class="card m-1">
                                 <div class="card-body">
-                                    <a href="{{ route('page.show', $page->slug) }}">{{ $page->name }}</a>
+                                    <a href="{{ route('page.show', $page) }}">{{ $page->name }}</a>
                                     <a href="{{ route('page.edit', $page->id) }}"
                                        class="btn btn-primary btn-sm pull-right">
                                         <i class="fal fa-edit"></i>
