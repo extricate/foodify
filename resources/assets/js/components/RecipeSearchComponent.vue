@@ -6,26 +6,33 @@
             v-bind:auto-search=false
     >
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-12 col-sm-12">
                 <form class="form-group">
-                    <ais-search-box placeholder="What are you craving for?">
-                        <div class="input-group input-group-lg">
-                            <ais-input
-                                    placeholder="What are you craving for?"
-                                    :classNames="{
+                    <div class="row justify-content-center">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6">
+                            <ais-search-box placeholder="What are you craving for?">
+                                <div class="input-group input-group-lg">
+                                    <ais-input
+                                            placeholder="What are you craving for?"
+                                            :classNames="{
                             'ais-input': 'form-control search-form'
                         }"
-                            />
-                            <span class="input-group-append">
+                                    />
+                                    <span class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     Search <i class="fal fa-search"></i>
                                 </button>
                             </span>
+                                </div>
+                            </ais-search-box>
                         </div>
-                        <div class="algolia pull-right">
-                            <ais-powered-by></ais-powered-by>
+                        <div class="col-lg-1 align-content-left align-items-center d-none d-lg-block">
+                            <div class="algolia ml-0 mt-3">
+                                <ais-powered-by></ais-powered-by>
+                            </div>
                         </div>
-                    </ais-search-box>
+                    </div>
                 </form>
             </div>
         </div>

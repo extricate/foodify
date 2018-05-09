@@ -1,4 +1,4 @@
-@if(is_null($comment->published))
+@if($comment->published === null)
 <div class="form-inline pull-left ml-1">
     {!! Form::open([
 'method' => 'POST',
