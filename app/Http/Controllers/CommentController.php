@@ -14,6 +14,7 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('banned')->only(['store', 'update', 'delete', 'edit']);
+        $this->middleware('admin')->only(['moderation', 'moderate']);
     }
 
     public function create()
@@ -86,5 +87,25 @@ class CommentController extends Controller
 
         return back()->with('message', 'That is not your comment.');
 
+    }
+
+    public function moderation()
+    {
+        $comments = Comment::all()->where('published', '=', null);
+
+        return view('modules.comments.moderation', compact('comments'));
+    }
+
+    public function moderate(Request $request, $id)
+    {
+        Validator::make($request->all(), [
+            'action' => 'required|boolean'
+        ]);
+
+        $comment = Comment::findOrFail($id);
+        $comment->published = $request->action;
+        $comment->save();
+
+        return back()->with('message', 'Comment published status set to ' . $request->action);
     }
 }

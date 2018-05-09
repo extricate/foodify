@@ -117,7 +117,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card-group">
+            <div class="card-group mb-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Your dietary analytics</div>

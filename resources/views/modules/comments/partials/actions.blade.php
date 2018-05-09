@@ -7,5 +7,6 @@
     @endif
     @admin
         @include('modules.user.partials.ban-user', ['user_id' => $comment->author()->id])
+        @include('modules.comments.partials.moderate', ['comment' => $comment])
     @endadmin
 @endauth

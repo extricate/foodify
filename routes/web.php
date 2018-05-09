@@ -44,7 +44,7 @@ Route::post('/user/unban', 'UserController@unban')->name('user.unban');
  * Recipes
  */
 Route::resource('/recipes', 'RecipeController');
-Route::get('/recipes/{param}', 'RecipeController@show');
+Route::get('/recipes/{param}', 'RecipeController@show')->name('recipes.show');
 Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit')->middleware('auth');
 Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store')->middleware('auth');
@@ -67,6 +67,8 @@ Route::get('/recipes/comment/{id}/edit', 'CommentController@edit')->name('commen
 Route::patch('/recipes/comment/edit', 'CommentController@update')->name('comments.update');
 Route::post('/recipes/comment', 'CommentController@store')->name('comments.store');
 Route::post('/recipes/comment/destroy', 'CommentController@destroy')->name('comments.destroy');
+Route::get('/recipes/comments/moderation', 'CommentController@moderation')->name('comments.moderation')->middleware('admin');
+Route::post('/recipes/comments/moderation/{id}', 'CommentController@moderate')->name('comments.moderation.action')->middleware('admin');
 
 /**
  * Food plan
