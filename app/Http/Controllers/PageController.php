@@ -48,8 +48,10 @@ class PageController extends Controller
 
         $page = Page::create([
             'name' => $request->name,
-            'content' => $request->text,
+            'text' => $request->text,
         ]);
+
+        return redirect(route('page.show', $page))->with('message', 'Page created successfully.');
     }
 
     /**

@@ -16,7 +16,7 @@ Breadcrumbs::register('page.index', function ($breadcrumbs) {
 });
 
 Breadcrumbs::register('page.show', function ($breadcrumbs, $page) {
-    $breadcrumbs->parent('home');
+    $breadcrumbs->parent('page.index');
     $breadcrumbs->push($page->name, route('page.show', $page->slug));
 });
 
@@ -26,7 +26,7 @@ Breadcrumbs::register('page.edit', function ($breadcrumbs, $page) {
 });
 
 Breadcrumbs::register('page.create', function ($breadcrumbs) {
-    $breadcrumbs->parent('home.admin');
+    $breadcrumbs->parent('page.index');
     $breadcrumbs->push('Creating new page');
 });
 

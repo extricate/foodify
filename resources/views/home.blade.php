@@ -108,7 +108,7 @@
                     <div class="card-body">
                         <h3>Tomorrow's menu</h3>
                         <div class="card text-dark">
-                            @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$today()])
+                            @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$tomorrow()])
                         </div>
                     </div>
                 </div>

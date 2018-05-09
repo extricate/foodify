@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col">
                 @if ($errors->any())
-                    <div class="alert alert-danger m-3">
+                    <div class="alert alert-danger">
                         <ul class="list-unstyled mb-0">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -23,26 +23,19 @@
                 @endif
                 {!! Form::open([
                 'method' => 'POST',
-                'route' => ['page.create'],
+                'route' => ['page.store'],
                 'enctype' => 'multipart/form-data',
                 ]) !!}
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="name" value="" placeholder="Write the page name here">
-                        <div class="input-group-append">
-                            <button type="submit" class="mr-2 btn btn-primary">Change name</button>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="name" value="" placeholder="Write the page name here">
                 </div>
 
                 <div class="form-group">
-                    <div class="input-group">
                         <textarea type="text" class="form-control" id="text" name="text"
                                   placeholder="Write the page content here."
                                   rows="8" maxlength="400"></textarea>
-                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-secondary" href="{{ route('home.admin') }}">Cancel</a>
