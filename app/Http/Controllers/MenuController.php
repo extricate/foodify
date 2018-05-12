@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Menu;
 use App\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MenuController extends Controller
 {
@@ -32,7 +33,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.menu.create');
     }
 
     /**
@@ -43,7 +44,15 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|unique:menus|max:255',
+        ])->validate();
+
+        $menu = Menu::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect(route('menus.edit', $menu));
     }
 
     /**
@@ -90,7 +99,9 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+
+        return redirect(route('menus.index'))->with('message', 'Deleted menu.');
     }
 
     /**

@@ -25,9 +25,14 @@ Breadcrumbs::register('menus.index', function ($breadcrumbs) {
     $breadcrumbs->push('Manage all menus', route('menus.index'));
 });
 
+Breadcrumbs::register('menus.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('menus.index');
+    $breadcrumbs->push('Creating new menu');
+});
+
 Breadcrumbs::register('menus.edit', function ($breadcrumbs, $menu) {
     $breadcrumbs->parent('menus.index');
-    $breadcrumbs->push('Editing menu: ', route('menus.show', $menu));
+    $breadcrumbs->push('Editing menu: ' . $menu->name, route('menus.show', $menu));
 });
 
 Breadcrumbs::register('page.index', function ($breadcrumbs) {

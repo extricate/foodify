@@ -45,6 +45,21 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
+                <div class="card mt-3 mb-3">
+                    <div class="card-body">
+                        Addable elements
+                        <div class="form-group">
+                            <ul class="list-unstyled">
+                                @foreach($attachables as $element)
+                                    <li>
+                                        @include('modules.menu.partials.attach')
+                                    </li>
+                                @endforeach
+                            </ul>
+                            {{ $attachables->links() }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="card">
@@ -58,23 +73,6 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        Elements not in this menu
-                        <div class="form-group">
-                            <ul class="list-unstyled">
-                                @foreach($attachables as $element)
-                                    <li>
-                                        @include('modules.menu.partials.attach')
-                                    </li>
-                                @endforeach
-                            </ul>
-                            {{ $attachables->links() }}
                         </div>
                     </div>
                 </div>

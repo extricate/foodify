@@ -122,10 +122,23 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="mt-3 mb-3">
+                    <div class="mt-3 mb-3 text-right">
                         <a href="{{ route('comments.moderation') }}" class="btn btn-primary">
                             Go to moderation queue
                             <i class="fal fa-shield-check"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mt-3 mb-3">
+                <div class="card-body">
+                    <div class="card-title">Menus</div>
+                    <div class="mt-3 mb-3 text-right">
+                        <a href="{{ route('menus.index') }}" class="btn btn-primary">
+                            Manage all menus
+                            <i class="fal fa-bars"></i>
                         </a>
                     </div>
                 </div>

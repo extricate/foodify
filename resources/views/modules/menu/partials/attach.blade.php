@@ -8,5 +8,5 @@
 </div>
 {{ $element->name }}
 <input type="hidden" class="hidden" name="id" value="{{ $element->id }}">
-<button type="submit" class="btn btn-primary">Add <i class="fal fa-plus"></i></button>
+<button type="submit" class="btn btn-primary pull-right">Add <i class="fal fa-plus"></i></button>
 {!! Form::close() !!}

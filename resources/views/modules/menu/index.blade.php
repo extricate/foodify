@@ -12,7 +12,7 @@
 @section('submenu-buttons')
     <div class="d-none d-sm-inline-block">
         <a href="{{ route('menus.create') }}" class="btn btn-primary">
-            Create page <i class="fal fa-plus"></i>
+            Create menu <i class="fal fa-plus"></i>
         </a>
     </div>
     <div class="d-sm-none">
@@ -29,7 +29,7 @@
         <div class="card submenu-collapsible">
             <div class="card-body">
                 <a href="{{ route('menus.create') }}" class="btn btn-primary">
-                    Create page <i class="fal fa-plus"></i>
+                    Create menu <i class="fal fa-plus"></i>
                 </a>
             </div>
         </div>
@@ -46,10 +46,11 @@
                         <div class="card-text">
                             <a href="{{ route('menus.show', $menu) }}">{{ $menu->name }}</a>
                             @admin
-                            <a href="{{ route('menus.edit', $menu->id) }}"
+                            <a href="{{ route('menus.edit', $menu) }}"
                                class="btn btn-primary btn-sm pull-right">
                                 <i class="fal fa-edit"></i>
                             </a>
+                            @include('modules.menu.partials.delete')
                             @endadmin
                         </div>
                     </div>
