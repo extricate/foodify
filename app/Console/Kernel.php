@@ -24,10 +24,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('foodify:generate-foodplans')
+            ->weekly()
+            ->sundays()
+            ->at('23:00');
 
-        $schedule->command('generate:foodplan')->everyMinute();
+        $schedule->command('foodify:admin-report')
+            ->weekly()
+            ->sundays()
+            ->at('23:00');
     }
 
     /**

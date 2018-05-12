@@ -37,7 +37,7 @@ class User extends Authenticatable
             ->saveSlugsTo('slug');
     }
 
-    public function slug()
+    public function path()
     {
         return '/users/' . $this->slug;
     }

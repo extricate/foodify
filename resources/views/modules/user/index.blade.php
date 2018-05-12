@@ -16,7 +16,7 @@
                 <div class="card mt-3 mb-3">
                     <div class="card-body">
                         <div class="card-text">
-                            <a href="{{ $user->slug() }}">{{ $user->name }}</a>
+                            <a href="{{ $user->path() }}">{{ $user->name }}</a>
                         </div>
                     </div>
                 </div>

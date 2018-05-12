@@ -14,7 +14,7 @@ class GenerateFoodplans extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:foodplan';
+    protected $signature = 'foodify:generate-foodplans';
 
     /**
      * The console command description.
