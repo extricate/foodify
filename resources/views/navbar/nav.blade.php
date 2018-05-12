@@ -75,9 +75,6 @@
                                     <a href="{{ route('home.admin') }}" class="dropdown-item">
                                         Admin dashboard
                                     </a>
-                                    <a href="/admin" class="dropdown-item">
-                                        Full back-end
-                                    </a>
                                 @endadmin
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

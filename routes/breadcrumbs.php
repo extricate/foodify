@@ -20,6 +20,11 @@ Breadcrumbs::register('users.index', function ($breadcrumbs) {
     $breadcrumbs->push('Manage all users', route('users.index'));
 });
 
+Breadcrumbs::register('menus.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home.admin');
+    $breadcrumbs->push('Manage all menus', route('menus.index'));
+});
+
 Breadcrumbs::register('page.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Pages', route('page.index'));

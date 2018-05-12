@@ -50,8 +50,9 @@
 
 @section('content')
 
-    <recipe-search-component></recipe-search-component>
-
+    <div class="ais-container">
+        <recipe-search-component></recipe-search-component>
+    </div>
     @auth
         <div class="row">
             <div class="col-12">

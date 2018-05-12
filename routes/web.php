@@ -97,6 +97,12 @@ Route::resource('/pantry', 'PantryController');
 Route::resource('/favorites', 'FavoriteController');
 
 /**
+ * Menus
+ */
+
+Route::resource('/menus', 'MenuController');
+
+/**
  * Image storage technique
  */
 Route::get('storage/app/public/{id}/{filename}', function ($filename)

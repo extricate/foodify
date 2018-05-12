@@ -275,6 +275,10 @@ h1.card-title {
  * Owl Carousel things
  */
 .owl-container {
+  min-height: 90px;
+  @include media-breakpoint-down(md) {
+    height: 120px;
+  }
   @include media-breakpoint-up(md) {
     height: auto;
   }
@@ -325,4 +329,12 @@ footer {
 .arrow-icon {
   max-width: 200px;
   max-height: 200px;
+}
+
+/**
+ * Algolia Instant Search
+ */
+
+.ais-container {
+  min-height: 65px;
 }

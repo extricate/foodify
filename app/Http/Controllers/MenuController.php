@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin')->except(['show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menu::all();
+        return view('modules.menu.index', compact('menus'));
     }
 
     /**
@@ -46,7 +53,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        //
+        return view('modules.menu.show', compact('menu'));
     }
 
     /**
@@ -81,5 +88,25 @@ class MenuController extends Controller
     public function destroy(Menu $menu)
     {
         //
+    }
+
+    /**
+     * Many to many handlers
+     *
+     * @param Menu $menu
+     * @param $element
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function attach(Menu $menu, $element)
+    {
+        $menu->attach($element);
+        return back();
+    }
+
+    public function detach(Menu $menu, $element)
+    {
+        $menu->detach($element);
+        return back();
     }
 }
