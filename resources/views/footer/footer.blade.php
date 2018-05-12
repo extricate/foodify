@@ -8,7 +8,7 @@
                         @if($menu != null)
                             @foreach($menu->elements as $element)
                                 <li>
-                                    <a href="{{ $element->slug() }}">{{ $element->name }}</a>
+                                    <a href="{{ $element->path() }}">{{ $element->name }}</a>
                                 </li>
                             @endforeach
                         @endif
@@ -22,7 +22,7 @@
                         @if($menu != null)
                             @foreach($menu->elements as $element)
                                 <li>
-                                    <a href="{{ $element->slug() }}">{{ $element->name }}</a>
+                                    <a href="{{ $element->path() }}">{{ $element->name }}</a>
                                 </li>
                             @endforeach
                         @endif
@@ -36,7 +36,7 @@
                         @if($menu != null)
                             @foreach($menu->elements as $element)
                                 <li>
-                                    <a href="{{ $element->slug() }}">{{ $element->name }}</a>
+                                    <a href="{{ $element->path() }}">{{ $element->name }}</a>
                                 </li>
                             @endforeach
                         @endif

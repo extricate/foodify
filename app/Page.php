@@ -25,7 +25,7 @@ class Page extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function slug()
+    public function path()
     {
         return "/page/{$this->slug}";
     }
