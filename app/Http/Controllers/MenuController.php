@@ -74,8 +74,19 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        // For now this only returns pages as being attachable. In the future the trait _attachable_ will be added to models that allow being added to a menu.
-        $attachables = Page::paginate(6);
+        /** For now this only returns pages as being attachable. In the future the trait
+         * _attachable_ will be added to models that allow being added to a menu.
+         * so that anything can become attacheable to a menu.
+         */
+
+        // exclude pages that are currently in the menu already.
+        $excluded = array('null');
+
+        foreach($menu->elements as $element) {
+            $excluded[] = $element->id;
+        }
+
+        $attachables = Page::where('id', '!=', $excluded)->paginate(6);
         return view('modules.menu.edit', compact('menu', 'attachables'));
     }
 
