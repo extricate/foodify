@@ -40,22 +40,18 @@ class GenerateFoodplans extends Command
      */
     public function handle()
     {
-        if ($this->confirm('Are you sure you want to generate new foodplans for all users? Type yes to continue.')) {
-            $users = User::all();
-            $bar = $this->output->createProgressBar(count($users));
-            foreach ($users as $user) {
-                $foodplan = $user->food_plan();
-                foreach ($foodplan->days() as $day) {
-                    $foodplan->$day = Recipe::inRandomOrder()->first()->id;
-                }
-                $foodplan->save();
-                $bar->advance();
+        $users = User::all();
+        $bar = $this->output->createProgressBar(count($users));
+        foreach ($users as $user) {
+            $foodplan = $user->food_plan();
+            foreach ($foodplan->days() as $day) {
+                $foodplan->$day = Recipe::inRandomOrder()->first()->id;
             }
-            $bar->finish();
-            $this->info('New foodplans have been generated.');
-            return;
+            $foodplan->save();
+            $bar->advance();
         }
-        $this->info('Cancelled generation of foodplans.');
+        $bar->finish();
+        $this->info('New foodplans have been generated.');
         return;
     }
 }
