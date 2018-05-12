@@ -151,10 +151,17 @@ class FoodPlanController extends Controller
         $user = auth()->user();
         $foodplan = $user->food_plan();
 
+        $foodplanArray = [];
+
         // Just randomly suggest recipes in random order. In future versions this should
         // obviously be based on the user preferences.
         foreach($foodplan->days() as $day) {
-            $foodplan->$day = Recipe::inRandomOrder()->first()->id;
+            $foodplan->$day = Recipe::inRandomOrder()
+                ->whereNotIn('id', $foodplanArray)
+                ->first()
+                ->id;
+
+            array_push($foodplanArray, $foodplan->$day);
         }
 
         $foodplan->save();

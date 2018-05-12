@@ -44,14 +44,20 @@ class GenerateFoodplans extends Command
         $bar = $this->output->createProgressBar(count($users));
         foreach ($users as $user) {
             $foodplan = $user->food_plan();
+            $foodplanArray = [];
             foreach ($foodplan->days() as $day) {
-                $foodplan->$day = Recipe::inRandomOrder()->first()->id;
+                $foodplan->$day = Recipe::inRandomOrder()
+                    ->whereNotIn('id', $foodplanArray)
+                    ->first()
+                    ->id;
+
+                array_push($foodplanArray, $foodplan->$day);
             }
             $foodplan->save();
             $bar->advance();
         }
         $bar->finish();
-        $this->info('New foodplans have been generated.');
+        $this->info(' New foodplans have been generated.');
         return;
     }
 }

@@ -62,8 +62,8 @@
             $today = strtolower(\Carbon\Carbon::today()->format('l'));
             $tomorrow = strtolower(\Carbon\Carbon::tomorrow()->format('l'));
         @endphp
+        @if($foodplan->$today() == !null)
         <div class="col-lg-8">
-            @if($foodplan->$today() == !null)
                 <div class="card text-white bg-primary mt-3 mb-3">
                     <div class="card-body">
                         <div class="row">
@@ -84,7 +84,6 @@
                         </div>
                     </div>
                 </div>
-            @endif
         </div>
         <div class="col-lg-4">
             @if($foodplan->$tomorrow() == !null)
@@ -99,6 +98,7 @@
             @endif
         </div>
     </div>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card mb-3">

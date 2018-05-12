@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\AdminReport;
 use App\Comment;
 use App\User;
 use App\Recipe;
@@ -61,6 +62,23 @@ class GenerateAdminReport extends Command
         $userCountDifference = User::whereBetween('created_at', $monthlyDifference)->count();
         $commentCountDifference = Comment::whereBetween('created_at', $monthlyDifference)->count();
 
+        // generate admin report object in database
+        AdminReport::create([
+            'from' => $from,
+            'till' => $till,
+
+            'recipeCount' => $recipeCount,
+            'differenceRecipeCreated' => $differenceRecipeCreated,
+            'differenceRecipeUpdated' => $differenceRecipeUpdated,
+
+            'userCount' => $userCount,
+            'userCountDifference' => $userCountDifference,
+
+            'commentsCount' => $commentCount,
+            'commentCountDifference' => $commentCountDifference,
+        ]);
+
+        // cli feedback
         $this->info('--------------------------');
 
         $this->info('Admin report ' . $from . ' till ' .  $till);
