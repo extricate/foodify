@@ -88,7 +88,15 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|unique:menus|max:255',
+        ])->validate();
+
+        $menu->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect(route('menus.edit', $menu));
     }
 
     /**
