@@ -18,7 +18,18 @@ use App\Events\UserRegistered;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
+
+/**
+ * Admin dashboard
+ */
 Route::get('/home/admin', 'HomeController@admin')->name('home.admin')->middleware('admin');
+
+Route::resource('/home/admin/reports', 'AdminReportController')->names([
+    'index' => 'admin.report',
+    'show' => 'admin.report.show',
+    ])->middleware('admin');
+
+Route::get('/home/admin/reports/{param}', 'AdminReportController@show')->name('admin.report.show')->middleware('admin');
 
 
 /**
@@ -37,6 +48,10 @@ Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->n
 // View users
 Route::get('/users', 'UserController@index')->name('users.index')->middleware('admin');
 Route::get('/users/{param}', 'UserController@show')->name('user.show');
+
+/**
+ * User admin
+ */
 Route::post('/user/admin', 'UserController@admin')->name('user.admin');
 
 Route::post('/user/ban', 'UserController@ban')->name('user.ban');

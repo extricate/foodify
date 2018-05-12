@@ -35,6 +35,16 @@ Breadcrumbs::register('menus.edit', function ($breadcrumbs, $menu) {
     $breadcrumbs->push('Editing menu: ' . $menu->name, route('menus.show', $menu));
 });
 
+Breadcrumbs::register('admin.reports', function ($breadcrumbs) {
+    $breadcrumbs->parent('home.admin');
+    $breadcrumbs->push('All admin reports', route('admin.report'));
+});
+
+Breadcrumbs::register('admin.reports.show', function ($breadcrumbs, $report) {
+    $breadcrumbs->parent('admin.reports');
+    $breadcrumbs->push('Viewing ' . $report->slug);
+});
+
 Breadcrumbs::register('page.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Pages', route('page.index'));

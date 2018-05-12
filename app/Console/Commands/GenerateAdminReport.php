@@ -74,7 +74,7 @@ class GenerateAdminReport extends Command
             'userCount' => $userCount,
             'userCountDifference' => $userCountDifference,
 
-            'commentsCount' => $commentCount,
+            'commentCount' => $commentCount,
             'commentCountDifference' => $commentCountDifference,
         ]);
 
