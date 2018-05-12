@@ -11,7 +11,35 @@
 @section('content')
     <div class="row mb-5">
         <div class="col-12">
-            <h1 class="primary">Quick admin panel</h1>
+            <h1 class="primary">Admin dashboard</h1>
+        </div>
+        <div class="col-lg-12">
+            <div class="card mt-3 mb-3">
+                <div class="card-body">
+                    <div class="card-title">
+                        Quick admin navigation
+                    </div>
+                    <a href="{{ route('page.create') }}" class="btn btn-primary">
+                        New page
+                        <i class="fal fa-plus"></i>
+                    </a>
+
+                    <a href="{{ route('users.index') }}" class="btn btn-primary">
+                        Manage all users
+                        <i class="fal fa-users"></i>
+                    </a>
+
+                    <a href="{{ route('comments.moderation') }}" class="btn btn-primary">
+                        Go to moderation queue
+                        <i class="fal fa-shield-check"></i>
+                    </a>
+
+                    <a href="{{ route('menus.index') }}" class="btn btn-primary">
+                        Manage all menus
+                        <i class="fal fa-bars"></i>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="card mt-3 mb-3">
