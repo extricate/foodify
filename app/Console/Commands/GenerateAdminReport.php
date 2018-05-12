@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Recipe;
+use App\Comment;
 use App\User;
+use App\Recipe;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -41,23 +42,44 @@ class GenerateAdminReport extends Command
      */
     public function handle()
     {
-        $currentDate = Carbon::now();
-        $previousWeek = $currentDate->subDays($currentDate->dayOfWeek)->subWeek();
+        // carbon logic for today and a month ago
+        $now = Carbon::now();
+        $from = $now->subMonth();
+        // adding a day to prevent missing rows due to different date time configurations
+        $till = Carbon::now()->addDay();
+
+        $monthlyDifference = [$from, $till];
 
         // totals
         $recipeCount = Recipe::count();
         $userCount = User::count();
+        $commentCount = Comment::count();
 
         // get difference between previous week report
-        $differenceRecipeCreated = Recipe::whereBetween('created_at', array($currentDate, $previousWeek))->count();
-        $differenceRecipeUpdated = Recipe::whereBetween('updated_at', array($currentDate, $previousWeek))->count();
+        $differenceRecipeCreated = Recipe::whereBetween('created_at', $monthlyDifference)->count();
+        $differenceRecipeUpdated = Recipe::whereBetween('updated_at', $monthlyDifference)->count();
+        $userCountDifference = User::whereBetween('created_at', $monthlyDifference)->count();
+        $commentCountDifference = Comment::whereBetween('created_at', $monthlyDifference)->count();
 
-        $userCountDifference = User::whereBetween('created_at', array($currentDate, $previousWeek))->count();
+        $this->info('--------------------------');
 
-        $this->info('Registered users: ' . $userCount);
-        $this->info('New users since this week: ' . $userCountDifference);
-        $this->info('Difference in recipes that have been updated: ' . $differenceRecipeUpdated);
-        $this->info('Difference in recipes that have been created: ' . $differenceRecipeCreated);
+        $this->info('Admin report ' . $from . ' till ' .  $till);
+
+        $this->info('--------------------------');
+
+        $this->info('Total registered users: ' . $userCount);
+        $this->info('New users since this month: ' . $userCountDifference);
+
+        $this->info('--------------------------');
+
+        $this->info('Total amount of recipes: ' . $recipeCount);
+        $this->info('Created this month: ' . $differenceRecipeCreated);
+        $this->info('Updated this month: ' . $differenceRecipeUpdated);
+
+        $this->info('--------------------------');
+
+        $this->info('Our users posted this many comments: ' . $commentCount);
+        $this->info('That\'s ' . $commentCountDifference . ' more comments since ' . $from);
 
         return;
     }
