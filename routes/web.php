@@ -101,6 +101,8 @@ Route::resource('/favorites', 'FavoriteController');
  */
 
 Route::resource('/menus', 'MenuController');
+Route::patch('/menus/{menu}/attach/{element}', 'MenuController@attach')->name('menus.attach');
+Route::patch('/menus/{menu}/detach/{element}', 'MenuController@detach')->name('menus.detach');
 
 /**
  * Image storage technique

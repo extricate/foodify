@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
+use App\Page;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -64,7 +65,9 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        //
+        // For now this only returns pages as being attachable. In the future the trait _attachable_ will be added to models that allow being added to a menu.
+        $attachables = Page::paginate(6);
+        return view('modules.menu.edit', compact('menu', 'attachables'));
     }
 
     /**
@@ -100,13 +103,13 @@ class MenuController extends Controller
 
     public function attach(Menu $menu, $element)
     {
-        $menu->attach($element);
+        $menu->elements()->attach($element);
         return back();
     }
 
     public function detach(Menu $menu, $element)
     {
-        $menu->detach($element);
+        $menu->elements()->detach($element);
         return back();
     }
 }

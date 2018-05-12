@@ -25,6 +25,11 @@ Breadcrumbs::register('menus.index', function ($breadcrumbs) {
     $breadcrumbs->push('Manage all menus', route('menus.index'));
 });
 
+Breadcrumbs::register('menus.edit', function ($breadcrumbs, $menu) {
+    $breadcrumbs->parent('menus.index');
+    $breadcrumbs->push('Editing menu: ', route('menus.show', $menu));
+});
+
 Breadcrumbs::register('page.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Pages', route('page.index'));

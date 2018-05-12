@@ -15,7 +15,6 @@ class Page extends Model
     use Searchable;
     use HasSlug;
     use Tags\HasTags;
-    use Searchable;
 
     protected $guarded = [];
 
