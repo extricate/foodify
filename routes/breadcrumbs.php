@@ -42,7 +42,7 @@ Breadcrumbs::register('admin.reports', function ($breadcrumbs) {
 
 Breadcrumbs::register('admin.reports.show', function ($breadcrumbs, $report) {
     $breadcrumbs->parent('admin.reports');
-    $breadcrumbs->push('Viewing ' . $report->slug);
+    $breadcrumbs->push('Viewing report of ' . $report->from . ' - ' . $report->till);
 });
 
 Breadcrumbs::register('page.index', function ($breadcrumbs) {

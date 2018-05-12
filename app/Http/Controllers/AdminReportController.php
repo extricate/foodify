@@ -20,7 +20,7 @@ class AdminReportController extends Controller
      */
     public function index()
     {
-        $reports = AdminReport::all();
+        $reports = AdminReport::latest('created_at')->paginate(6);
 
         return view('modules.admin.reports.index', compact('reports'));
     }

@@ -22,6 +22,8 @@
                     </div>
                 </div>
             @endforeach
+
+            {{ $reports->links() }}
         </div>
     </div>
 @endsection
