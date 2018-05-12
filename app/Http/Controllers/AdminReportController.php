@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AdminReportController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class AdminReportController extends Controller
      */
     public function index()
     {
-        $this->middleware('admin');
+        $reports = AdminReport::all();
+
+        return view('modules.admin.reports.index', compact('reports'));
     }
 
     /**
@@ -41,12 +49,16 @@ class AdminReportController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\AdminReport  $adminReport
+     * @param  $adminReport
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminReport $adminReport)
+    public function show($param)
     {
-        //
+        $report = AdminReport::where('id', $param)
+            ->orWhere('slug', $param)
+            ->firstOrFail();
+
+        return view('modules.admin.reports.show', compact('report'));
     }
 
     /**
