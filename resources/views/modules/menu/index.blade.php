@@ -50,7 +50,6 @@
                                class="btn btn-primary btn-sm pull-right">
                                 <i class="fal fa-edit"></i>
                             </a>
-                            @include('modules.menu.partials.delete')
                             @endadmin
                         </div>
                     </div>

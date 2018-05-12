@@ -8,6 +8,22 @@
     </div>
 @endsection
 
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        @include('modules.menu.partials.delete')
+    </div>
+@endsection
+
+@section('submenu-buttons-mobile')
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                @include('modules.menu.partials.delete')
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="page mh-100 h-100">
         <div class="row">

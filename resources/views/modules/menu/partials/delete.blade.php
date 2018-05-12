@@ -5,5 +5,5 @@
 'class' => 'form-inline'
 ]) !!}
 {{ csrf_field() }}
-<button type="submit" class="btn btn-danger btn-sm pull-right"><i class="fal fa-trash"></i></button>
+<button type="submit" class="btn btn-danger pull-right">Delete menu <i class="fal fa-trash"></i></button>
 {!! Form::close() !!}
