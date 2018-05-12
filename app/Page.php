@@ -27,7 +27,7 @@ class Page extends Model
 
     public function slug()
     {
-        return "/page/{ $this->slug }";
+        return "/page/{$this->slug}";
     }
 
     /**

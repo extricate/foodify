@@ -33,7 +33,7 @@ class Recipe extends Model implements HasMedia
 
     public function path()
     {
-        return "/recipes/{ $this->slug }";
+        return "/recipes/{$this->slug}";
     }
 
     public function author()
