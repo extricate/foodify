@@ -38,6 +38,11 @@
                         Manage all menus
                         <i class="fal fa-bars"></i>
                     </a>
+
+                    <a href="{{ route('admin.report') }}" class="btn btn-primary">
+                        Admin reports
+                        <i class="fal fa-clipboard"></i>
+                    </a>
                 </div>
             </div>
         </div>
