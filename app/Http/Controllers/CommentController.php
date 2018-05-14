@@ -29,10 +29,23 @@ class CommentController extends Controller
             'text' => 'required|min:10|max:400',
         ])->validate();
 
+        if (auth()->user()->admin == true || auth()->user()->verified) {
+            Comment::create([
+                'author' => auth()->user()->id,
+                'text' => $request->text,
+                'recipe_id' => $request->recipe,
+                'published' => true,
+            ]);
+
+            return back()->with('message',
+                'Success! We trust you on Foodify and thus your comment has been published immediately.');
+        }
+
         Comment::create([
             'author' => auth()->user()->id,
             'text' => $request->text,
-            'recipe_id' => $request->recipe
+            'recipe_id' => $request->recipe,
+            'published' => false,
         ]);
 
         return back()->with('message', 'Success! Your comment will be published after a moderator approves it.');
@@ -68,18 +81,16 @@ class CommentController extends Controller
                 'Comment edited. The comment will have to be reviewed by a moderator before it is visible again.');
         }
 
-        if (auth()->user()->isAdmin() == true || $comment->author()->id == auth()->user()->id && $comment->author()->verified) {
+        if (auth()->user()->admin == true || $comment->author()->id == auth()->user()->id && $comment->author()->verified) {
             $comment->update([
                 'text' => $request->text,
                 'published' => true,
             ]);
 
             return redirect($recipe->path())->with('message', 'Comment edited.');
-
         }
 
         return redirect($recipe->path())->with('message', 'That is not your comment.');
-
     }
 
     public function destroy(Request $request)
