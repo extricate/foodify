@@ -7,6 +7,7 @@ use App\History;
 use App\FoodPlan;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use App\Listeners\SaveFoodplansToHistory;
 
 /**
  * Class SaveFoodplanToHistory
@@ -45,26 +46,13 @@ class SaveFoodplanToHistory extends Command
      */
     public function handle()
     {
+        /**
+         * Save all existing foodplans to the history of all users.
+         */
         $this->info('--------------------------');
-        $this->info('Saving the old foodplans to their respective owners histories.');
-
-        $users = User::all();
-        $bar = $this->output->createProgressBar(count($users));
-        foreach ($users as $user) {
-            $foodplan = $user->food_plan();
-            $history = new History([
-                'owner' => $user->id,
-                'week' => Carbon::now()->weekOfYear,
-                'created_automatically' => true,
-            ]);
-
-            foreach (FoodPlan::days() as $day) {
-                $history->$day = $foodplan->$day;
-            }
-            $history->save();
-            $bar->advance();
-        }
-        $this->info(' Finished saving user foodplans of previous week.');
+        $this->info('Firing the Save Foodplans event.');
+        event(new SaveFoodplansToHistory);
+        $this->info('Event was started. Foodplans are being saved to the database as new history objects.');
         $this->info('--------------------------');
 
         return;

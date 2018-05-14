@@ -6,8 +6,9 @@ namespace App\Console\Commands;
 use App\User;
 use App\Recipe;
 use Illuminate\Console\Command;
+use App\Listeners\GenerateFoodplans;
 
-class GenerateFoodplans extends Command
+class CLIGenerateFoodplans extends Command
 {
     /**
      * The name and signature of the console command.
@@ -40,29 +41,18 @@ class GenerateFoodplans extends Command
      */
     public function handle()
     {
+        $this->info('--------------------------');
+        $this->info('Initializing the foodplan generation sequence.');
         /**
          * Save all existing foodplans to the history of all users.
          */
         $this->call('foodify:save-foodplans');
 
-        $users = User::all();
-        $bar = $this->output->createProgressBar(count($users));
-        foreach ($users as $user) {
-            $foodplan = $user->food_plan();
-            $foodplanArray = [];
-            foreach ($foodplan->days() as $day) {
-                $foodplan->$day = Recipe::inRandomOrder()
-                    ->whereNotIn('id', $foodplanArray)
-                    ->first()
-                    ->id;
+        event(new GenerateFoodplans);
 
-                array_push($foodplanArray, $foodplan->$day);
-            }
-            $foodplan->save();
-            $bar->advance();
-        }
-        $bar->finish();
-        $this->info(' New foodplans have been generated.');
+        $this->info(' New foodplans are being generated.');
+        $this->info('--------------------------');
+
         return;
     }
 }
