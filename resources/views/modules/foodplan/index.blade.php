@@ -53,11 +53,6 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-6">
-            <h1 class="primary">Your foodplan</h1>
-        </div>
-    </div>
     @php $today = strtolower(\Carbon\Carbon::today()->format('l')); @endphp
     @if($foodplan->$today() == !null)
         <div class="row">

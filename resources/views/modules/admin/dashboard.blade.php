@@ -10,9 +10,6 @@
 
 @section('content')
     <div class="row mb-5">
-        <div class="col-12">
-            <h1 class="primary">Admin dashboard</h1>
-        </div>
         <div class="col-lg-12">
             <div class="card mt-3 mb-3">
                 <div class="card-body">

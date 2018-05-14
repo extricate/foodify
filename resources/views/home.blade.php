@@ -38,11 +38,6 @@
 @endadmin
 
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <h1 class="primary">{{ $user->name }}'s dashboard</h1>
-        </div>
-    </div>
     @if ($user->food_plan()->isEmpty() == true)
         <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
