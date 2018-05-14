@@ -163,4 +163,29 @@ class UserController extends Controller
         $user->save();
         return back()->with('message', 'User ' . $user->name . ' has been removed as an admin.');
     }
+
+    /**
+     * Grant or remove verified privileges
+     * This and admin will be extracted to dedicated roles if eventually the complexity of this
+     * increases, however for now this will suffice.
+     */
+    public function verified(Request $request)
+    {
+        Validator::make($request->all(), [
+            'user_id' => 'required|exists:users',
+            'action' => 'required|boolean'
+        ]);
+
+        $user = User::findOrFail($request->user_id);
+
+        if ($request->action == true) {
+            $user->verified = true;
+            $user->save();
+            return back()->with('message', 'User ' . $user->name . ' has been made a verified user.');
+        }
+
+        $user->verified = false;
+        $user->save();
+        return back()->with('message', 'User ' . $user->name . ' has been removed as a verified user');
+    }
 }

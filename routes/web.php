@@ -53,6 +53,7 @@ Route::get('/users/{param}', 'UserController@show')->name('user.show');
  * User admin
  */
 Route::post('/user/admin', 'UserController@admin')->name('user.admin');
+Route::post('/user/verfied', 'UserController@verified')->name('user.verified');
 
 Route::post('/user/ban', 'UserController@ban')->name('user.ban');
 Route::post('/user/unban', 'UserController@unban')->name('user.unban');
