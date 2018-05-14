@@ -58,12 +58,24 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($request->id);
         $recipe = Recipe::findOrFail($comment->onRecipe()->getResults()->id);
 
-        if ($comment->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
+        if ($comment->author()->id == auth()->user()->id) {
             $comment->update([
                 'text' => $request->text,
+                'published' => false,
+            ]);
+
+            return redirect($recipe->path())->with('message',
+                'Comment edited. The comment will have to be reviewed by a moderator before it is visible again.');
+        }
+
+        if (auth()->user()->isAdmin() == true || $comment->author()->id == auth()->user()->id && $comment->author()->verified) {
+            $comment->update([
+                'text' => $request->text,
+                'published' => true,
             ]);
 
             return redirect($recipe->path())->with('message', 'Comment edited.');
+
         }
 
         return redirect($recipe->path())->with('message', 'That is not your comment.');

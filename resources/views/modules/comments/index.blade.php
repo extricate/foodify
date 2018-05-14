@@ -3,6 +3,9 @@
         <div class="card-body">
             <div class="card-title">
                 <div class="h4">{{ $comment->author()->name }}
+                    @if($comment->author()->verified || $comment->author()->admin)
+                        <span class="badge badge-success">Verified</span>
+                    @endif
                     <small>said
                         <span title="{{ $comment->created_at }}">
                         {{ $comment->created_at->diffForHumans() }}
