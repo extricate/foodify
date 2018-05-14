@@ -36,6 +36,10 @@
     @endsection
 @endadmin
 
+@section('background-style')
+    style="background-image: url('{{ $recipe->getFirstMedia()->getUrl() }}'); background-size: cover; background-attachment: fixed; margin-top: -1.2em; margin-bottom: -1em; padding-top: 1em; padding-bottom: 1em;"
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-8">

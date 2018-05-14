@@ -6,7 +6,7 @@
     <div id="app">
         @include('navbar.nav')
         @include('navbar.submenu')
-        <main>
+        <main @yield('background-style')>
             <div class="container">
                 @yield('content')
             </div>
