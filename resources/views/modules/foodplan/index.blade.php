@@ -88,7 +88,12 @@
     <div class="row">
         @foreach($foodplan->days() as $day)
             <div class="col-lg-4 col-md-6">
-                <div class="card mt-3 @php if ($day == strtolower(\Carbon\Carbon::today()->format('l'))) echo 'card-today'; @endphp">
+                <div class="card mt-3 @if($day == strtolower(\Carbon\Carbon::today()->format('l'))) {{ 'card-today' }} @endif">
+                    @if($day == strtolower(\Carbon\Carbon::today()->format('l')))
+                        <div class="card-top-label">
+                            <span class="badge badge-primary">today</span>
+                        </div>
+                    @endif
                     <h3 class="m-3 text-capitalize">{{ $day }}</h3>
                     @if ($foodplan->$day() == !null)
                         @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$day()])

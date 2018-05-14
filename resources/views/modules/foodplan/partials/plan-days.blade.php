@@ -12,7 +12,7 @@
         data-toggle="tooltip" data-placement="top" title="{{ $day }}: {{ $foodplan_day->name }}"
         @endif
         class="img-recipe">
-    <button type="submit" class="btn btn-default img-overlay text-light text-capitalize font-weight-bold @php if ($day == strtolower(\Carbon\Carbon::today()->format('l'))) echo 'btn-today'; @endphp">
+    <button type="submit" class="btn btn-default img-overlay text-light text-capitalize font-weight-bold @if ($day == strtolower(\Carbon\Carbon::today()->format('l'))) {{'btn-today' }} @endif">
         {{ substr($day, 0, 2) }}
     </button>
 </div>
