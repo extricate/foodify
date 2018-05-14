@@ -23,7 +23,7 @@ class GenerateAdminReport extends Command
      *
      * @var string
      */
-    protected $description = 'Generate the weekly admin report';
+    protected $description = 'Generate the monthly admin report';
 
     /**
      * Create a new command instance.
