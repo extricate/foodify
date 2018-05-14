@@ -9,7 +9,7 @@ use App\Recipe;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class GenerateAdminReport extends Command
+class CLIGenerateAdminReport extends Command
 {
     /**
      * The name and signature of the console command.
@@ -43,6 +43,13 @@ class GenerateAdminReport extends Command
      */
     public function handle()
     {
+        /**
+         * There is some code duplication between this console command and the GenerateAdminReport
+         * listener. This is due to the fact that there will be more complex logic in this class
+         * in the near future, to allow for specificity and flexibility of the report duration.
+         *
+         * TO-DO.
+         */
         // carbon logic for today and a month ago
         $now = Carbon::now();
         $from = $now->subMonth();
@@ -61,22 +68,6 @@ class GenerateAdminReport extends Command
         $differenceRecipeUpdated = Recipe::whereBetween('updated_at', $monthlyDifference)->count();
         $userCountDifference = User::whereBetween('created_at', $monthlyDifference)->count();
         $commentCountDifference = Comment::whereBetween('created_at', $monthlyDifference)->count();
-
-        // generate admin report object in database
-        AdminReport::create([
-            'from' => $from,
-            'till' => $till,
-
-            'recipeCount' => $recipeCount,
-            'differenceRecipeCreated' => $differenceRecipeCreated,
-            'differenceRecipeUpdated' => $differenceRecipeUpdated,
-
-            'userCount' => $userCount,
-            'userCountDifference' => $userCountDifference,
-
-            'commentCount' => $commentCount,
-            'commentCountDifference' => $commentCountDifference,
-        ]);
 
         // cli feedback
         $this->info('--------------------------');

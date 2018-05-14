@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\CLIGenerateFoodplans::class,
-        Commands\GenerateAdminReport::class,
+        Commands\CLIGenerateAdminReport::class,
         Commands\SaveFoodplanToHistory::class,
     ];
 
