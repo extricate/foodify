@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="h2 card-title">
-                            Report of period: {{ $report->from }}) - {{ $report->till }}
+                            Report of period: {{ $report->from }} ({{ Carbon\Carbon::parse($report->from)->format('F') }}) - {{ $report->till }} ({{ Carbon\Carbon::parse($report->till)->format('F') }})
                         </div>
                         <div class="card-text">
                             <ul class="list-unstyled">
