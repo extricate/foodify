@@ -4,6 +4,13 @@ namespace App\Repositories;
 
 abstract class DashboardRepository implements RepositoryInterface {
 
+    /**
+     * Not implemented yet. But keeping it here to remind myself I _really_ need
+     * to dive deeper into Repositories and subsequently, caching.
+     *
+     * @param array $columns
+     * @return void
+     */
     public function all($columns = array('*'))
     {
         // TODO: Implement all() method.

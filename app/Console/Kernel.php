@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\GenerateFoodplans::class
+        Commands\GenerateFoodplans::class,
+        Commands\GenerateAdminReport::class,
+        Commands\SaveFoodplanToHistory::class,
     ];
 
     /**
@@ -30,7 +32,7 @@ class Kernel extends ConsoleKernel
             ->at('23:00');
 
         $schedule->command('foodify:admin-report')
-            ->weekly()
+            ->monthly()
             ->sundays()
             ->at('23:00');
     }
