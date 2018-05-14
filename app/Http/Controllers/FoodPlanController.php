@@ -144,6 +144,10 @@ class FoodPlanController extends Controller
     /**
      * Suggest a new menu for the users.
      *
+     * This is also done in the new GenerateFoodplan command, and this function will
+     * utilize that command in the future as well, because the function here might
+     * get a little too complicated and could potentially be needed elsewhere.
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function suggest()

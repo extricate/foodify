@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPublishedToComments extends Migration
+class AddCreatedAutomaticallyColumnToHistory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPublishedToComments extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->boolean('published')->default(null)->nullable();
+        Schema::table('histories', function (Blueprint $table) {
+            $table->boolean('created_automatically')->default(false)->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddPublishedToComments extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropColumn('published');
+        Schema::table('histories', function (Blueprint $table) {
+            $table->dropColumn('created_automatically');
         });
     }
 }

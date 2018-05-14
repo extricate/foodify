@@ -25,6 +25,8 @@ class AddRecipePreparationTime extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('recipes', function (Blueprint $table) {
+            $table->dropColumn('preparation_time');
+        });
     }
 }

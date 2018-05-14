@@ -40,6 +40,11 @@ class GenerateFoodplans extends Command
      */
     public function handle()
     {
+        /**
+         * Save all existing foodplans to the history of all users.
+         */
+        $this->call('foodify:save-foodplans');
+
         $users = User::all();
         $bar = $this->output->createProgressBar(count($users));
         foreach ($users as $user) {
