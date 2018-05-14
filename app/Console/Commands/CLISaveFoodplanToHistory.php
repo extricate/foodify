@@ -13,7 +13,7 @@ use App\Listeners\SaveFoodplansToHistory;
  * Class SaveFoodplanToHistory
  * @package App\Console\Commands
  */
-class SaveFoodplanToHistory extends Command
+class CLISaveFoodplanToHistory extends Command
 {
     /**
      * The name and signature of the console command.
