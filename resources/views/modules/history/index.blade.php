@@ -19,7 +19,9 @@
             <div class="card m-2">
                 <div class="card-body">
                     @if($foodplan->created_automatically)
-                            <span class="badge badge-primary pull-right mr-3">created automatically</span>
+                        <div class="card-top-label">
+                            <span class="badge badge-primary">created automatically</span>
+                        </div>
                     @endif
                     <h3 class="m-3 text-capitalize">Plan of week {{ $foodplan->week }}</h3>
                     @foreach($foodplan->days() as $day)

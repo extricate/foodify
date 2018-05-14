@@ -64,7 +64,7 @@
         @endphp
         @if($foodplan->$today() == !null)
         <div class="col-lg-8">
-                <div class="card text-white bg-primary mt-3 mb-3">
+                <div class="card text-white bg-success mt-3 mb-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-4">
