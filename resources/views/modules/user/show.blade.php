@@ -26,6 +26,12 @@
             @else
                 @include('modules.user.partials.admin', ['user_id' => $viewinguser->id, 'action' => false])
             @endif
+
+            @if($viewinguser->verified == false)
+                @include('modules.user.partials.verified', ['user_id' => $viewinguser->id, 'action' => true])
+            @else
+                @include('modules.user.partials.verified', ['user_id' => $viewinguser->id, 'action' => false])
+            @endif
         @endadmin
     </div>
     <div class="d-sm-none">

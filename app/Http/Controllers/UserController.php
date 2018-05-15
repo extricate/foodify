@@ -168,6 +168,9 @@ class UserController extends Controller
      * Grant or remove verified privileges
      * This and admin will be extracted to dedicated roles if eventually the complexity of this
      * increases, however for now this will suffice.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function verified(Request $request)
     {

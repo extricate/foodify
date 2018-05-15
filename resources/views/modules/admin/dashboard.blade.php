@@ -60,6 +60,12 @@
                     <div class="mt-3 mb-3">
                         {{ $user->recipes()->links() }}
                     </div>
+                    <div class="mt-3 mb-3 text-right">
+                        <a href="{{ route('recipes.create') }}" class="btn btn-primary">
+                            New recipe
+                            <i class="fal fa-plus"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
