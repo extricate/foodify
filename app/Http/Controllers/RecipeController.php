@@ -31,7 +31,8 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('modules.recipes.create');
+        $availableTags = \Spatie\Tags\Tag::all();
+        return view('modules.recipes.create', compact('availableTags'));
     }
 
     /**
@@ -55,6 +56,14 @@ class RecipeController extends Controller
             'author' => auth()->user()->id,
             'preparation_time' => $request->preparation_time,
         ]);
+
+        // attach all tags
+        if ($request->tags) {
+            $tags[] = explode(',', $request->tags);
+            foreach($tags as $tag) {
+                $recipe->attachTags($tag);
+            }
+        }
 
         $recipe
             ->addMediaFromRequest('image')
@@ -129,13 +138,20 @@ class RecipeController extends Controller
 
         if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
 
-            $recipe->update($request->except('image'));
+            $recipe->update($request->except('image', 'tags'));
 
             if ($request->image) {
                 $recipe
                     ->addMediaFromRequest('image')
                     ->withResponsiveImages()
                     ->toMediaCollection();
+            }
+
+            if ($request->tags) {
+                $tags[] = explode(',', $request->tags);
+                foreach($tags as $tag) {
+                    $recipe->attachTags($tag);
+                }
             }
 
             return back()->withInput()->with('message', 'Edited successfully.');

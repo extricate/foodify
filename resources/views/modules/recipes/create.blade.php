@@ -43,6 +43,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="tags">
+                        Tags
+                    </label>
+                    <div class="input-group">
+                        <tags-input element-id="tags"
+                                    v-model="availableTags">
+                        </tags-input>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="image">Image</label>

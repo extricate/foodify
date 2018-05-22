@@ -21,3 +21,7 @@ Route::get('/search', [
     'as' => 'api.search',
     'uses' => 'Api\SearchController@search'
 ]);
+
+// Work in progress
+Route::get('/tags', 'Api\TagsController@getTags');
+Route::get('/ingredients', 'Api\IngredientsController@getIngredients');

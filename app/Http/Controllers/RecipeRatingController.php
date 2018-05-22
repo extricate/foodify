@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FoodPlan;
 use App\RecipeRating;
 use Illuminate\Http\Request;
 

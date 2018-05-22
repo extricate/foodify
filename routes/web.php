@@ -65,6 +65,7 @@ Route::resource('/recipes', 'RecipeController');
 Route::get('/recipes/{param}', 'RecipeController@show')->name('recipes.show');
 Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit')->middleware('auth');
 Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
+Route::put('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store')->middleware('auth');
 
 /**

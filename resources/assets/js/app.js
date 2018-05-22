@@ -17,6 +17,10 @@ Vue.component('ais-no-results', NoResults);
 Vue.component('ais-highlight', Highlight);
 Vue.component('ais-powered-by', PoweredBy);
 
+import VoerroTagsInput from '@voerro/vue-tagsinput';
+
+Vue.component('tags-input', VoerroTagsInput);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
