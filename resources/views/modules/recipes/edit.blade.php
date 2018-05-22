@@ -158,13 +158,11 @@
                                             @endphp
                                                 }">
                                 data: {
-                                selectedTags: [@php foreach($recipe->tags as $tag) {
-                                                echo("'" . $tag->slug . "':" . " '" . $tag->name . "',");
-                                                } @endphp
+                                selectedTags: [@php foreach($recipe->tags as $tag) { echo("'" . $tag->name . "',"); } @endphp
                                 ]}
                                 <p v-text="selectedTags"></p>
                             </tags-input>
-                            <button type="submit" class="btn btn-primary">Change tags</button>
+                            <button type="submit" class="btn btn-primary mt-2">Change tags</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
