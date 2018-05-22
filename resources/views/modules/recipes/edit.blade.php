@@ -75,9 +75,9 @@
                 'class' => 'form-inline'
                 ]) !!}
                 {{ csrf_field() }}
-                <div class="card-body form-group">
+                <div class="card-body form-group w-100">
                     <input type="hidden" class="hidden" name="id" value="{{ $recipe->id }}">
-                    <div class="input-group">
+                    <div class="input-group w-100">
                         <input type="text" class="form-control" name="name" value="{{ $recipe->name}}">
                         <div class="input-group-append">
                             <button type="submit" class="mr-2 btn btn-primary">Change name</button>
@@ -147,16 +147,16 @@
                 'enctype' => 'multipart/form-data'
                 ]) !!}
                         <div class="form-group">
-                            <tags-input element-id="tags"
-                                        :typehead="true"
+                            <tags-input v-model="selectedTags"
+                                        element-id="tags"
+                                        :typeahead="true"
                                         :existing-tags="{
                                             @php
                                                 foreach($tags as $tag) {
                                                 echo($tag->slug . ":" . " '" . $tag->name . "',");
                                                 }
                                             @endphp
-                                                }"
-                                        v-model="selectedTags">
+                                                }">
                                 data: {
                                 selectedTags: [@php foreach($recipe->tags as $tag) {
                                                 echo("'" . $tag->slug . "':" . " '" . $tag->name . "',");
