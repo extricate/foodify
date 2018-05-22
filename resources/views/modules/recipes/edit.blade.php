@@ -135,28 +135,35 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="card-text">
+                        <h3>Edit tags</h3>
+
                         @foreach($recipe->tags as $tag)
                             <a href="/recipes/tags/{{ $tag->name }}"
                                class="badge badge-primary">{{ $tag->name }}</a>
                         @endforeach
-
-                        <h3>Edit tags</h3>
-
                         {!! Form::open([
                 'method' => 'PUT',
                 'route' => ['recipe.update', $recipe->id],
                 'enctype' => 'multipart/form-data'
                 ]) !!}
                         <div class="form-group">
-
-                            <div class="input-group">
-                                <tags-input element-id="tags"
-                                            :existing-tags="{}"
-                                            :selected-tags="{}"
-                                            :typehead="true"
-                                            v-model="availableTags">
-                                </tags-input>
-                            </div>
+                            <tags-input element-id="tags"
+                                        :typehead="true"
+                                        :existing-tags="{
+                                            @php
+                                                foreach($tags as $tag) {
+                                                echo($tag->slug . ":" . " '" . $tag->name . "',");
+                                                }
+                                            @endphp
+                                                }"
+                                        v-model="selectedTags">
+                                data: {
+                                selectedTags: [@php foreach($recipe->tags as $tag) {
+                                                echo("'" . $tag->slug . "':" . " '" . $tag->name . "',");
+                                                } @endphp
+                                ]}
+                                <p v-text="selectedTags"></p>
+                            </tags-input>
                             <button type="submit" class="btn btn-primary">Change tags</button>
                         </div>
                         {!! Form::close() !!}

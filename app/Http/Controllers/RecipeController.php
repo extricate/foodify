@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Tags\Tag;
 
 class RecipeController extends Controller
 {
@@ -109,8 +110,10 @@ class RecipeController extends Controller
             ->orWhere('slug', $param)
             ->firstOrFail();
 
+        $tags = Tag::all();
+
         if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
-            return view('modules.recipes.edit', compact('recipe'));
+            return view('modules.recipes.edit', compact('recipe', 'tags'));
         }
 
         return redirect(route('home'))->with('message', 'You do not have permission to edit that recipe.');
@@ -150,7 +153,7 @@ class RecipeController extends Controller
             if ($request->tags) {
                 $tags[] = explode(',', $request->tags);
                 foreach($tags as $tag) {
-                    $recipe->attachTags($tag);
+                    $recipe->syncTags($tag);
                 }
             }
 
