@@ -13,9 +13,21 @@
         </a>
     </div>
     <div class="d-none d-sm-inline-block">
-        <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">
-            Delete recipe <i class="fal fa-trash"></i>
-        </a>
+        @if($recipe->deleted)
+            <div class="d-none d-sm-inline-block">
+                <a class="btn btn-success" href="{{ route('recipes.restore', $recipe) }}">
+                    Restore recipe
+                    <i class="fal fa-check"></i>
+                </a>
+            </div>
+        @else
+            <div class="d-none d-sm-inline-block">
+                <a class="btn btn-danger" href="{{ route('recipes.soft-delete', $recipe) }}">
+                    Delete recipe
+                    <i class="fal fa-trash"></i>
+                </a>
+            </div>
+        @endif
     </div>
 @endsection
 
@@ -26,9 +38,16 @@
                 <a class="btn btn-primary" href="{{ $recipe->path() }}">
                     Exit edit mode <i class="fal fa-sign-out"></i>
                 </a>
-                <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">
-                    Delete recipe <i class="fal fa-trash"></i>
-                </a>
+                @if($recipe->deleted)
+                    <a class="btn btn-success" href="{{ route('recipes.restore', $recipe) }}">
+                        Restore recipe
+                        <i class="fal fa-check"></i>
+                    </a>
+                @else
+                    <a class="btn btn-danger" href="{{ route('recipes.soft-delete', $recipe) }}">
+                        Delete recipe <i class="fal fa-trash"></i>
+                    </a>
+                @endif
             </div>
         </div>
     </div>
@@ -165,7 +184,8 @@
                             @foreach ($recipe->ingredients as $ingredient)
                                 <li>
                                     {{ $ingredient->name }}, {{ $ingredient->quantity }}
-                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="text-danger pull-right" title="Remove {{ $ingredient->name }}">
+                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="text-danger pull-right"
+                                       title="Remove {{ $ingredient->name }}">
                                         <i class="fal fa-trash"></i>
                                     </a>
                                 </li>

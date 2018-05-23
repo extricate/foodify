@@ -115,6 +115,10 @@ class RecipeController extends Controller
             ->orWhere('slug', $param)
             ->firstOrFail();
 
+        if($recipe->deleted == true) {
+            $this->isRemoved();
+        }
+
         return view('modules.recipes.show', compact('recipe'));
     }
 
@@ -204,15 +208,33 @@ class RecipeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * This is a soft delete. It'll only remove the recipes from being indexed but they'll remain
+     * available for historical reference.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function softDelete($id)
     {
         $recipe = Recipe::findOrFail($id);
-        $recipe->destroy($id);
-        return route('recipes.index')->with('message', 'Recipe deleted');
+        $recipe->deleted = true;
+        $recipe->save();
+        return redirect(route('recipes.index'))->with('message', 'Recipe (soft) deleted');
+    }
+
+    public function restore($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        $recipe->deleted = false;
+        $recipe->save();
+        return redirect(route('recipes.show', $recipe))->with('message', 'Recipe restored!');
+    }
+
+    public function isRemoved()
+    {
+        if (!auth()->user()->admin) {
+            return redirect(route('recipes.index'))->with('message', 'That recipe has been removed.');
+        }
+        return true;
     }
 }

@@ -67,8 +67,8 @@ Route::get('/recipes/{param}/edit', 'RecipeController@edit')->name('recipe.edit'
 Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
 Route::put('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store')->middleware('auth');
-
-Route::get('/recipes/{id}/destroy', 'RecipeController@destroy')->name('recipes.destroy')->middleware('admin');
+Route::get('/recipes/{id}/restore', 'RecipeController@restore')->name('recipes.restore')->middleware('admin');
+Route::get('/recipes/{id}/delete', 'RecipeController@softDelete')->name('recipes.soft-delete')->middleware('admin');
 
 /**
  * Blog

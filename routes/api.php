@@ -24,4 +24,4 @@ Route::get('/search', [
 
 // Work in progress
 Route::get('/tags', 'Api\TagsController@getTags');
-Route::get('/ingredients', 'Api\IngredientsController@getIngredients');
+//Route::get('/ingredients', 'Api\IngredientsController@getIngredients');

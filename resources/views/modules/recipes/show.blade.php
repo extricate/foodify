@@ -18,10 +18,6 @@
         <div class="d-none d-sm-inline-block">
             <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe <i class="fal fa-edit"></i></a>
         </div>
-        <div class="d-none d-sm-inline-block">
-            <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe <i
-                        class="fal fa-trash"></i></a>
-        </div>
     @endsection
 
     @section('submenu-buttons-mobile')
@@ -29,7 +25,6 @@
             <div class="card submenu-collapsible">
                 <div class="card-body">
                     <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
-                    <a class="btn btn-danger" href="{{ route('recipes.destroy', $recipe) }}">Delete recipe</a>
                 </div>
             </div>
         </div>
@@ -57,7 +52,7 @@
                     @endauth
                 </div>
                 <div class="card-body">
-                    <div class="card-title h1 primary">{{ $recipe->name }}</div>
+                    <div class="card-title h1 primary">@if($recipe->deleted) <div class="badge badge-danger">Deleted</div> @endif{{ $recipe->name }}</div>
                     <p class="card-text">
                         {!! Markdown::convertToHtml($recipe->description) !!}
                     </p>
