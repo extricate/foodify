@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ingredient;
 use App\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -48,7 +49,8 @@ class RecipeController extends Controller
             'name' => 'required|unique:recipes|max:255',
             'description' => 'required|min:50|max:5000',
             'image' => 'required|image|max:2048',
-            'preparation_time' => 'integer|max:1000'
+            'preparation_time' => 'integer|max:1000',
+            'tags' => 'string'
         ])->validate();
 
         $recipe = Recipe::create([
@@ -60,8 +62,8 @@ class RecipeController extends Controller
 
         // attach all tags
         if ($request->tags) {
-            $tags[] = explode(',', $request->tags);
-            foreach($tags as $tag) {
+            $tags[] = explode(',', strtolower($request->tags));
+            foreach ($tags as $tag) {
                 $recipe->attachTags($tag);
             }
         }
@@ -74,6 +76,18 @@ class RecipeController extends Controller
         // update the searchable with added media by changing the name, cannot force this otherwise
         $recipe->name = $request->name;
         $recipe->save();
+
+        // add recipe ingredients
+        if ($request->ingredients) {
+            foreach ($request->ingredients as $ingredient) {
+                Ingredient::firstOrCreate([
+                    'name' => $ingredient->name,
+                    'type' => $ingredient->type,
+                    'quantity' => $ingredient->quantity,
+                    'recipe_id' => $recipe->id
+                ]);
+            }
+        }
 
         if (request()->wantsJson()) {
             return response($recipe, 201);
@@ -92,8 +106,8 @@ class RecipeController extends Controller
     public function show($param)
     {
         $recipe = Recipe::where('id', $param)
-        ->orWhere('slug', $param)
-        ->firstOrFail();
+            ->orWhere('slug', $param)
+            ->firstOrFail();
 
         return view('modules.recipes.show', compact('recipe'));
     }
@@ -141,7 +155,7 @@ class RecipeController extends Controller
 
         if ($recipe->author()->id == auth()->user()->id || auth()->user()->isAdmin() == true) {
 
-            $recipe->update($request->except('image', 'tags'));
+            $recipe->update($request->except('image', 'tags', 'ingredients'));
 
             if ($request->image) {
                 $recipe
@@ -151,9 +165,29 @@ class RecipeController extends Controller
             }
 
             if ($request->tags) {
-                $tags[] = explode(',', $request->tags);
-                foreach($tags as $tag) {
+                $tags[] = explode(',', strtolower($request->tags));
+                foreach ($tags as $tag) {
                     $recipe->syncTags($tag);
+                }
+            }
+
+            // add recipe ingredients
+            if ($request->ingredients) {
+                // create a new array
+                $ingredients = [];
+                foreach($request->ingredients as $ingredient) {
+                    $newIngredient = explode(',', $ingredient);
+                    $associateNewIngredient['name'] = $newIngredient[0];
+                    $associateNewIngredient['quantity'] = $newIngredient[1];
+                    $ingredients[] = $associateNewIngredient;
+                }
+                dd($ingredients);
+                foreach ($ingredients as $ingredient) {
+                    Ingredient::firstOrCreate([
+                        'name' => $ingredient->name,
+                        'quantity' => $ingredient->quantity,
+                        'recipe' => $recipe->id
+                    ]);
                 }
             }
 

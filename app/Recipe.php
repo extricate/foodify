@@ -66,8 +66,7 @@ class Recipe extends Model implements HasMedia
     public function ingredients()
     {
         return $this
-            ->hasMany(Ingredient::class, 'id')
-            ->getResults();
+            ->hasMany(Ingredient::class, 'recipe');
     }
 
     public function inPlans()

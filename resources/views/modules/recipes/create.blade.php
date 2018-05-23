@@ -27,21 +27,28 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Recipe name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Recipe name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Recipe name"
+                           value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Recipe description" rows="4">{{ old('description') }}</textarea>
+                    <textarea type="text" class="form-control" id="description" name="description"
+                              placeholder="Recipe description" rows="4">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="name">Preparation time in minutes</label>
                     <div class="input-group">
-                    <input type="number" class="form-control" id="preparation_time" name="preparation_time" placeholder="Eg. 45 (minutes)" value="{{ old('preparation_time') }}">
+                        <input type="number" class="form-control" id="preparation_time" name="preparation_time"
+                               placeholder="Eg. 45 (minutes)" value="{{ old('preparation_time') }}">
                         <div class="input-group-append">
                             <span class="input-group-text">minutes</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <ingredients-component></ingredients-component>
                 </div>
                 <div class="form-group">
                     <label for="tags">

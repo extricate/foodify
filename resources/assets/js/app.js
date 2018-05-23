@@ -28,6 +28,7 @@ Vue.component('tags-input', VoerroTagsInput);
  */
 
 Vue.component('recipe-search-component', require('./components/RecipeSearchComponent.vue'));
+Vue.component('ingredients-component', require('./components/IngredientsComponent.vue'));
 
 const app = new Vue({
     el: '#app',

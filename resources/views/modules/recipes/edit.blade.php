@@ -152,13 +152,14 @@
                                         :typeahead="true"
                                         :existing-tags="{
                                             @php
-                                                foreach($tags as $tag) {
-                                                echo($tag->slug . ":" . " '" . $tag->name . "',");
-                                                }
-                                            @endphp
+                                            foreach($tags as $tag) {
+                                            echo($tag->slug . ":" . " '" . $tag->name . "',");
+                                            }
+                                        @endphp
                                                 }">
                                 data: {
-                                selectedTags: [@php foreach($recipe->tags as $tag) { echo("'" . $tag->name . "',"); } @endphp
+                                selectedTags:
+                                [@php foreach($recipe->tags as $tag) { echo("'" . $tag->name . "',"); } @endphp
                                 ]}
                                 <p v-text="selectedTags"></p>
                             </tags-input>
@@ -177,6 +178,15 @@
                                 <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
                             @endforeach
                         </ul>
+
+                        {!! Form::open([
+                'method' => 'PUT',
+                'route' => ['recipe.update', $recipe->id],
+                'enctype' => 'multipart/form-data'
+                ]) !!}
+                        <ingredients-component :data="{{ $recipe->ingredients }}"></ingredients-component>
+                        <button type="submit" class="btn btn-primary mt-2">Change ingredients</button>
+                    {!! Form::close() !!}
                     </div>
                 </div>
             </div>
