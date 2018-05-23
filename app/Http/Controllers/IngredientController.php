@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Ingredient;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->only(['edit', 'create', 'destroy', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +35,7 @@ class IngredientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,7 +46,7 @@ class IngredientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +57,7 @@ class IngredientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +68,8 @@ class IngredientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,11 +80,13 @@ class IngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $ingredient = Ingredient::findOrFail($id);
+        $ingredient->destroy($id);
+        return back()->with('message', 'Ingredient removed');
     }
 }

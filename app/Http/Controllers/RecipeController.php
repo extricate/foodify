@@ -79,12 +79,19 @@ class RecipeController extends Controller
 
         // add recipe ingredients
         if ($request->ingredients) {
-            foreach ($request->ingredients as $ingredient) {
+            // create a new array
+            $ingredients = [];
+            foreach($request->ingredients as $ingredient) {
+                $newIngredient = explode(',', $ingredient);
+                $associateNewIngredient['name'] = $newIngredient[0];
+                $associateNewIngredient['quantity'] = $newIngredient[1];
+                $ingredients[] = $associateNewIngredient;
+            }
+            foreach ($ingredients as $ingredient) {
                 Ingredient::firstOrCreate([
-                    'name' => $ingredient->name,
-                    'type' => $ingredient->type,
-                    'quantity' => $ingredient->quantity,
-                    'recipe_id' => $recipe->id
+                    'name' => $ingredient['name'],
+                    'quantity' => $ingredient['quantity'],
+                    'recipe' => $recipe->id
                 ]);
             }
         }

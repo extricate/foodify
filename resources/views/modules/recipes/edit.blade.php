@@ -174,19 +174,23 @@
                     <h2 class="card-title">Ingredients</h2>
                     <div class="card-text">
                         <ul>
-                            @foreach ($recipe->ingredients()->get() as $ingredient)
-                                <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
+                            @foreach ($recipe->ingredients as $ingredient)
+                                <li>
+                                    {{ $ingredient->name }}, {{ $ingredient->quantity }}
+                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="btn btn-danger btn-sm pull-right">
+                                        <i class="fal fa-trash"></i>
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
-
                         {!! Form::open([
-                'method' => 'PUT',
-                'route' => ['recipe.update', $recipe->id],
-                'enctype' => 'multipart/form-data'
-                ]) !!}
-                        <ingredients-component :data="{{ $recipe->ingredients }}"></ingredients-component>
-                        <button type="submit" class="btn btn-primary mt-2">Change ingredients</button>
-                    {!! Form::close() !!}
+                        'method' => 'PUT',
+                        'route' => ['recipe.update', $recipe->id],
+                        'enctype' => 'multipart/form-data'
+                        ]) !!}
+                            <ingredients-component></ingredients-component>
+                            <button type="submit" class="btn btn-primary mt-2">Change ingredients</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

@@ -99,9 +99,16 @@ Route::post('/plan/suggest', 'FoodPlanController@suggest')->name('plan.suggest')
 /**
  * History
  */
-
 Route::post('/history/set-as-foodplan/{id}', 'HistoryController@setAsCurrentFoodplan')->name('history.setAsFoodplan');
 Route::resource('/history', 'HistoryController');
+
+/**
+ * Ingredients
+ */
+Route::get('/ingredient/{id}/destroy', [
+    'as' => 'ingredient.destroy',
+    'uses' => 'IngredientController@destroy'
+])->middleware('admin');
 
 /**
  * Pantry (not implemented)

@@ -17,9 +17,10 @@
                         <a v-on:click="removeElement(index);" class="btn btn-danger text-white"><i
                                 class="fal fa-trash"></i></a>
                     </td>
-                    <td class="hidden"><input name="ingredients[]"  :value="row.name + ',' + row.quantity"></td>
+                    <td class="hidden">
+                        <input class="hidden" type="hidden" name="ingredients[]"  :value="row.name + ',' + row.quantity">
+                    </td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
@@ -31,7 +32,7 @@
     export default {
         data() {
             return {
-                rows: []
+                rows: [],
             }
         },
         methods: {

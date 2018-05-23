@@ -128,7 +128,7 @@
                         Ingredients
                     </h2>
                     <ul>
-                        @foreach ($recipe->ingredients() as $ingredient)
+                        @foreach ($recipe->ingredients as $ingredient)
                             <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
                         @endforeach
                     </ul>
