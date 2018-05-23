@@ -68,6 +68,8 @@ Route::patch('/recipes/{param}/update', 'RecipeController@update')->name('recipe
 Route::put('/recipes/{param}/update', 'RecipeController@update')->name('recipe.update')->middleware('auth');
 Route::post('/recipe/rating/', 'RecipeRatingController@store')->name('recipesrating.store')->middleware('auth');
 
+Route::get('/recipes/{id}/destroy', 'RecipeController@destroy')->name('recipes.destroy')->middleware('admin');
+
 /**
  * Blog
  */
