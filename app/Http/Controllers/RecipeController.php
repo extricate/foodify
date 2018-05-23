@@ -181,11 +181,10 @@ class RecipeController extends Controller
                     $associateNewIngredient['quantity'] = $newIngredient[1];
                     $ingredients[] = $associateNewIngredient;
                 }
-                dd($ingredients);
                 foreach ($ingredients as $ingredient) {
                     Ingredient::firstOrCreate([
-                        'name' => $ingredient->name,
-                        'quantity' => $ingredient->quantity,
+                        'name' => $ingredient['name'],
+                        'quantity' => $ingredient['quantity'],
                         'recipe' => $recipe->id
                     ]);
                 }

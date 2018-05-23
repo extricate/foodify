@@ -174,7 +174,7 @@
                     <h2 class="card-title">Ingredients</h2>
                     <div class="card-text">
                         <ul>
-                            @foreach ($recipe->ingredients() as $ingredient)
+                            @foreach ($recipe->ingredients()->get() as $ingredient)
                                 <li>{{ $ingredient->name }}, {{ $ingredient->quantity }}</li>
                             @endforeach
                         </ul>

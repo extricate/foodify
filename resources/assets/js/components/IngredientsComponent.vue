@@ -23,7 +23,6 @@
                 </tbody>
             </table>
         </div>
-        <pre>{{ $data }}</pre>
         <a class="btn btn-primary text-white" @click="addRow">Add ingredient</a>
     </div>
 </template>
