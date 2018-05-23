@@ -165,7 +165,7 @@
                             @foreach ($recipe->ingredients as $ingredient)
                                 <li>
                                     {{ $ingredient->name }}, {{ $ingredient->quantity }}
-                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="btn btn-danger btn-sm">
+                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="text-danger pull-right" title="Remove {{ $ingredient->name }}">
                                         <i class="fal fa-trash"></i>
                                     </a>
                                 </li>

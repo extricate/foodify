@@ -49,8 +49,7 @@ class RecipeController extends Controller
             'name' => 'required|unique:recipes|max:255',
             'description' => 'required|min:50|max:5000',
             'image' => 'required|image|max:2048',
-            'preparation_time' => 'integer|max:1000',
-            'tags' => 'string'
+            'preparation_time' => 'integer|max:1000'
         ])->validate();
 
         $recipe = Recipe::create([
