@@ -166,7 +166,7 @@
                 'enctype' => 'multipart/form-data'
                 ]) !!}
                         <div class="form-group">
-                            <tags-input v-model="selectedTags"
+                            <tags-input v-model="availableTags"
                                         element-id="tags"
                                         :typeahead="true">
                             </tags-input>
