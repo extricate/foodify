@@ -22,7 +22,13 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::latest('updated_at')->paginate(6);
+        $recipes = Recipe::latest('updated_at')->where('deleted', false)->paginate(6);
+
+        // include deleted recipes in the index if the user is an admin
+        if(!empty(auth()->user()->admin)) {
+            $recipes = Recipe::latest('updated_at')->paginate(6);
+        }
+
         return view('modules.recipes.index', compact('recipes'));
     }
 

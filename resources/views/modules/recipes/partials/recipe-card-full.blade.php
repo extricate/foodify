@@ -8,7 +8,7 @@
         @endauth
     </div>
     <div class="card-body">
-        <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
+        <h1 class="card-title"><a href="{{ $recipe->path() }}">@if($recipe->deleted) <div class="badge badge-danger">Deleted</div> @endif {{ $recipe->name }}</a></h1>
         <p class="card-text">
             {{ str_limit($recipe->description, 100) }}
         </p>
