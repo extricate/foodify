@@ -149,19 +149,7 @@
                         <div class="form-group">
                             <tags-input v-model="selectedTags"
                                         element-id="tags"
-                                        :typeahead="true"
-                                        :existing-tags="{
-                                            @php
-                                            foreach($tags as $tag) {
-                                            echo($tag->slug . ":" . " '" . $tag->name . "',");
-                                            }
-                                        @endphp
-                                                }">
-                                data: {
-                                selectedTags:
-                                [@php foreach($recipe->tags as $tag) { echo("'" . $tag->name . "',"); } @endphp
-                                ]}
-                                <p v-text="selectedTags"></p>
+                                        :typeahead="true">
                             </tags-input>
                             <button type="submit" class="btn btn-primary mt-2">Change tags</button>
                         </div>
@@ -177,7 +165,7 @@
                             @foreach ($recipe->ingredients as $ingredient)
                                 <li>
                                     {{ $ingredient->name }}, {{ $ingredient->quantity }}
-                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="btn btn-danger btn-sm pull-right">
+                                    <a href="/ingredient/{{ $ingredient->id }}/destroy" class="btn btn-danger btn-sm">
                                         <i class="fal fa-trash"></i>
                                     </a>
                                 </li>
@@ -188,8 +176,8 @@
                         'route' => ['recipe.update', $recipe->id],
                         'enctype' => 'multipart/form-data'
                         ]) !!}
-                            <ingredients-component></ingredients-component>
-                            <button type="submit" class="btn btn-primary mt-2">Change ingredients</button>
+                        <ingredients-component></ingredients-component>
+                        <button type="submit" class="btn btn-primary mt-2">Change ingredients</button>
                         {!! Form::close() !!}
                     </div>
                 </div>
