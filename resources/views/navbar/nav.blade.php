@@ -54,13 +54,6 @@
                                 @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
                             </li>
                         @endforeach
-                        @admin
-                        <li>
-                            <a href="{{ route('recipes.create') }}" class="btn btn-primary btn-inline pull-right">
-                                Submit recipe <i class="fal fa-plus"></i>
-                            </a>
-                        </li>
-                        @endadmin
                     @endauth
                 </div>
                 <!-- Authentication Links -->
@@ -77,7 +70,8 @@
                     </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="btn btn-primary btn-inline ml-1 dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="btn btn-primary btn-inline ml-1 dropdown-toggle" href="#"
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <i class="fal fa-user-circle fa-fw"></i>
                                 <span class="caret"></span>
                             </a>
@@ -88,6 +82,9 @@
                                 @admin
                                 <a href="{{ route('home.admin') }}" class="dropdown-item">
                                     Admin dashboard
+                                </a>
+                                <a href="{{ route('recipes.create') }}" class="dropdown-item">
+                                    Submit recipe <i class="fal fa-plus"></i>
                                 </a>
                                 @endadmin
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -101,7 +98,7 @@
                                 </form>
                             </div>
                         </li>
-                @endguest
+                        @endguest
             </ul>
         </div>
     </div>

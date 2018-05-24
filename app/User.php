@@ -123,4 +123,9 @@ class User extends Authenticatable
     {
         return User::all()->sortByDesc('created_at')->take($amount);
     }
+
+    public function settings()
+    {
+        return $this->hasMany('settings');
+    }
 }

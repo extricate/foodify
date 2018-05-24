@@ -82,7 +82,7 @@
     @endif
     <div class="row">
         <div class="col-12">
-            @foreach($foodplan->days()->chunk(4) as $chunk)
+            @foreach($foodplan->days()->chunk(3) as $chunk)
                 <div class="card-deck">
                     @foreach($chunk as $day)
                         <div class="card mt-3 @if($day == strtolower(\Carbon\Carbon::today()->format('l'))) {{ 'card-today' }} @endif">
@@ -91,9 +91,8 @@
                                     <span class="badge badge-primary">today</span>
                                 </div>
                             @endif
-                            <h3 class="m-3 text-capitalize">{{ $day }}</h3>
                             @if ($foodplan->$day() == !null)
-                                @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$day()])
+                                @include('modules.foodplan.partials.plan-recipe', ['day' => $day, 'recipe' => $foodplan->$day()])
                                 <div class="card-body">
                                     @include('modules.foodplan.partials.clear', ['day' => $day, 'foodplan' => $foodplan])
                                 </div>

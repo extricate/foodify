@@ -161,7 +161,8 @@ class FoodPlanController extends Controller
         // obviously be based on the user preferences.
         foreach($foodplan->days() as $day) {
             $foodplan->$day = Recipe::inRandomOrder()
-                ->whereNotIn('id', $foodplanArray)
+                ->where('deleted', false) // exempt soft-deleted recipes from being placed in foodplans
+                ->whereNotIn('id', $foodplanArray) // do not duplicate multiple recipes per week
                 ->first()
                 ->id;
 

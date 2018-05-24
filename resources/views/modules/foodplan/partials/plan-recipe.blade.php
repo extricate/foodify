@@ -6,7 +6,7 @@
 </div>
 
 <div class="card-body">
-    <h1 class="card-title"><a href="{{ $recipe->path() }}">{{ $recipe->name }}</a></h1>
+    <h1 class="card-title">@if(isset($day)) <span class="badge badge-primary">{{ $day }}</span>@endif <a href="{{ $recipe->path() }}"> {{ $recipe->name }}</a></h1>
     <p class="card-text">
         {{ str_limit($recipe->description, 100) }}
     </p>
