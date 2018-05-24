@@ -52,13 +52,13 @@
             </div>
         </div>
     @endif
-    <div class="row">
-        @php
-            $today = strtolower(\Carbon\Carbon::today()->format('l'));
-            $tomorrow = strtolower(\Carbon\Carbon::tomorrow()->format('l'));
-        @endphp
-        @if($foodplan->$today() == !null)
-        <div class="col-lg-8">
+    @php
+        $today = strtolower(\Carbon\Carbon::today()->format('l'));
+        $tomorrow = strtolower(\Carbon\Carbon::tomorrow()->format('l'));
+    @endphp
+    @if($foodplan->$today() == !null)
+        <div class="row">
+            <div class="col-lg-8">
                 <div class="card text-white bg-success mt-3 mb-3">
                     <div class="card-body">
                         <div class="row">
@@ -79,20 +79,20 @@
                         </div>
                     </div>
                 </div>
-        </div>
-        <div class="col-lg-4">
-            @if($foodplan->$tomorrow() == !null)
-                <div class="card bg-default mt-3 mb-3">
-                    <div class="card-body">
-                        <h3>Tomorrow's menu</h3>
-                        <div class="card text-dark">
-                            @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$tomorrow()])
+            </div>
+            <div class="col-lg-4">
+                @if($foodplan->$tomorrow() == !null)
+                    <div class="card bg-default mt-3 mb-3">
+                        <div class="card-body">
+                            <h3>Tomorrow's menu</h3>
+                            <div class="card text-dark">
+                                @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$tomorrow()])
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endif
+                @endif
+            </div>
         </div>
-    </div>
     @endif
     <div class="row">
         <div class="col-12">
@@ -112,40 +112,40 @@
     </div>
     <div class="row mb-3">
         <div class="col-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="card-title">Your dietary analytics</h1>
-                        <div class="chart">
-                            {!! $chart->container() !!}
-                        </div>
-                        {!! $chart->script() !!}
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Your dietary analytics</h1>
+                    <div class="chart">
+                        {!! $chart->container() !!}
                     </div>
-                </div>
-        </div>
-        <div class="col-6">
-                <div class="card bg-warning ">
-                    <div class="card-body">
-                        <h1 class="card-title">Your favorites</h1>
-                        @if($user->showFavorites()->count() > 0)
-                            @foreach($user->showFavorites() as $favorite)
-                                <div class="card m-1">
-                                    <div class="card-body">
-                                        <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
-                                    </div>
-                                </div>
-                            @endforeach
-                            {{ $user->showFavorites()->links() }}
-                        @else
-                            <div class="card-text">
-                                <div class="alert alert-primary">
-                                    <i class="fal fa-info-circle"></i> You can add a recipe to your favorites by
-                                    pressing on the heart button on a recipe.
-                                </div>
-                            </div>
-                        @endif
-                    </div>
+                    {!! $chart->script() !!}
                 </div>
             </div>
         </div>
+        <div class="col-6">
+            <div class="card bg-warning ">
+                <div class="card-body">
+                    <h1 class="card-title">Your favorites</h1>
+                    @if($user->showFavorites()->count() > 0)
+                        @foreach($user->showFavorites() as $favorite)
+                            <div class="card m-1">
+                                <div class="card-body">
+                                    <a href="{{ $favorite->recipe()->getResults()->path() }}">{{ $favorite->recipe()->getResults()->name }}</a>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{ $user->showFavorites()->links() }}
+                    @else
+                        <div class="card-text">
+                            <div class="alert alert-primary">
+                                <i class="fal fa-info-circle"></i> You can add a recipe to your favorites by
+                                pressing on the heart button on a recipe.
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection
