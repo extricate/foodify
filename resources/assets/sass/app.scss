@@ -18,7 +18,7 @@
 
 .nav-buttons {
   transition: color .1s ease, border-color .1s ease, padding .1s ease;
-  border-bottom: 2px solid #f5f8fa;
+  border-bottom: 2px solid transparent;
   &:hover, &:focus {
     background-color: $white;
     padding: .5rem 1rem !important;
@@ -142,6 +142,10 @@ h1.primary {
 
 h1.card-title {
   font-size: 1.80rem;
+}
+
+.card-title {
+  font-weight: 700;
 }
 
 /**

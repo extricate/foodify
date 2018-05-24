@@ -132,7 +132,7 @@ Route::patch('/menus/{menu}/detach/{element}', 'MenuController@detach')->name('m
 /**
  * Groceries
  */
-Route::resource('/groceries', 'GroceryController');
+Route::resource('/groceries', 'GroceryController')->middleware('auth');
 
 /**
  * Image storage technique
