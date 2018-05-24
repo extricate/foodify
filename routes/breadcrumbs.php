@@ -146,6 +146,11 @@ Breadcrumbs::register('history.index', function ($breadcrumbs) {
     $breadcrumbs->push('Your saved history', route('history.index'));
 });
 
+Breadcrumbs::register('groceries.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('foodplan.index');
+    $breadcrumbs->push('Your grocery list for this week', route('groceries.index'));
+});
+
 Breadcrumbs::register('error-404', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('We cannot find that page! Error 404');
