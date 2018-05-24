@@ -49,7 +49,7 @@ class FoodPlan extends Model
      */
     static function days()
     {
-        $days = array(
+        $days = collect([
             'monday',
             'tuesday',
             'wednesday',
@@ -57,7 +57,7 @@ class FoodPlan extends Model
             'friday',
             'saturday',
             'sunday'
-        );
+        ]);
         return $days;
     }
 
