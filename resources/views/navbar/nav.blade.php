@@ -32,6 +32,11 @@
                         Blog <i class="fal fa-comment"></i>
                     </a>
                 </li>
+                <li>
+                    <a class="nav-link nav-groceries @if (str_is('groceries.*', Route::currentRouteName())) active @endif" href="{{ route('groceries.index') }}">
+                        Groceries <i class="fal fa-shopping-bag"></i>
+                    </a>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

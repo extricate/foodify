@@ -81,25 +81,29 @@
         </div>
     @endif
     <div class="row">
-        @foreach($foodplan->days() as $day)
-            <div class="col-lg-4 col-md-6">
-                <div class="card mt-3 @if($day == strtolower(\Carbon\Carbon::today()->format('l'))) {{ 'card-today' }} @endif">
-                    @if($day == strtolower(\Carbon\Carbon::today()->format('l')))
-                        <div class="card-top-label">
-                            <span class="badge badge-primary">today</span>
+        <div class="col-12">
+            @foreach($foodplan->days()->chunk(4) as $chunk)
+                <div class="card-deck">
+                    @foreach($chunk as $day)
+                        <div class="card mt-3 @if($day == strtolower(\Carbon\Carbon::today()->format('l'))) {{ 'card-today' }} @endif">
+                            @if($day == strtolower(\Carbon\Carbon::today()->format('l')))
+                                <div class="card-top-label">
+                                    <span class="badge badge-primary">today</span>
+                                </div>
+                            @endif
+                            <h3 class="m-3 text-capitalize">{{ $day }}</h3>
+                            @if ($foodplan->$day() == !null)
+                                @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$day()])
+                                <div class="card-body">
+                                    @include('modules.foodplan.partials.clear', ['day' => $day, 'foodplan' => $foodplan])
+                                </div>
+                            @else
+                                @include('modules.foodplan.partials.empty-day')
+                            @endif
                         </div>
-                    @endif
-                    <h3 class="m-3 text-capitalize">{{ $day }}</h3>
-                    @if ($foodplan->$day() == !null)
-                        @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$day()])
-                        <div class="card-body">
-                            @include('modules.foodplan.partials.clear', ['day' => $day, 'foodplan' => $foodplan])
-                        </div>
-                    @else
-                        @include('modules.foodplan.partials.empty-day')
-                    @endif
+                    @endforeach
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
 @endsection

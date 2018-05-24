@@ -10,9 +10,7 @@
 
 @section('content')
     <div class="row">
-        Your grocery list this week
-    </div>
-    <div class="row">
+        <div class="col-12">
         @foreach($foodplan->days()->chunk(4) as $chunk)
             <div class="card-deck">
                 @foreach($chunk as $day)
@@ -34,5 +32,6 @@
                 @endforeach
             </div>
         @endforeach
+        </div>
     </div>
 @endsection

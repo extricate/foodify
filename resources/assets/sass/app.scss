@@ -17,8 +17,13 @@
 }
 
 .nav-buttons {
-  transition: color .2s ease, border-color .2s ease;
+  transition: color .1s ease, border-color .1s ease, padding .1s ease;
   border-bottom: 2px solid #f5f8fa;
+  &:hover, &:focus {
+    background-color: $white;
+    padding: .5rem 1rem !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
 }
 
 .nav-recipes {
@@ -71,6 +76,19 @@
 .nav-blog.active {
   color: #FFBE40 !important;
   border-bottom-color: #FFBE40;
+}
+
+.nav-groceries {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #007bff !important;
+    border-bottom-color: #007bff;
+  }
+}
+
+.nav-groceries.active {
+  color: #007bff !important;
+  border-bottom-color: #007bff;
 }
 
 .navbar-logo {
