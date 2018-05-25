@@ -45,7 +45,7 @@
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <div class="d-none d-lg-inline-flex d-xl-inline-flex">
+                <div class="d-none d-xl-inline-flex">
                     @auth
                         @php $foodplan = Auth::user()->food_plan() @endphp
 
@@ -98,7 +98,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                @endguest
             </ul>
         </div>
     </div>

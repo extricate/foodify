@@ -57,9 +57,9 @@
         $tomorrow = strtolower(\Carbon\Carbon::tomorrow()->format('l'));
     @endphp
     @if($foodplan->$today() == !null)
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-lg-8">
-                <div class="card text-white bg-success mt-3 mb-3">
+                <div class="card text-white bg-success mt-3 mb-3 h-100">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-4">
@@ -70,9 +70,11 @@
                             </div>
                             <div class="col-lg-8">
                                 <div class="card text-dark">
-                                    @include('modules.foodplan.partials.plan-recipe', ['recipe' => $foodplan->$today()])
+                                    @include('modules.foodplan.partials.plan-recipe',
+                                    ['recipe' => $foodplan->$today()])
                                     <div class="card-body">
-                                        @include('modules.foodplan.partials.clear', ['day' => $today, 'foodplan' => $foodplan])
+                                        @include('modules.foodplan.partials.clear',
+                                        ['day' => $today, 'foodplan' => $foodplan])
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +84,7 @@
             </div>
             <div class="col-lg-4">
                 @if($foodplan->$tomorrow() == !null)
-                    <div class="card bg-default mt-3 mb-3">
+                    <div class="card bg-default mt-3 mb-3 h-100">
                         <div class="card-body">
                             <h3>Tomorrow's menu</h3>
                             <div class="card text-dark">

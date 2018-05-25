@@ -18,7 +18,11 @@
 
 .nav-buttons {
   transition: color .1s ease, border-color .1s ease, padding .1s ease;
-  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  @include media-breakpoint-up(sm) {
+    border: 0;
+    border-bottom: 2px solid transparent;
+  }
   &:hover, &:focus {
     background-color: $white;
     padding: .5rem 1rem !important;
@@ -26,15 +30,23 @@
   }
 }
 
+.nav-buttons-active {
+  padding-left: .5rem;
+  @include media-breakpoint-up(sm) {
+    padding-left: 1rem;
+  }
+}
+
 .nav-recipes {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #B3CC57 !important;
-    border-bottom-color: #B3CC57;
+    border-color: #B3CC57;
   }
 }
 
 .nav-recipes.active {
+  @extend .nav-buttons-active;
   color: #B3CC57 !important;
   border-bottom-color: #B3CC57;
 }
@@ -43,52 +55,56 @@
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #EF746F !important;
-    border-bottom-color: #EF746F;
+    border-color: #EF746F;
   }
 }
 
 .nav-plan.active {
+  @extend .nav-buttons-active;
   color: #EF746F !important;
-  border-bottom-color: #EF746F;
+  border-color: #EF746F;
 }
 
 .nav-history {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #AB3E5B !important;
-    border-bottom-color: #AB3E5B;
+    border-color: #AB3E5B;
   }
 }
 
 .nav-history.active {
+  @extend .nav-buttons-active;
   color: #AB3E5B !important;
-  border-bottom-color: #AB3E5B;
+  border-color: #AB3E5B;
 }
 
 .nav-blog {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #FFBE40 !important;
-    border-bottom-color: #FFBE40;
+    border-color: #FFBE40;
   }
 }
 
 .nav-blog.active {
+  @extend .nav-buttons-active;
   color: #FFBE40 !important;
-  border-bottom-color: #FFBE40;
+  border-color: #FFBE40;
 }
 
 .nav-groceries {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
     color: #007bff !important;
-    border-bottom-color: #007bff;
+    border-color: #007bff;
   }
 }
 
 .nav-groceries.active {
+  @extend .nav-buttons-active;
   color: #007bff !important;
-  border-bottom-color: #007bff;
+  border-color: #007bff;
 }
 
 .navbar-logo {
