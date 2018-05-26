@@ -72,7 +72,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="btn btn-primary btn-inline ml-1 dropdown-toggle" href="#"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ str_limit(Auth::user()->name, 25) }} <i class="fal fa-user-circle fa-fw"></i>
+                                {{ str_limit(Auth::user()->name, 18) }} <i class="fal fa-user-circle fa-fw"></i>
                                 <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
