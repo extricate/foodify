@@ -23,7 +23,7 @@
     border: 0;
     border-bottom: 2px solid transparent;
   }
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background-color: $white;
     border-radius: 4px;
     margin: 0 4px;
