@@ -1,7 +1,7 @@
 <template>
     <ais-index
-            app-id="MN94X6PY1W"
-            api-key="cbec1d46afcb648b88fc833049994eb2"
+            app-id="IWZNEZ7S75"
+            api-key="6830a68c499eb7bbab40ed07a49f38f9"
             index-name="recipes"
             v-bind:auto-search=false
     >
