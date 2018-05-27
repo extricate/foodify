@@ -42,10 +42,11 @@
 .nav-buttons-active {
   background-color: $white;
   border-radius: 4px;
-  margin: 0 4px;
+  margin: 4px 4px;
   padding: .5rem 1rem !important;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   @include media-breakpoint-up(sm) {
+    margin: 0 4px;
     padding-left: 1rem;
   }
 }
