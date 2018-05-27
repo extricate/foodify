@@ -23,7 +23,8 @@
 }
 
 .nav-buttons {
-  transition: color .1s ease, border-color .1s ease, padding .1s ease;
+  transition-delay: .2s;
+  transition: color .1s ease, border-color .1s ease, padding .1s ease, background-color .1s ease;
   border-left: 2px solid transparent;
   border-bottom: 2px solid transparent;
   @include media-breakpoint-up(sm) {
@@ -121,6 +122,22 @@
   border-color: #007bff;
 }
 
+.nav-user {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #007bff !important;
+    border-color: #007bff;
+  }
+  @extend .nav-buttons-active;
+  color: #007bff !important;
+  border-color: #007bff;
+  &:hover, &:focus, &:active {
+    color: $white !important;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+}
+
 .navbar-logo {
   width: 80px;
   height: auto;
@@ -159,6 +176,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/**
+ * Simple plan days container
+ */
+
+// Navbar
+.simple-plan-days-container {
+  background-color: $white;
+  border-radius: 4px;
+  margin: 0 4px;
+  padding: .25rem .5rem !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.navbar .simple-plan-days-container .btn {
+  padding: 0.2rem .5rem;
+  font-size: 0.9rem;
 }
 
 /**

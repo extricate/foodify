@@ -43,16 +43,17 @@
                     </a>
                 </li>
             </ul>
+        </div>
             <!-- Center of Navbar -->
             <a class="navbar-brand navbar-logo d-none d-xl-block" href="{{ url('/') }}" height="30" width="50">
                 @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
             </a>
             <!-- Right Side Of Navbar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <div class="d-none d-xl-inline-flex">
+                <div class="d-none d-xl-inline-flex simple-plan-days-container">
                     @auth
                         @php $foodplan = Auth::user()->food_plan() @endphp
-
                         @foreach ($foodplan->days() as $day)
                             <li class="mr-1">
                                 @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
@@ -74,7 +75,7 @@
                     </li>
                     @else
                         <li class="nav-item dropdown text-right">
-                            <a id="navbarDropdown" class="btn btn-primary btn-inline ml-1 dropdown-toggle" href="#"
+                            <a id="navbarDropdown" class="nav-link nav-user dropdown-toggle" href="#"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ str_limit(Auth::user()->name, 18) }} <i class="fal fa-user-circle fa-fw"></i>
                                 <span class="caret"></span>
