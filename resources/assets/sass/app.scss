@@ -16,6 +16,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.navbar-light .navbar-toggler {
+  &:active, &:focus {
+    color: $white;
+  }
+}
+
 .nav-buttons {
   transition: color .1s ease, border-color .1s ease, padding .1s ease;
   border-left: 2px solid transparent;
@@ -138,6 +144,20 @@
 .submenu-collapsible {
   text-align: center;
   z-index: $zindex-dropdown;
+}
+
+/**
+ * Dropdown
+ */
+
+.dropdown-menu {
+  min-width: 12rem; // from 10 rem default bootstrap
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /**

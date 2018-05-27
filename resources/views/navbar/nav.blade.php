@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light navbar-laravel sticky-top">
     <div class="container">
-        <a class="navbar-brand navbar-logo" href="{{ url('/') }}" height="30" width="50">
+        <a class="navbar-brand navbar-logo d-block d-xl-none" href="{{ url('/') }}" height="30" width="50">
             @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
         </a>
         <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse"
@@ -43,6 +43,10 @@
                     </a>
                 </li>
             </ul>
+            <!-- Center of Navbar -->
+            <a class="navbar-brand navbar-logo d-none d-xl-block" href="{{ url('/') }}" height="30" width="50">
+                @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
+            </a>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <div class="d-none d-xl-inline-flex">
@@ -69,7 +73,7 @@
                         </a>
                     </li>
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown text-right">
                             <a id="navbarDropdown" class="btn btn-primary btn-inline ml-1 dropdown-toggle" href="#"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ str_limit(Auth::user()->name, 18) }} <i class="fal fa-user-circle fa-fw"></i>
@@ -77,25 +81,31 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a href="{{ route('settings.index') }}" class="dropdown-item">
-                                    Settings
+                                    Settings <i class="icon fal fa-cogs"></i>
                                 </a>
-                                @admin
-                                <a href="{{ route('home.admin') }}" class="dropdown-item">
-                                    Admin dashboard
-                                </a>
-                                <a href="{{ route('recipes.create') }}" class="dropdown-item">
-                                    Submit recipe <i class="fal fa-plus"></i>
-                                </a>
-                                @endadmin
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Logout') }} <i class="icon fal fa-sign-out"></i>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
                                     @csrf
                                 </form>
+                                <hr>
+                                @admin
+                                <h6 class="dropdown-header">Admin</h6>
+                                <a href="{{ route('home.admin') }}" class="dropdown-item">
+                                    Admin dashboard <i class="icon fal fa-user-shield"></i>
+                                </a>
+                                <a href="{{ route('recipes.create') }}" class="dropdown-item">
+                                    Submit recipe <i class="icon fal fa-plus"></i>
+                                </a>
+                                <a href="{{ route('comments.moderation') }}" class="dropdown-item">
+                                    Moderation queue
+                                    <i class="icon fal fa-shield-check"></i>
+                                </a>
+                                @endadmin
                             </div>
                         </li>
                 @endguest
