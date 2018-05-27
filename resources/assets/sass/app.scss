@@ -33,7 +33,11 @@
 }
 
 .nav-buttons-active {
-  padding-left: .5rem;
+  background-color: $white;
+  border-radius: 4px;
+  margin: 0 4px;
+  padding: .5rem 1rem !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   @include media-breakpoint-up(sm) {
     padding-left: 1rem;
   }
