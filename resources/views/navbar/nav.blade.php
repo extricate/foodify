@@ -44,24 +44,24 @@
                 </li>
             </ul>
         </div>
-            <!-- Center of Navbar -->
-            <a class="navbar-brand navbar-logo d-none d-xl-block" href="{{ url('/') }}" height="30" width="50">
-                @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
-            </a>
-            <!-- Right Side Of Navbar -->
+        <!-- Center of Navbar -->
+        <a class="navbar-brand navbar-logo d-none d-xl-block" href="{{ url('/') }}" height="30" width="50">
+            @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
+        </a>
+        <!-- Right Side Of Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <div class="d-none d-xl-inline-flex simple-plan-days-container">
-                    @auth
+                @auth
+                    <div class="d-none d-xl-inline-flex simple-plan-days-container">
                         @php $foodplan = Auth::user()->food_plan() @endphp
                         @foreach ($foodplan->days() as $day)
                             <li class="mr-1">
                                 @include('modules.foodplan.partials.simple-plan-days', ['day' => $day, 'foodplan' => $foodplan])
                             </li>
                         @endforeach
-                    @endauth
-                </div>
-                <!-- Authentication Links -->
+                    </div>
+                @endauth
+            <!-- Authentication Links -->
                 @guest
                     <li>
                         <a class="btn btn-primary btn-inline ml-1" href="{{ route('login') }}">
@@ -109,7 +109,7 @@
                                 @endadmin
                             </div>
                         </li>
-                @endguest
+                        @endguest
             </ul>
         </div>
     </div>
