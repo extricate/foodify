@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Grocery list')
+@section('title', 'Simple grocery list ')
 
 @section('submenu')
     <div class="align-self-center">
-        {{ Breadcrumbs::render('groceries.index') }}
+        {{ Breadcrumbs::render('groceries.simple') }}
     </div>
 @endsection
 
 @section('submenu-buttons')
     <div class="d-none d-sm-inline-block">
-        <a href="{{ route('groceries.simple') }}" class="btn btn-primary">
-            Simple grocery list <i class="fal fa-shopping-bag"></i>
+        <a href="{{ route('groceries.index') }}" class="btn btn-primary">
+            Back to groceries <i class="fal fa-shopping-bag"></i>
         </a>
     </div>
     <div class="d-sm-none">
@@ -27,8 +27,8 @@
     <div class="collapse pull-right" id="submenu-buttons">
         <div class="card submenu-collapsible">
             <div class="card-body">
-                <a href="{{ route('groceries.simple') }}" class="btn btn-primary">
-                    Simple grocery list <i class="fal fa-shopping-bag"></i>
+                <a href="{{ route('groceries.index') }}" class="btn btn-primary">
+                    Back to groceries <i class="fal fa-shopping-bag"></i>
                 </a>
             </div>
         </div>
@@ -38,15 +38,11 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-        @foreach($foodplan->days()->chunk(4) as $chunk)
-            <div class="card-deck">
-                @foreach($chunk as $day)
-                    @php $recipe = $foodplan->$day(); @endphp
-                    <div class="card mt-3">
-                        <div class="card-img-container">
-                            <img class="card-img-top" src="{{ $recipe->getFirstMedia()->getUrl() }}"
-                                 alt="{{ $recipe->name }}">
-                        </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    @foreach($foodplan->days() as $day)
+                        @php $recipe = $foodplan->$day(); @endphp
+
                         <div class="card-body">
                             <a class="card-title" href="{{ $recipe->path() }}">{{ $recipe->name }}</a>
                             <ul>
@@ -55,10 +51,9 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        @endforeach
         </div>
     </div>
 @endsection

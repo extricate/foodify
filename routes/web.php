@@ -132,6 +132,7 @@ Route::patch('/menus/{menu}/detach/{element}', 'MenuController@detach')->name('m
 /**
  * Groceries
  */
+Route::get('/groceries/simple', 'GroceryController@simple')->name('groceries.simple')->middleware('auth');
 Route::resource('/groceries', 'GroceryController')->middleware('auth');
 
 /**

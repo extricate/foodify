@@ -151,6 +151,11 @@ Breadcrumbs::register('groceries.index', function ($breadcrumbs) {
     $breadcrumbs->push('Your grocery list for this week', route('groceries.index'));
 });
 
+Breadcrumbs::register('groceries.simple', function ($breadcrumbs) {
+    $breadcrumbs->parent('groceries.index');
+    $breadcrumbs->push('Simple grocery list');
+});
+
 Breadcrumbs::register('error-404', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('We cannot find that page! Error 404');

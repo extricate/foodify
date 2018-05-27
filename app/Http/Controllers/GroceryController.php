@@ -92,4 +92,19 @@ class GroceryController extends Controller
     {
         //
     }
+
+    /**
+     * Return a simple view of the groceries instead of the elaborate card view
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function simple()
+    {
+        $user = auth()->user();
+        $foodplan = $user->food_plan();
+        if ($foodplan == null) {
+            $this->create();
+        };
+        return view('modules.groceries.simple', compact('foodplan'));
+    }
 }
