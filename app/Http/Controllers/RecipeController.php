@@ -206,7 +206,7 @@ class RecipeController extends Controller
                 }
             }
 
-            return back()->withInput()->with('message', 'Edited successfully.');
+            return redirect(route('recipes.show', $recipe->slug))->withInput()->with('message', 'Edited successfully.');
         }
 
         return redirect(route('home'))->with('message', 'You do not have permission to edit that recipe.');
