@@ -138,6 +138,22 @@
   }
 }
 
+.nav-register {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: #EF746F !important;
+    border-color: #EF746F;
+  }
+  @extend .nav-buttons-active;
+  color: #EF746F !important;
+  border-color: #EF746F;
+  &:hover, &:focus, &:active {
+    color: $white !important;
+    background-color: #EF746F;
+    border-color: #EF746F;
+  }
+}
+
 .navbar-logo {
   width: 80px;
   height: auto;

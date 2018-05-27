@@ -64,13 +64,13 @@
             <!-- Authentication Links -->
                 @guest
                     <li>
-                        <a class="btn btn-primary btn-inline ml-1" href="{{ route('login') }}">
-                            {{ __('Login') }}
+                        <a class="nav-link nav-user ml-1" href="{{ route('login') }}">
+                            {{ __('Login') }} <i class="fal fa-sign-in"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-primary btn-inline ml-1"
-                           href="{{ route('register') }}">{{ __('Register') }}
+                        <a class="nav-link nav-register ml-1"
+                           href="{{ route('register') }}">{{ __('Register') }} <i class="fal fa-star"></i>
                         </a>
                     </li>
                     @else
