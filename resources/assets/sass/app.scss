@@ -19,6 +19,7 @@
 .nav-buttons {
   transition: color .1s ease, border-color .1s ease, padding .1s ease;
   border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
   @include media-breakpoint-up(sm) {
     border: 0;
     border-bottom: 2px solid transparent;
