@@ -30,6 +30,17 @@
   }
 }
 
+.btn-circle {
+  border-radius: 50%;
+  min-height: 100px;
+  min-width: 100px;
+  line-height: 100%;
+  font-size: 32px;
+  &:hover, &:active, &:focus {
+    border-bottom: 0;
+  }
+}
+
 /**
  * Navbar
  */
@@ -458,6 +469,20 @@ h1.card-title {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+/**
+ * Forms
+ */
+
+.form-control {
+  border: 0;
+  border-bottom: 2px solid $dark-grey;
+  border-radius: 0;
+  background-color: transparent;
+  &:focus, &:hover, &:active {
+    border-color: $primary;
+  }
 }
 
 /**

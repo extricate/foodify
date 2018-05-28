@@ -14,7 +14,7 @@
                     <td><input type="text" v-model="row.name"></td>
                     <td><input type="text" v-model="row.quantity"></td>
                     <td>
-                        <a v-on:click="removeElement(index);" class="btn btn-danger text-white"><i
+                        <a v-on:click="removeElement(index);" class="btn btn-danger"><i
                                 class="fal fa-trash"></i></a>
                     </td>
                     <td class="hidden">
