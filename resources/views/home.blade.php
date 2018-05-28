@@ -113,7 +113,7 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Your dietary analytics</h1>
@@ -124,7 +124,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card bg-warning ">
                 <div class="card-body">
                     <h1 class="card-title">Your favorites</h1>
