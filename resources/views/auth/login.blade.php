@@ -60,7 +60,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <hr>
                                     <div class="text-center">
                                         <strong class="small font-weight-bold">
                                             Not yet registered?

@@ -22,11 +22,11 @@
 
                                 <div class="form-group">
                                     <label for="name"
-                                           class="form-label small font-weight-bold">{{ __('Name') }}</label>
+                                           class="form-label small font-weight-bold">What should we call you?</label>
 
                                     <input id="name" type="text"
                                            class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           name="name" value="{{ old('name') }}" required autofocus>
+                                           name="name" value="{{ old('name') }}" required autofocus placeholder="You may call me...">
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback">
@@ -41,7 +41,7 @@
 
                                     <input id="email" type="email"
                                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                           name="email" value="{{ old('email') }}" required>
+                                           name="email" value="{{ old('email') }}" required placeholder="You can reach me at...">
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback">
@@ -55,8 +55,7 @@
                                            class="form-label small font-weight-bold">{{ __('Password') }}</label>
 
                                     <input id="password" type="password"
-                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                           name="password" required>
+                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Typ your password here...">
 
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback">
@@ -70,7 +69,7 @@
                                            class="form-label small font-weight-bold">{{ __('Confirm Password') }}</label>
 
                                     <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required>
+                                           name="password_confirmation" required placeholder="Just to make sure there's no typing errors!">
                                 </div>
 
                                 <div class="form-group">
