@@ -24,7 +24,7 @@
                 </tbody>
             </table>
         </div>
-        <a class="btn btn-primary text-white" @click="addRow">Add ingredient</a>
+        <a class="btn btn-primary" @click="addRow">Add ingredient</a>
     </div>
 </template>
 
