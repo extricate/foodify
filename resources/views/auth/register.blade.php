@@ -91,10 +91,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="card d-none d-lg-block mt-3"
-                     style="background-image: url('{{ $recipe->getFirstMedia()->getUrl() }}'); background-size: cover;
-                             background-position: center;">
-                </div>
+                <div class="card d-none d-lg-block mt-3" style="background-image: url('{{ $recipe->getFirstMedia()->getUrl() }}'); background-size: cover;
+                             background-position: center;"></div>
             </div>
         </div>
     </div>

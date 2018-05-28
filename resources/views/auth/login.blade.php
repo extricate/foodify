@@ -16,8 +16,7 @@
             <div class="col-md-12 mt-lg-5 mb-lg-5">
                 <div class="card-group">
                     <div class="card d-none d-lg-block mt-3" style="background-image: url('{{ $recipe->getFirstMedia()->getUrl() }}'); background-size: cover;
-                            background-position: center;">
-                    </div>
+                            background-position: center;"></div>
                     <div class="card card-login p-3 mt-3">
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}" class="p-lg-3">
