@@ -3,10 +3,10 @@
         <a class="navbar-brand navbar-logo d-block d-xl-none" href="{{ url('/') }}" height="30" width="50">
             @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
         </a>
-        <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse"
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fal fa-bars"></span>
+            <span id="navbar-toggle-icon" class="fal fa-bars"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,13 +43,11 @@
                     </a>
                 </li>
             </ul>
-        </div>
-        <!-- Center of Navbar -->
-        <a class="navbar-brand navbar-logo d-none d-xl-block" href="{{ url('/') }}" height="30" width="50">
-            @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
-        </a>
-        <!-- Right Side Of Navbar -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Center of Navbar -->
+            <a class="navbar-brand navbar-logo d-none d-xl-block" href="{{ url('/') }}" height="30" width="50">
+                @svg('/logo/foodify', ['class' => 'navbar-brand navbar-logo'])
+            </a>
+            <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 @auth
                     <div class="d-none d-xl-inline-flex simple-plan-days-container">

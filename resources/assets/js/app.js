@@ -109,3 +109,15 @@ $(function () {
         });
 });
 
+/**
+ * Replace menu icon when menu collapse dropdown is shown.
+ */
+
+$(function () {
+    $('#navbarSupportedContent').on('shown.bs.collapse hide.bs.collapse', function (e) {
+        $('#navbar-toggle-icon').toggleClass('fa-bars').toggleClass('fa-times');
+    })
+    //$('.navbar-toggler').on('click', function(){
+    //    $('#navbar-toggle-icon').toggleClass('fa-bars').toggleClass('fa-times');
+    //});
+});
