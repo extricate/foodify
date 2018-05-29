@@ -54,22 +54,24 @@
         <recipe-search-component></recipe-search-component>
     </div>
     @auth
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-3">
-                    <div class="owl-container m-3">
-                        <div class="owl-carousel owl-theme">
-                            @foreach($foodplan->days() as $day)
-                                @php $recipe = $foodplan->$day(); @endphp
-                                <div class="item">
-                                    @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
-                                </div>
-                            @endforeach
+        @if(setting('show_user_plan_on_index', auth()->user()->id))
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="owl-container m-3">
+                            <div class="owl-carousel owl-theme">
+                                @foreach($foodplan->days() as $day)
+                                    @php $recipe = $foodplan->$day(); @endphp
+                                    <div class="item">
+                                        @include('modules.foodplan.partials.plan-days-large', ['recipe' => $recipe])
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     @endauth
     <div class="row">
         @foreach($recipes as $recipe)

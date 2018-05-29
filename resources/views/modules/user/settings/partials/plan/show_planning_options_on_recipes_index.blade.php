@@ -4,7 +4,8 @@
         <div class="mdc-radio">
             <input class="mdc-radio__native-control" type="radio" id="show_planning_options_on_recipes_index-2"
                    name="show_planning_options_on_recipes_index"
-                   @if(setting('show_planning_options_on_recipes_index', auth()->user()->id)) checked @endif value="1">
+                   @if(setting('show_planning_options_on_recipes_index')) checked @endif value="1">
+
             <div class="mdc-radio__background">
                 <div class="mdc-radio__outer-circle"></div>
                 <div class="mdc-radio__inner-circle"></div>
@@ -14,7 +15,7 @@
         <div class="mdc-radio">
             <input class="mdc-radio__native-control" type="radio" id="show_planning_options_on_recipes_index-2"
                    name="show_planning_options_on_recipes_index"
-                   @if(!setting('show_planning_options_on_recipes_index', auth()->user()->id)) checked @endif value="0">
+                   @if(!setting('show_planning_options_on_recipes_index')) checked @endif value="0">
             <div class="mdc-radio__background">
                 <div class="mdc-radio__outer-circle"></div>
                 <div class="mdc-radio__inner-circle"></div>

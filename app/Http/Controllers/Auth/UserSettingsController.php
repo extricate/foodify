@@ -77,19 +77,18 @@ class UserSettingsController extends Controller
      */
     public function update(UserSettingsRequest $request)
     {
-        $input = $request->all();
+        $input = $request->except(['_method', '_token']);
 
         foreach ($input as $key => $value) {
+            setting()->setExtraColumns(['user_id' => auth()->user()->id]);
             setting()->set(
                 $key,
                 $value
             );
-            setting()->setExtraColumns(['user_id' => auth()->user()->id]);
+            setting()->save();
+            return back()->with('message', 'Settings have been saved!');
         }
-
-        setting()->save();
-
-        return back()->with('message', 'Settings have been saved!');
+        return back()->with('message', 'Nothing was changed');
     }
 
     /**

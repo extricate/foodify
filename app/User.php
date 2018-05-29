@@ -124,8 +124,9 @@ class User extends Authenticatable
         return User::all()->sortByDesc('created_at')->take($amount);
     }
 
-    public function settings()
+    public function getSetting(String $key)
     {
-        return $this->hasMany('settings');
+        setting()->setExtraColumns(['user_id' => auth()->user()->id]);
+        return setting([$key, auth()->user()->id]);
     }
 }

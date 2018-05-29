@@ -50,7 +50,6 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 @auth
-                    @if(setting()->get('show_plan_in_navbar', auth()->user()->id))
                     <div class="d-none d-xl-inline-flex simple-plan-days-container">
                         @php $foodplan = Auth::user()->food_plan() @endphp
                         @foreach ($foodplan->days() as $day)
@@ -59,7 +58,7 @@
                             </li>
                         @endforeach
                     </div>
-                    @endif
+
                 @endauth
             <!-- Authentication Links -->
                 @guest
@@ -93,8 +92,8 @@
                                       style="display: none;">
                                     @csrf
                                 </form>
-                                <hr>
                                 @admin
+                                <hr>
                                 <h6 class="dropdown-header">Admin</h6>
                                 <a href="{{ route('home.admin') }}" class="dropdown-item">
                                     Admin dashboard <i class="icon fal fa-user-shield"></i>
@@ -109,7 +108,7 @@
                                 @endadmin
                             </div>
                         </li>
-                        @endguest
+                    @endguest
             </ul>
         </div>
     </div>
