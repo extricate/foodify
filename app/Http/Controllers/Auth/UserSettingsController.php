@@ -77,21 +77,15 @@ class UserSettingsController extends Controller
      */
     public function update(UserSettingsRequest $request)
     {
-        if ($request->filled('show_plan_in_navbar')) {
-            setting()->set(
-                'show_plan_in_navbar',
-                $request->show_plan_in_navbar);
-            setting()->setExtraColumns(['user_id' => auth()->user()->id]);
+        $input = $request->all();
 
-        }
-
-        if ($request->filled('show_planning_options_on_recipes_index')) {
+        foreach ($input as $key => $value) {
             setting()->set(
-                'show_planning_options_on_recipes_index',
-                $request->show_planning_options_on_recipes_index);
+                $key,
+                $value
+            );
             setting()->setExtraColumns(['user_id' => auth()->user()->id]);
         }
-
 
         setting()->save();
 
