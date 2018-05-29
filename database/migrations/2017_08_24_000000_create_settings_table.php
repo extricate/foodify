@@ -27,6 +27,8 @@ class CreateSettingsTable extends Migration
 			$table->increments('id');
 			$table->string($this->key)->index();
 			$table->text($this->value);
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
 

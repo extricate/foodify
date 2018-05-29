@@ -125,7 +125,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="card bg-warning mt-3">
+            <div class="card bg-warning mt-3 mt-lg-0">
                 <div class="card-body">
                     <h1 class="card-title">Your favorites</h1>
                     @if($user->showFavorites()->count() > 0)

@@ -41,9 +41,11 @@ Route::get('/page/{param}', 'PageController@show')->name('page.show');
 /**
  * User settings
  */
-Route::get('/settings', 'Auth\UserSettingsController@index')->name('settings.index')->middleware('auth');
+//Route::get('/settings', 'Auth\UserSettingsController@index')->name('settings.index')->middleware('auth');
 Route::get('/settings/password', 'Auth\ChangePasswordController@showChangePasswordForm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');
+Route::patch('/settings', 'Auth\UserSettingsController@update')->middleware('auth')->name('settings.patch');
+Route::resource('/settings', 'Auth\UserSettingsController')->middleware('auth');
 
 // View users
 Route::get('/users', 'UserController@index')->name('users.index')->middleware('admin');
