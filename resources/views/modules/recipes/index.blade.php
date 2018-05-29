@@ -54,7 +54,7 @@
         <recipe-search-component></recipe-search-component>
     </div>
     @auth
-        @if(setting('show_user_plan_on_index', auth()->user()->id))
+        @if(auth()->user()->getSetting('show_plan_on_recipe_index'))
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-3">

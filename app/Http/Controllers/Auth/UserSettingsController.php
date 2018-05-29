@@ -80,15 +80,16 @@ class UserSettingsController extends Controller
         $input = $request->except(['_method', '_token']);
 
         foreach ($input as $key => $value) {
-            setting()->setExtraColumns(['user_id' => auth()->user()->id]);
+
             setting()->set(
                 $key,
                 $value
             );
-            setting()->save();
-            return back()->with('message', 'Settings have been saved!');
+            setting()->setExtraColumns(['user_id' => auth()->user()->id]);
         }
-        return back()->with('message', 'Nothing was changed');
+        setting()->save();
+
+        return back()->with('message', 'Settings have been saved!');
     }
 
     /**

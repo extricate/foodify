@@ -96,6 +96,7 @@
             </div>
         </div>
     @endif
+    @if(auth()->user()->getSetting('show_plan_on_dashboard'))
     <div class="row">
         <div class="col-12">
             <div class="card mb-3">
@@ -112,6 +113,7 @@
             </div>
         </div>
     </div>
+    @endif
     <div class="row mb-3">
         <div class="col-lg-6">
             <div class="card">

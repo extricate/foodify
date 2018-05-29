@@ -50,6 +50,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 @auth
+                    @if(auth()->user()->getSetting('show_plan_in_navbar'))
                     <div class="d-none d-xl-inline-flex simple-plan-days-container">
                         @php $foodplan = Auth::user()->food_plan() @endphp
                         @foreach ($foodplan->days() as $day)
@@ -58,7 +59,7 @@
                             </li>
                         @endforeach
                     </div>
-
+                    @endif
                 @endauth
             <!-- Authentication Links -->
                 @guest

@@ -15,7 +15,7 @@
         </p>
     </div>
     @auth
-        @if(setting('show_planning_options_on_recipes_index', auth()->user()->id))
+        @if(auth()->user()->getSetting('show_planning_options_on_recipes_index'))
             <div class="card-footer">
                 <div class="container pl-5 pr-5">
                     <div class="row justify-content-center clearfix">

@@ -4,6 +4,7 @@ namespace App;
 
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -126,7 +127,10 @@ class User extends Authenticatable
 
     public function getSetting(String $key)
     {
-        setting()->setExtraColumns(['user_id' => auth()->user()->id]);
-        return setting([$key, auth()->user()->id]);
+        $setting = DB::table('settings')->where([
+            'key' => $key,
+            'user_id' => auth()->user()->id
+        ])->value('value');
+        return $setting;
     }
 }

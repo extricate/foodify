@@ -26,6 +26,8 @@ class UserSettingsRequest extends FormRequest
         return [
             'show_plan_in_navigation' => 'boolean',
             'show_planning_options_on_recipes_index' => 'boolean',
+            'show_plan_on_dashboard' => 'boolean',
+            'show_plan_on_recipes_index'
         ];
     }
 }
