@@ -12,13 +12,19 @@
     <div class="d-none d-md-inline-block">
         <div class="justify-content-end clearfix">
             <div class="row">
-                <div class="col">
+                <div class="col p-0">
+                    <a class="btn btn-primary"
+                       href="{{ route('history.index') }}">
+                        History <i class="fal fa-history"></i>
+                    </a>
+                </div>
+                <div class="col p-0">
                     @include('modules.foodplan.partials.save-to-history')
                 </div>
-                <div class="col">
+                <div class="col p-0">
                     @include('modules.foodplan.partials.suggest')
                 </div>
-                <div class="col">
+                <div class="col p-0">
                     @include('modules.foodplan.partials.delete')
                 </div>
             </div>
@@ -37,13 +43,19 @@
         <div class="card submenu-collapsible">
             <div class="card-body">
                 <div class="row">
-                    <div class="col">
+                    <div class="col p-1">
+                        <a class="btn btn-primary"
+                           href="{{ route('history.index') }}">
+                            History <i class="fal fa-history"></i>
+                        </a>
+                    </div>
+                    <div class="col p-1">
                         @include('modules.foodplan.partials.save-to-history')
                     </div>
-                    <div class="col">
+                    <div class="col p-1">
                         @include('modules.foodplan.partials.suggest')
                     </div>
-                    <div class="col">
+                    <div class="col p-1">
                         @include('modules.foodplan.partials.delete')
                     </div>
                 </div>

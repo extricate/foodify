@@ -14,21 +14,21 @@
 @endsection
 
 @admin
-    @section('submenu-buttons')
-        <div class="d-none d-sm-inline-block">
-            <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe <i class="fal fa-edit"></i></a>
-        </div>
-    @endsection
+@section('submenu-buttons')
+    <div class="d-none d-sm-inline-block">
+        <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe <i class="fal fa-edit"></i></a>
+    </div>
+@endsection
 
-    @section('submenu-buttons-mobile')
-        <div class="collapse pull-right" id="submenu-buttons">
-            <div class="card submenu-collapsible">
-                <div class="card-body">
-                    <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
-                </div>
+@section('submenu-buttons-mobile')
+    <div class="collapse pull-right" id="submenu-buttons">
+        <div class="card submenu-collapsible">
+            <div class="card-body">
+                <a class="btn btn-primary" href="{{ $recipe->path() }}/edit">Edit recipe</a>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 @endadmin
 
 @section('background-style')
@@ -52,7 +52,8 @@
                     @endauth
                 </div>
                 <div class="card-body">
-                    <div class="card-title h1 primary">@if($recipe->deleted) <div class="badge badge-danger">Deleted</div> @endif{{ $recipe->name }}</div>
+                    <div class="card-title h1 primary">@if($recipe->deleted)
+                            <div class="badge badge-danger">Deleted</div> @endif{{ $recipe->name }}</div>
                     <p class="card-text">
                         {!! Markdown::convertToHtml($recipe->description) !!}
                     </p>
@@ -60,32 +61,36 @@
             </div>
             <div class="row mt-5 mb-3">
                 <div class="col-12">
-                    <h2>Comments</h2>
-                    @foreach($recipe->comments()->orderBy('created_at', 'desc')->get() as $comment)
-                        @include('modules.comments.index', ['comment' => $comment])
-                    @endforeach
-                    @auth
-                        @if(auth()->user()->banned == false)
-                            @include('modules.comments.create')
-                        @else
-                            <div class="card mt-3 mb-3">
-                                <div class="card-body">
-                                    <div class="card-text">
-                                        You are banned and therefore cannot post a comment.
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Comments</h2>
+                            @foreach($recipe->comments()->orderBy('created_at', 'desc')->get() as $comment)
+                                @include('modules.comments.index', ['comment' => $comment])
+                            @endforeach
+                            @auth
+                                @if(auth()->user()->banned == false)
+                                    @include('modules.comments.create')
+                                @else
+                                    <div class="card mt-3 mb-3">
+                                        <div class="card-body">
+                                            <div class="card-text">
+                                                You are banned and therefore cannot post a comment.
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endauth
+                            @guest
+                                <div class="card mt-3 mb-3">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            Please login to leave a comment.
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
-                    @endauth
-                    @guest
-                        <div class="card mt-3 mb-3">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    Please login to leave a comment.
-                                </p>
-                            </div>
+                            @endguest
                         </div>
-                    @endguest
+                    </div>
                 </div>
             </div>
         </div>

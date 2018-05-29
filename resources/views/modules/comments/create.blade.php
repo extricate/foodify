@@ -16,8 +16,8 @@
         @endif
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="text">What do you think about this recipe?</label>
-            <textarea type="text" class="form-control" id="text" name="text" placeholder="Write your comment here" rows="4" maxlength="400">{{ old('text') }}</textarea>
+            <label for="text" class="font-weight-bold">What do you think about this recipe?</label>
+            <textarea type="text" class="form-control form-textarea autoexpand" id="text" name="text" placeholder="Write your comment here" rows="4" maxlength="400">{{ old('text') }}</textarea>
         </div>
         <input class="hidden" type="hidden" id="recipe" name="recipe" value="{{ $recipe->id }}">
         <p class="small">Some <b>Markdown</b> is supported.</p>

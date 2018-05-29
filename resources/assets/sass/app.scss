@@ -83,6 +83,20 @@ $mdc-theme-secondary: $primary;
   }
 }
 
+.nav-home {
+  @extend .nav-buttons;
+  &:hover, &:focus, &:active {
+    color: $primary !important;
+    border-color: $primary;
+  }
+}
+
+.nav-home.active {
+  @extend .nav-buttons-active;
+  color: $primary !important;
+  border-bottom-color: $primary;
+}
+
 .nav-recipes {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
@@ -111,20 +125,6 @@ $mdc-theme-secondary: $primary;
   border-color: #EF746F;
 }
 
-.nav-history {
-  @extend .nav-buttons;
-  &:hover, &:focus, &:active {
-    color: #AB3E5B !important;
-    border-color: #AB3E5B;
-  }
-}
-
-.nav-history.active {
-  @extend .nav-buttons-active;
-  color: #AB3E5B !important;
-  border-color: #AB3E5B;
-}
-
 .nav-blog {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
@@ -142,15 +142,15 @@ $mdc-theme-secondary: $primary;
 .nav-groceries {
   @extend .nav-buttons;
   &:hover, &:focus, &:active {
-    color: #007bff !important;
-    border-color: #007bff;
+    color: #AB3E5B !important;
+    border-color: #AB3E5B;
   }
 }
 
 .nav-groceries.active {
   @extend .nav-buttons-active;
-  color: #007bff !important;
-  border-color: #007bff;
+  color: #AB3E5B !important;
+  border-color: #AB3E5B;
 }
 
 .nav-user {
@@ -327,7 +327,8 @@ h1.card-title {
  */
 
 .card {
-  //border: 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border: 0;
 }
 
 .card-today {
@@ -390,6 +391,13 @@ h1.card-title {
   position: absolute;
   top: 0;
   right: 15px;
+  padding: 15px;
+}
+
+.card-day {
+  position: absolute;
+  top: 0;
+  left: 15px;
   padding: 15px;
 }
 
@@ -489,6 +497,13 @@ h1.card-title {
   &:focus, &:hover, &:active {
     border-color: $primary;
   }
+}
+
+textarea {
+  padding-top: 10px;
+  padding-bottom: 25px; /* increased! */
+  width: 100%;
+  display: block;
 }
 
 /**

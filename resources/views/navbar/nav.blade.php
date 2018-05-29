@@ -13,6 +13,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li>
+                    <a class="nav-link nav-home @if (str_is('home', Route::currentRouteName())) active @endif"
+                       href="{{ route('home') }}">
+                        Home <i class="fal fa-home"></i>
+                    </a>
+                </li>
+                <li>
                     <a class="nav-link nav-recipes @if (str_is('recipes.*', Route::currentRouteName())) active @endif"
                        href="{{ route('recipes.index') }}">
                         Recipes <i class="fal fa-utensils"></i>
@@ -25,21 +31,15 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link nav-history @if (str_is('history.*', Route::currentRouteName())) active @endif"
-                       href="{{ route('history.index') }}">
-                        History <i class="fal fa-history"></i>
+                    <a class="nav-link nav-groceries @if (str_is('groceries.*', Route::currentRouteName())) active @endif"
+                       href="{{ route('groceries.index') }}">
+                        Groceries <i class="fal fa-shopping-bag"></i>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link nav-blog @if (str_is('blog.*', Route::currentRouteName())) active @endif"
                        href="{{ route('blog.index') }}">
                         Blog <i class="fal fa-comment"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link nav-groceries @if (str_is('groceries.*', Route::currentRouteName())) active @endif"
-                       href="{{ route('groceries.index') }}">
-                        Groceries <i class="fal fa-shopping-bag"></i>
                     </a>
                 </li>
             </ul>
@@ -63,12 +63,12 @@
                 @guest
                     <li>
                         <a class="nav-link nav-user ml-1" href="{{ route('login') }}">
-                            {{ __('Login') }} <i class="fal fa-sign-in"></i>
+                            Sign in <i class="fal fa-sign-in"></i>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link nav-register ml-1"
-                           href="{{ route('register') }}">{{ __('Register') }} <i class="fal fa-star"></i>
+                           href="{{ route('register') }}">Sign up <i class="fal fa-star"></i>
                         </a>
                     </li>
                     @else
@@ -85,7 +85,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }} <i class="icon fal fa-sign-out"></i>
+                                    Sign out <i class="icon fal fa-sign-out"></i>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">

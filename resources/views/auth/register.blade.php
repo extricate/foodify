@@ -78,7 +78,7 @@
                                             Already an account?
                                         </strong><br>
                                         <a class="btn-link font-weight-bold" href="{{ route('login') }}">
-                                            {{ __('Login instead') }}
+                                            Sign in instead
                                         </a>
                                     </div>
                                 </div>
