@@ -9,14 +9,16 @@
 @import '~owl.carousel/dist/assets/owl.carousel.css';
 @import '~owl.carousel/dist/assets/owl.theme.default.css';
 
+$mdc-theme-primary: $primary;
+$mdc-theme-secondary: $primary;
 // Material design checkbox
 @import "~@material/form-field/mdc-form-field";
 @import "~@material/checkbox/mdc-checkbox";
+@import "~@material/ripple/mdc-ripple";
 
 /**
  * Buttons
  */
-
 .btn {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

@@ -23,6 +23,10 @@ Vue.component('tags-input', VoerroTagsInput);
 
 import {MDCFormField} from '@material/form-field';
 import {MDCCheckbox} from '@material/checkbox';
+import {MDCRipple} from '@material/ripple';
+
+const surface = document.querySelector('.mdc-ripple-surface');
+const ripple = new MDCRipple(surface);
 
 const checkbox = new MDCCheckbox(document.querySelector('.mdc-checkbox'));
 const formField = new MDCFormField(document.querySelector('.mdc-form-field'));
@@ -40,6 +44,7 @@ Vue.component('ingredients-component', require('./components/IngredientsComponen
 const app = new Vue({
     el: '#app',
 });
+
 
 /**
  * Tooltips

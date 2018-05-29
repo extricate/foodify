@@ -84,7 +84,7 @@
                                 </div>
 
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary btn-circle">
+                                    <button type="submit" class="btn btn-primary btn-circle mdc-ripple-surface">
                                         <i class="fal fa-arrow-right"></i>
                                     </button>
                                 </div>
