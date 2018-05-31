@@ -21,6 +21,8 @@ class SendWelcomeMail extends Mailable implements ShouldQueue
      */
     public function __construct(User $user)
     {
+        // always delay 15 minutes
+        $this->delay(15);
         $this->user = $user;
     }
 

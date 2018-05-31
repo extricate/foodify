@@ -34,20 +34,28 @@ class GenerateFoodplans implements ShouldQueue
     {
         $users = User::all();
         foreach ($users as $user) {
-            $foodplan = $user->food_plan();
-            $foodplanArray = [];
-            foreach ($foodplan->days() as $day) {
-                $foodplan->$day = Recipe::inRandomOrder()
-                    ->where('deleted', false) // exempt soft-deleted recipes from being placed in foodplans
-                    ->whereNotIn('id', $foodplanArray) // do not duplicate multiple recipes per week
-                    ->first()
-                    ->id;
+            if (!$user->getSetting('no_automatic_foodplans')) {
+                $foodplan = $user->food_plan();
+                $foodplanArray = [];
 
-                array_push($foodplanArray, $foodplan->$day);
+                // mock select based on preferences by just randomly selecting recipes
+                foreach ($foodplan->days() as $day) {
+                    $foodplan->$day = Recipe::inRandomOrder()
+                        ->where('deleted', false) // exempt soft-deleted recipes from being placed in foodplans
+                        ->whereNotIn('id', $foodplanArray) // do not duplicate multiple recipes per week
+                        ->first()
+                        ->id;
+
+                    array_push($foodplanArray, $foodplan->$day);
+                }
+                $foodplan->save();
+
+                Mail::send(new SendNewFoodplanGeneratedMail($user));
+
+                // $job = (new SendNewFoodplanGeneratedMail($user))->delay(15);
+                // $this->dispatch($job);
             }
-            $foodplan->save();
 
-            Mail::send(new SendNewFoodplanGeneratedMail($user));
         }
         event(new FoodplansHaveBeenGenerated);
     }
