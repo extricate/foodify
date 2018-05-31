@@ -19,7 +19,7 @@
                 <div class="mdc-radio">
                     <input class="mdc-radio__native-control" type="radio" id="{{ $setting }}-2"
                            name="{{ $setting }}"
-                           @if(!auth()->user()->getSetting($setting))) checked @endif value="0">
+                           @if(!auth()->user()->getSetting($setting)) checked @endif value="0">
                     <div class="mdc-radio__background">
                         <div class="mdc-radio__outer-circle"></div>
                         <div class="mdc-radio__inner-circle"></div>

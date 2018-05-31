@@ -587,3 +587,11 @@ footer {
 .tags-input input:focus {
   outline: none;
 }
+
+/**
+ * Errors
+ */
+
+.alert-error {
+  @extend .alert-danger;
+}

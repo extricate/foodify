@@ -115,7 +115,7 @@ $(function () {
  */
 
 $(function () {
-    $('#navbarSupportedContent').on('show.bs.collapse hide.bs.collapse', function (e) {
+    $('#navbarSupportedContent').on('show.bs.collapse hide.bs.collapse', function () {
         $('#navbar-toggle-icon').toggleClass('fa-bars').toggleClass('fa-times');
     })
     //$('.navbar-toggler').on('click', function(){

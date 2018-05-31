@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                      aria-labelledby="v-pills-profile-tab">
-
+                                    @include('modules.user.settings.partials.settings-account')
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                      aria-labelledby="v-pills-messages-tab">
