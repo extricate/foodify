@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserDeletedAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -50,6 +51,8 @@ class DeleteUserController extends Controller
 
         // Delete the account
         if ($user->delete()) {
+            event(new UserDeletedAccount($user));
+
             return redirect()->home()->with(['message' => 'Your account has been permanently deleted!', 'alert_type' => 'success']);
         }
 
