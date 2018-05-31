@@ -44,8 +44,8 @@
 
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
                                     @endif
                                     <a href="{{ route('password.request') }}" class="small font-weight-bold">Forgot your
                                         password?</a>

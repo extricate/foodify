@@ -95,6 +95,12 @@ Breadcrumbs::register('settings.password', function ($breadcrumbs) {
     $breadcrumbs->push('Change your password');
 });
 
+Breadcrumbs::register('settings.delete-account', function ($breadcrumbs) {
+    $breadcrumbs->parent('settings.index');
+    $breadcrumbs->push('Permanently delete your account');
+});
+
+
 Breadcrumbs::register('user.login', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Login');

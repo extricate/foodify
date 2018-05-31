@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserChangePasswordRequest;
 
 class DeleteUserController extends Controller
 {
@@ -32,11 +31,11 @@ class DeleteUserController extends Controller
     public function deleteUser(Request $request)
     {
         $request->validate([
-            'current-password' => 'required'
+            'current-password' => 'required|confirmed'
         ]);
 
+        // Check the input password with the users' password
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
-            // The passwords do not match
             return redirect()->back()->with([
                 'message' => 'That\'s not your current password. Please try again.',
                 'alert_type' => 'danger',

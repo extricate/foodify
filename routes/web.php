@@ -36,6 +36,8 @@ Route::get('/page/{param}', 'PageController@show')->name('page.show');
 /**
  * User settings
  */
+Route::get('/settings/delete-account', 'Auth\DeleteUserController@showDeleteForm')->middleware('auth')->name('settings.delete-account');
+Route::post('/settings/delete-account/confirm', 'Auth\DeleteUserController@deleteUser')->middleware('auth')->name('settings.delete-user.confirm');
 Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('settings.password');
 Route::patch('/settings', 'Auth\UserSettingsController@update')->middleware('auth')->name('settings.patch');
 Route::resource('/settings', 'Auth\UserSettingsController')->middleware('auth');

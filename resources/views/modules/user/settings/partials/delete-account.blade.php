@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Permanently delete account</button>
+                <a href="{{ route('settings.delete-account') }}" class="btn btn-danger">Proceed to delete account</a>
             </div>
         </div>
     </div>
