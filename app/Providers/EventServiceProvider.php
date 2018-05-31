@@ -21,7 +21,13 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\FoodplansSavedToHistory' => [
             'App\Listeners\GenerateFoodplans',
-        ]
+        ],
+        'App\Events\UserRegistered' => [
+            'App\Listeners\SendUserWelcomeMail',
+        ],
+        'App\Events\UserDeletedAccount' => [
+            'App\Listeners\SendUserDeletedMail',
+        ],
     ];
 
     /**

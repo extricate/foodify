@@ -153,3 +153,12 @@ Route::get('storage/app/public/{id}/{filename}', function ($filename)
 });
 
 Auth::routes();
+
+/**
+ * Email tests
+ */
+
+Route::get('/email', function() {
+    $user = App\User::first();
+    event(new App\Events\UserRegistered($user));
+});

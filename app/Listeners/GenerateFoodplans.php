@@ -2,12 +2,15 @@
 
 namespace App\Listeners;
 
+
 use App\User;
 use App\Recipe;
+use Illuminate\Support\Facades\Mail;
 use App\Events\FoodplansSavedToHistory;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Events\FoodplansHaveBeenGenerated;
+use App\Mail\SendNewFoodplanGeneratedMail;
 
 class GenerateFoodplans implements ShouldQueue
 {
@@ -43,6 +46,8 @@ class GenerateFoodplans implements ShouldQueue
                 array_push($foodplanArray, $foodplan->$day);
             }
             $foodplan->save();
+
+            Mail::send(new SendNewFoodplanGeneratedMail($user));
         }
         event(new FoodplansHaveBeenGenerated);
     }
