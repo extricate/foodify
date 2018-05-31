@@ -89,7 +89,7 @@ class UserSettingsController extends Controller
         }
         setting()->save();
 
-        return back()->with('message', 'Settings have been saved!');
+        return redirect(route('settings.index'))->with('message', 'Settings have been saved!');
     }
 
     /**
