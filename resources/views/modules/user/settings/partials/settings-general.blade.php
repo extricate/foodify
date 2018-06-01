@@ -10,6 +10,6 @@
         'label2' => 'Opt-in'
 ])
 <div class="text-right">
-    <button type="submit" class="btn btn-primary">Change settings</button>
+    <button type="submit" class="btn btn-primary">Change settings <i class="fal fa-arrow-right"></i></button>
 </div>
 {!! Form::close() !!}

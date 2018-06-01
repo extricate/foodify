@@ -8,6 +8,6 @@
 @include('modules.user.settings.partials.radio', ['setting' => 'show_plan_on_recipe_index'])
 @include('modules.user.settings.partials.radio', ['setting' => 'show_plan_on_dashboard'])
 <div class="text-right">
-    <button type="submit" class="btn btn-primary">Change settings</button>
+    <button type="submit" class="btn btn-primary">Change settings <i class="fal fa-arrow-right"></i></button>
 </div>
 {!! Form::close() !!}

@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-account">
-    Delete my account
+    Delete my account <i class="fal fa-arrow-right"></i>
 </button>
 
 <div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="delete-account" aria-hidden="true">
@@ -15,8 +15,8 @@
                 <strong>Warning.</strong> Deleting your account is irreversible. Are you sure you want to proceed with deleting your account?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="{{ route('settings.delete-account') }}" class="btn btn-danger">Proceed to delete account</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel <i class="fal fa-times"></i></button>
+                <a href="{{ route('settings.delete-account') }}" class="btn btn-danger">Proceed to delete account <i class="fal fa-arrow-right"></i></a>
             </div>
         </div>
     </div>

@@ -42,7 +42,7 @@
     <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
             <button type="submit" class="btn btn-primary">
-                Change email
+                Change email <i class="fal fa-arrow-right"></i>
             </button>
         </div>
     </div>

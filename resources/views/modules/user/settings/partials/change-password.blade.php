@@ -17,8 +17,8 @@
 
             @if ($errors->has('current-password'))
                 <span class="help-block">
-                                        <strong>{{ $errors->first('current-password') }}</strong>
-                                    </span>
+                    <strong>{{ $errors->first('current-password') }}</strong>
+                </span>
             @endif
         </div>
     </div>
@@ -29,8 +29,8 @@
 
             @if ($errors->has('new-password'))
                 <span class="help-block">
-                                        <strong>{{ $errors->first('new-password') }}</strong>
-                                    </span>
+                    <strong>{{ $errors->first('new-password') }}</strong>
+                </span>
             @endif
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
             <button type="submit" class="btn btn-primary">
-                Change Password
+                Change Password <i class="fal fa-arrow-right"></i>
             </button>
             <a href="{{ route('password.request') }}" class="btn btn-link">I forgot my password...</a>
         </div>
