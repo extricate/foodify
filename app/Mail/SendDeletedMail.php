@@ -12,7 +12,7 @@ class SendDeletedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $deletedUser;
 
     /**
      * Create a new message instance.
@@ -21,7 +21,7 @@ class SendDeletedMail extends Mailable
      */
     public function __construct(User $user)
     {
-        $this->user = $user;
+        $this->deletedUser = $user;
     }
 
     /**
@@ -31,6 +31,6 @@ class SendDeletedMail extends Mailable
      */
     public function build()
     {
-        return $this ->markdown('emails.user.self-deleted')->with([$this->user])->to($this->user->email)->subject('Confirmation of account deletion');
+        return $this ->markdown('emails.user.self-deleted')->with([$this->deletedUser])->to($this->deletedUser->email)->subject('Confirmation of account deletion');
     }
 }

@@ -12,7 +12,7 @@ class SendNewFoodplanGeneratedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $foodplanUser;
     /**
      * Create a new message instance.
      *
@@ -20,7 +20,7 @@ class SendNewFoodplanGeneratedMail extends Mailable implements ShouldQueue
      */
     public function __construct(User $user)
     {
-        $this->user = $user;
+        $this->foodplanUser = $user;
     }
 
     /**
@@ -30,6 +30,6 @@ class SendNewFoodplanGeneratedMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.user.new-foodplan-generated')->with([$this->user])->to($this->user->email)->subject('New Foodify plan generated!');
+        return $this->markdown('emails.user.new-foodplan-generated')->with([$this->foodplanUser])->to($this->foodplanUser->email)->subject('New Foodify plan generated!');
     }
 }
