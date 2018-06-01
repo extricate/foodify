@@ -56,6 +56,6 @@ class ChangePasswordController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->home()->with(['message' => 'Password changed successfully!', 'alert_type' => 'success']);
+        return back()->with(['message' => 'Password changed successfully!', 'alert_type' => 'success']);
     }
 }

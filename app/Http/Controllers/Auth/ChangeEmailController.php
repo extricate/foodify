@@ -51,6 +51,6 @@ class ChangeEmailController extends Controller
         $user->email = $request->get('new-email');
         $user->save();
 
-        return redirect()->home()->with(['message' => 'Email changed successfully!', 'alert_type' => 'success']);
+        return back()->with(['message' => 'Email changed successfully!', 'alert_type' => 'success']);
     }
 }
