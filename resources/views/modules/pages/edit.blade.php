@@ -45,7 +45,7 @@
                 ]) !!}
                 {{ csrf_field() }}
                 <div class="form-group mt-3">
-                    <textarea type="text" class="form-control" id="text" name="text" placeholder="{{ $page->text }}" rows="8" maxlength="400">{{ $page->text }}</textarea>
+                    <textarea type="text" class="form-control mde-editor" id="text" name="text" placeholder="{{ $page->text }}" rows="8" maxlength="400">{{ $page->text }}</textarea>
                 </div>
                 <input type="hidden" class="hidden" name="id" value="{{ $page->id }}">
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -113,7 +113,7 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
-                        <textarea type="text" class="form-control autoexpand" id="description" name="description"
+                        <textarea type="text" class="form-control mde-editor" id="description" name="description"
                                   placeholder="{{ $recipe->description }}"
                                   rows="7">{{ $recipe->description }}</textarea>
                     </div>

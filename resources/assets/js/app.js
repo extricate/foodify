@@ -7,7 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import { Index, SearchBox, Results, Pagination, NoResults, Input, Highlight, PoweredBy } from 'vue-instantsearch';
+import {Index, SearchBox, Results, Pagination, NoResults, Input, Highlight, PoweredBy} from 'vue-instantsearch';
+
 Vue.component('ais-index', Index);
 Vue.component('ais-input', Input);
 Vue.component('ais-search-box', SearchBox);
@@ -121,4 +122,15 @@ $(function () {
     //$('.navbar-toggler').on('click', function(){
     //    $('#navbar-toggle-icon').toggleClass('fa-bars').toggleClass('fa-times');
     //});
+});
+
+/**
+ * SimpleMDE
+ */
+import SimpleMDE from 'simplemde';
+
+$(function () {
+    if ($(".mde-editor").length) {
+        new SimpleMDE({element: $(".mde-editor")[0]});
+    }
 });

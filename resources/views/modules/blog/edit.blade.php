@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea type="text" class="form-control" id="text" name="text" placeholder="Post content" rows="8">{{ $post->content }}</textarea>
+                    <textarea type="text" class="form-control mde-editor" id="text" name="text" placeholder="Post content" rows="8">{{ $post->content }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -17,6 +17,9 @@ $mdc-theme-secondary: $primary;
 @import "~@material/ripple/mdc-ripple";
 @import "~@material/radio/mdc-radio";
 
+// Simple Markdown editor
+@import "~simplemde/dist/simplemde.min.css";
+
 /**
  * Buttons
  */
