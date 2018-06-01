@@ -12,8 +12,7 @@ class SendWelcomeMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $user;
-
+    public $mailingUser;
     /**
      * Create a new message instance.
      *
@@ -23,7 +22,7 @@ class SendWelcomeMail extends Mailable implements ShouldQueue
     {
         // always delay 15 minutes
         $this->delay(15);
-        $this->user = $user;
+        $this->mailingUser = $user;
     }
 
     /**
@@ -33,6 +32,6 @@ class SendWelcomeMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.user.welcome')->to($this->user->email)->subject('Welcome to Foodify!');
+        return $this->markdown('emails.user.welcome')->to($this->mailingUser->email)->subject('Welcome to Foodify!');
     }
 }

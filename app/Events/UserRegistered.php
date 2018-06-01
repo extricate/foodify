@@ -15,7 +15,7 @@ class UserRegistered implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
+    public $registeredUser;
 
     /**
      * Create a new event instance.
@@ -24,7 +24,7 @@ class UserRegistered implements ShouldBroadcast
      */
     public function __construct(User $user)
     {
-        $this->user = $user;
+        $this->registeredUser = $user;
     }
 
     /**

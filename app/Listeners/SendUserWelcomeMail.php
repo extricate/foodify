@@ -30,7 +30,7 @@ class SendUserWelcomeMail
      */
     public function handle(UserRegistered $event)
     {
-        $user = $event->user;
-        Mail::send(new SendWelcomeMail($user));
+        $registeredUser = $event->registeredUser;
+        Mail::send(new SendWelcomeMail($registeredUser));
     }
 }

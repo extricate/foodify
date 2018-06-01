@@ -98,7 +98,7 @@ $(function () {
             showProgressbar: true,
             mouse_over: 'pause',
             template:
-            '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+            '<div data-notify="container" class="col-xs-9 col-sm-3 alert alert-{0}" role="alert">' +
             '<button type="button" aria-hidden="true" class="close" data-notify="dismiss"><i class="fal fa-times"></i></button>' +
             '<span data-notify="icon"></span> ' +
             '<span data-notify="title">{1}</span> ' +
