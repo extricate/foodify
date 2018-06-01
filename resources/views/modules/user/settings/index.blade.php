@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="col-lg-9">
-                            <div class="tab-content" id="v-pills-general">
+                            <div class="tab-content" id="v-pills-tab">
                                 <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel"
                                      aria-labelledby="v-pills-general-tab">
                                     @include('modules.user.settings.partials.settings-general')
