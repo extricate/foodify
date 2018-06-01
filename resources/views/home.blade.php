@@ -42,9 +42,10 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
                 <div class="alert alert-info text-center">
-                    <p><strong>It appears your current food plan is empty!</strong> Would you like us to suggest some
-                        meals
-                        we think you'd like?</p>
+                    <p>
+                        <strong>It appears your current food plan is empty!</strong>
+                        Would you like us to suggest some meals we think you'd like?
+                    </p>
                     <div class="inline-block text-center">
                         @include('modules.foodplan.partials.suggest')
                     </div>
@@ -57,7 +58,7 @@
         $tomorrow = strtolower(\Carbon\Carbon::tomorrow()->format('l'));
     @endphp
     @if($foodplan->$today() == !null)
-        <div class="row mb-5">
+        <div class="row mb-4">
             <div class="col-lg-8">
                 <div class="card text-white bg-success mt-3 mb-3 h-100">
                     <div class="card-body">
@@ -99,7 +100,7 @@
     @if(auth()->user()->getSetting('show_plan_on_dashboard'))
     <div class="row">
         <div class="col-12">
-            <div class="card mb-3">
+            <div class="card mb-3 mt-2">
                 <div class="owl-container m-3">
                     <div class="owl-carousel owl-theme">
                         @foreach($foodplan->days() as $day)
