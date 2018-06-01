@@ -161,6 +161,6 @@ Auth::routes();
 
 Route::get('/email', function() {
     $user = App\User::inRandomOrder()->first();
-    //Mail::send(new App\Mail\SendNewFoodplanGeneratedMail($user));
+    Mail::send(new App\Mail\SendNewFoodplanGeneratedMail($user));
     event(new App\Events\UserDeletedAccount($user));
 });
