@@ -29,9 +29,9 @@
         </div>
     </div>
     <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-        <label for="new-password" class="col-md-4 control-label">Current Password</label>
+        <label for="new-password-email" class="col-md-4 control-label">Current Password</label>
         <div class="col-md-6">
-            <input id="current-password" type="password" class="form-control {{ $errors->has('current-password') ? ' is-invalid' : '' }}" name="current-password" required>
+            <input id="current-password-email" type="password" class="form-control {{ $errors->has('current-password') ? ' is-invalid' : '' }}" name="current-password" required>
             @if ($errors->has('current-password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('current-password') }}</strong>
