@@ -24,11 +24,6 @@ class ChangePasswordController extends Controller
         $this->middleware('auth');
     }
 
-    public function showChangePasswordForm()
-    {
-        return view('modules.user.changepassword');
-    }
-
     public function changePassword(UserChangePasswordRequest $request)
     {
         // Check current password
