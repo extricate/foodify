@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="form-group">
-                        <textarea type="text" class="form-control" id="text" name="text"
+                        <textarea type="text" class="form-control mde-editor" id="text" name="text"
                                   placeholder="Write the page content here."
                                   rows="8" maxlength="400"></textarea>
                 </div>

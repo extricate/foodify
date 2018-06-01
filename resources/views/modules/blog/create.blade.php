@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea type="text" class="form-control" id="text" name="text" placeholder="Post content" rows="4">{{ old('text') }}</textarea>
+                    <textarea type="text" class="form-control mde-editor" id="text" name="text" placeholder="Post content" rows="4">{{ old('text') }}</textarea>
                 </div>
                 <p>Some <b>Markdown</b> is supported.</p>
 
