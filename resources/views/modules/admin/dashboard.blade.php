@@ -16,27 +16,27 @@
                     <div class="card-title">
                         Quick admin navigation
                     </div>
-                    <a href="{{ route('page.create') }}" class="btn btn-primary">
+                    <a href="{{ route('page.create') }}" class="btn btn-primary m-1">
                         New page
                         <i class="fal fa-plus"></i>
                     </a>
 
-                    <a href="{{ route('users.index') }}" class="btn btn-primary">
+                    <a href="{{ route('users.index') }}" class="btn btn-primary m-1">
                         Manage all users
                         <i class="fal fa-users"></i>
                     </a>
 
-                    <a href="{{ route('comments.moderation') }}" class="btn btn-primary">
+                    <a href="{{ route('comments.moderation') }}" class="btn btn-primary m-1">
                         Go to moderation queue
                         <i class="fal fa-shield-check"></i>
                     </a>
 
-                    <a href="{{ route('menus.index') }}" class="btn btn-primary">
+                    <a href="{{ route('menus.index') }}" class="btn btn-primary m-1">
                         Manage all menus
                         <i class="fal fa-bars"></i>
                     </a>
 
-                    <a href="{{ route('admin.report') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.report') }}" class="btn btn-primary m-1">
                         Admin reports
                         <i class="fal fa-clipboard"></i>
                     </a>

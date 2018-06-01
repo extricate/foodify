@@ -15,5 +15,5 @@
 <input name="_method" type="hidden" value="PUT">
 <input name="day" value="{{ $day }}" type="hidden">
 <input name="recipe" value="" type="hidden">
-<button type="submit" class="btn btn-warning">Clear day <i class="fal fa-trash-alt"></i></button>
+<button type="submit" class="btn btn-warning m-1">Clear day <i class="fal fa-trash-alt"></i></button>
 {{ Form::close() }}
