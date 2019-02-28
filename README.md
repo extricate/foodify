@@ -1,10 +1,10 @@
-## Foodify - easy food management
+# Foodify - easy food management
 
 I dislike having to figure out what to eat each week, thus I automated it with Foodify.
 
 Foodify creates my weekly menu based on what I like and what I ate the week before.
 
-# Features implemented
+## Features implemented
 - Recipe creation
 - Weekly food tracking
 - Week history
@@ -13,7 +13,7 @@ Foodify creates my weekly menu based on what I like and what I ate the week befo
 - Comments
 - Dashboards
 
-# Future features
+## Future features
 - Nutritional tracking
 - Automated recipe aggregration
 - Processing preferences of individual users
